@@ -56,7 +56,11 @@ workshop $ uv run python -m gym_agent.prompts push ../prompts/system_v2.md --lab
 Pushed ../prompts/system_v2.md as front-desk v2 with label 'staging'.
 ```
 
-In Langfuse, open **Prompts → front-desk**. There are two versions, and a label on each. Try both
+In Langfuse, open **Prompts → front-desk**. There are two versions, and a label on each.
+
+<img src="../../docs/img/langfuse-prompts.png" alt="Langfuse Prompts: front-desk with versions 1 to 3 and their labels" width="760">
+
+*(This screenshot is from the end of the lab, after v3 is promoted.)* Try both
 in chat, then ask the Episode 1 question. v2 *feels* better: it's snappier. Hold that thought.
 
 ### Step 2: Fetch by label: `workshop/gym_agent/prompts.py`
