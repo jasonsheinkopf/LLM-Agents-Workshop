@@ -69,6 +69,10 @@ Then drop the `uv run` prefix from every command in the course.
 2. Add a payment method under **Settings → Billing**. API usage is billed separately from a ChatGPT subscription.
 3. **Recommended:** set a monthly budget under **Settings → Limits**, for example $5. The course uses far less.
 4. Go to **[API keys](https://platform.openai.com/api-keys)**, then **Create new secret key**. Give it a name such as `llm-agents-workshop`.
+   <img src="img/openai-api-keys.png" alt="Illustration of the API keys page and the one-time 'save your key' dialog" width="640">
+
+   *Illustration: the real page is laid out differently, but the steps are the same.*
+
 5. Copy the key (it starts with `sk-`) into `.env`:
 
 ```bash
@@ -103,6 +107,8 @@ of usage. You can also [self-host it](https://langfuse.com/self-hosting) with Do
 
 2. Create an **organization**, then a **project**, for example `llm-agents-workshop`.
 3. In the project, open **Settings → API Keys → Create new API keys**.
+   <img src="img/langfuse-api-keys.png" alt="Langfuse project settings: API Keys, with the Create API key dialog open" width="640">
+
 4. Copy all three values into `.env`:
 
 ```bash
@@ -125,6 +131,10 @@ embeddings there, along with each caller's memories.
    <img src="img/pinecone-signup.png" alt="Pinecone sign-up and log-in page" width="360">
 
 2. Open **API Keys** in the left sidebar. Copy the default key, or create one.
+   <img src="img/pinecone-api-keys.png" alt="Illustration of a vector database console's API keys page" width="640">
+
+   *Illustration: the real console is laid out differently.*
+
 3. Add it to `.env`:
 
 ```bash

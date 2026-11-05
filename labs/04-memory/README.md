@@ -108,7 +108,9 @@ workshop $ uv run python -m gym_agent.memory search "can my nanny sign my kid's 
 0.6xx  [Waivers]  Waivers: Every climber must have a signed waiver on file...
 ```
 
-In the Pinecone console, open the index, then **Browser**. There are 13 records in `handbook`, each
+<img src="../../docs/img/pinecone-browser.png" alt="Illustration of the index browser: handbook records with section and text metadata" width="760">
+
+*Illustration: the real console is laid out differently.* In the Pinecone console, open the index, then **Browser**. There are 13 records in `handbook`, each
 with its metadata. (A new index can take a few seconds before searches return results.)
 
 ### Evaluate retrieval on its own

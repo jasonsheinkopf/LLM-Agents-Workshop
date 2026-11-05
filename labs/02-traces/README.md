@@ -109,6 +109,13 @@ caller> /end
 
 ### Look around Langfuse
 
+<img src="../../docs/img/langfuse-trace-tree.png" alt="A phone-turn trace in Langfuse: the tree, the generation, and the exact system message" width="760">
+
+*A real trace. Notice the `user_feedback: False` score and the `user: dana` / session links at the top. The
+system message has instructions and the caller's name, but **nothing about classes**, and the model
+still "answered" the age question. (Captured from a self-hosted Langfuse running a small local model;
+Langfuse Cloud looks the same.)*
+
 | Where | What to look at |
 |---|---|
 | **Tracing → Traces** | Your `phone-turn` traces. Open one: the tree, the exact system message (prompt + context), tokens, latency and cost. |
@@ -121,7 +128,11 @@ Now open the trace where it made up the class time, and look at the system messa
 nothing in it about classes. **The trace just diagnosed the knowledge gap.** No prompt wording can
 fix that. Lab 4 will.
 
+<img src="../../docs/img/langfuse-sessions.png" alt="Langfuse session view: the call shown as a conversation" width="760">
+
 ### Turn a bad trace into a test case (preview of Lab 3)
+
+<img src="../../docs/img/langfuse-add-to-dataset.png" alt="The Add to menu on a trace, with Dataset and Annotation queue" width="760">
 
 On a trace you scored `/bad`, use **Add to dataset** (top right of the trace view). Create a
 dataset called `from-production`, and add the input and what the answer *should* have been. This

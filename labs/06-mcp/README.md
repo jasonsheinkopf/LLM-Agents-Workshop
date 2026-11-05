@@ -89,8 +89,13 @@ The client launched the server as a subprocess and talked to it over **stdio**, 
 workshop $ npx @modelcontextprotocol/inspector uv run python -m gym_agent.mcp_server
 ```
 
-A browser tab opens. **Connect → Tools → List Tools**, then call `check_schedule` with
-`{"day": "Saturday"}`. Try `book_class` with an age of 400 and read the validation error.
+A browser tab opens (the terminal also prints the link, with a one-time auth token). Flip the
+server's **Connected** switch, open the **Tools** tab, pick `check_schedule`, choose `Saturday`, type
+age `8`, and press **Execute Tool**:
+
+<img src="../../docs/img/mcp-inspector.png" alt="MCP Inspector connected to ridgeline-gym, showing the three tools and a check_schedule result" width="760">
+
+Then try `book_class` with an age of 400, and read the validation error.
 
 ### 3. In Claude Desktop
 
