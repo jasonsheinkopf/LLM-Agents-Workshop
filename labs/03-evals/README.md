@@ -106,6 +106,8 @@ Uploaded 19 items to Langfuse dataset 'ridgeline-agent-cases'.
 
 Find it under **Datasets**. Each item has an `input` (caller and turns) and an `expected_output`.
 
+<img src="../../docs/img/langfuse-dataset.png" alt="The ridgeline-agent-cases dataset in Langfuse: items with input, expected output and category" width="760">
+
 ### Step 5: Write the graders: `workshop/gym_agent/evals/evaluators.py`
 
 `booking_policy` is done for you as an example. Write:
@@ -158,7 +160,13 @@ Every case runs through your agent (traced), then gets graded. You'll get a tabl
 workshop $ uv run python -m gym_agent.evals.run_experiment --label staging
 ```
 
-In Langfuse: **Datasets → ridgeline-agent-cases → Runs**. Select both runs and **compare**. Open
+In Langfuse: **Experiments** (or the dataset's **Experiments** tab). Tick the runs and press **Compare**.
+
+<img src="../../docs/img/langfuse-experiment-compare.png" alt="Langfuse experiment comparison: summary scores per run with deltas against a baseline, then per-case scores" width="760">
+
+*The comparison view: a summary row of scores per run, with the change against the baseline, then every
+case side by side. (This one is from a run on a small local model, so the absolute numbers are low;
+with `gpt-5-mini` they're much higher. The shape is the point.)* Open
 the cases where they differ; each one links to its trace.
 
 What you'll likely see: v2 is shorter, and it **regresses**. With the rules gone, it guesses: it

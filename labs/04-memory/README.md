@@ -144,6 +144,8 @@ It remembers Sam. Now try `--caller priya` and ask about "my son". She gets noth
 Check what's stored with `uv run python -m gym_agent.memory recall dana`, and delete it with
 `memory forget dana`.
 
+<img src="../../docs/img/langfuse-trace-retrievers.png" alt="A trace with recall_caller_memories and search_handbook retriever spans and the retrieved waiver policy" width="760">
+
 In Langfuse, open a turn's trace. You'll see `recall_caller_memories` and `search_handbook`
 **retriever** spans, with exactly what was retrieved, before the model call.
 

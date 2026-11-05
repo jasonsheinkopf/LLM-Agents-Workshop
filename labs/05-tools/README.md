@@ -131,6 +131,11 @@ caller> My son hurt his ankle here yesterday, should I ice it?
 caller> Sign me up for Lead Climbing 101. I've never belayed.
 ```
 
+<img src="../../docs/img/langfuse-trace-tools.png" alt="A trace where book_class is flagged Warning: the model invented a class id and the guardrail rejected it" width="760">
+
+*A real guardrail hit: the model invented a class id (`youth_climbing_10am_saturday`), the code
+rejected it, and the error went back to the model as a message it can act on.*
+
 Then open the traces. You'll see `tool` spans with arguments, results and, where a guardrail
 fired, a WARNING level with the reason.
 
