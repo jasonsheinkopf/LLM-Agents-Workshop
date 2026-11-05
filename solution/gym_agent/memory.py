@@ -67,7 +67,7 @@ def embed(client, texts: list[str]) -> list[list[float]]:
 class VectorStore(Protocol):
     def upsert(self, records: list[dict], namespace: str) -> None: ...
     def query(self, vector: list[float], top_k: int, namespace: str, filter: dict | None = None) -> list[dict]: ...
-    def delete(self, namespace: str, filter: dict) -> None: ...
+    def delete_prefix(self, namespace: str, prefix: str) -> None: ...
 
 
 class PineconeStore:
@@ -118,8 +118,11 @@ class PineconeStore:
         )
         return [{"id": m.id, "score": m.score, "metadata": dict(m.metadata or {})} for m in res.matches]
 
-    def delete(self, namespace: str, filter: dict) -> None:
-        self.index.delete(filter=filter, namespace=namespace)
+    def delete_prefix(self, namespace: str, prefix: str) -> None:
+        # Serverless indexes can't delete by metadata filter, so list the ids by prefix, then delete them.
+        ids = [v.id for page in self.index.list(prefix=prefix, namespace=namespace) for v in page.vectors]
+        if ids:
+            self.index.delete(ids=ids, namespace=namespace)
 
 
 class InMemoryStore:
@@ -152,9 +155,9 @@ class InMemoryStore:
         ]
         return sorted(hits, key=lambda h: -h["score"])[:top_k]
 
-    def delete(self, namespace, filter):
+    def delete_prefix(self, namespace, prefix):
         ns = self.data.get(namespace, {})
-        for rid in [rid for rid, r in ns.items() if all(r["metadata"].get(k) == (v.get("$eq") if isinstance(v, dict) else v) for k, v in filter.items())]:
+        for rid in [rid for rid in ns if rid.startswith(prefix)]:
             del ns[rid]
 
 
@@ -221,7 +224,8 @@ class CallerMemory:
         return [h["metadata"]["text"] for h in hits]
 
     def forget(self, caller_id: str) -> None:
-        self.store.delete(namespace=MEMORY_NS, filter={"caller_id": {"$eq": caller_id}})
+        # Memory ids all start with "mem-<caller_id>-" (see remember), so delete by that prefix.
+        self.store.delete_prefix(namespace=MEMORY_NS, prefix=f"mem-{caller_id}-")
 
     @observe(name="extract_memories")
     def extract_facts(self, transcript: list[dict[str, Any]]) -> list[str]:

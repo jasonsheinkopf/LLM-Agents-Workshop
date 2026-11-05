@@ -33,7 +33,11 @@ def _handbook():
     from .llm import get_client
     from .memory import Handbook, PineconeStore
 
-    store = PineconeStore.try_connect()
+    try:
+        store = PineconeStore.try_connect()
+    except Exception as e:  # a bad key shouldn't stop the other tools from working
+        print(f"ridgeline-gym: handbook search disabled ({type(e).__name__}: {e})", file=sys.stderr)
+        return None
     return Handbook(get_client(), store) if store else None
 
 

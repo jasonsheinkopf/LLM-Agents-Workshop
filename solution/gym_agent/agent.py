@@ -160,11 +160,14 @@ class Call:
             self.history.append({"role": "assistant", "content": result.reply})
             return result
 
-    @observe(name="end-call")
     def end(self) -> list[str]:
         """After the call: extract durable facts about the caller and store them (Lab 4)."""
         if self.agent.caller_memory is None:
-            return []
+            return []  # no memory, nothing to write (and no empty trace)
+        return self._write_memories()
+
+    @observe(name="end-call")
+    def _write_memories(self) -> list[str]:
         with propagate_attributes(session_id=self.call_id, user_id=self.caller_id):
             facts = self.agent.caller_memory.extract_facts(self.history)
             self.agent.caller_memory.remember(self.caller_id, facts)
