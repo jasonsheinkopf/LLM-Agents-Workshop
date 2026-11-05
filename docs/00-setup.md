@@ -23,6 +23,8 @@ You'll set up:
 `pyenv`, `venv` and `pip`, and it reads the repo's `uv.lock`, so you get exactly the versions the
 course was tested with.
 
+<img src="img/uv-install.png" alt="The uv installation page, showing the one-line installers" width="640">
+
 **macOS / Linux**
 
 ```bash
@@ -97,6 +99,8 @@ of usage. You can also [self-host it](https://langfuse.com/self-hosting) with Do
 
 1. Sign up at **[cloud.langfuse.com](https://cloud.langfuse.com)** (EU region) or
    **[us.cloud.langfuse.com](https://us.cloud.langfuse.com)** (US region). Pick one and remember which.
+   <img src="img/langfuse-signup.png" alt="Langfuse sign-up page with the Data Region picker at the top" width="560">
+
 2. Create an **organization**, then a **project**, for example `llm-agents-workshop`.
 3. In the project, open **Settings → API Keys → Create new API keys**.
 4. Copy all three values into `.env`:
@@ -118,6 +122,8 @@ LANGFUSE_BASE_URL=https://cloud.langfuse.com      # or https://us.cloud.langfuse
 embeddings there, along with each caller's memories.
 
 1. Sign up at **[app.pinecone.io](https://app.pinecone.io)**. The free **Starter** plan is enough.
+   <img src="img/pinecone-signup.png" alt="Pinecone sign-up and log-in page" width="360">
+
 2. Open **API Keys** in the left sidebar. Copy the default key, or create one.
 3. Add it to `.env`:
 

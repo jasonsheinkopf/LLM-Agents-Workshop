@@ -4,6 +4,7 @@
     uv run python -m gym_agent.chat --caller priya  # call as a family member
     uv run python -m gym_agent.chat --prompt-label staging
     uv run python -m gym_agent.chat --prompt-file ../prompts/system_v1.md
+    uv run python -m gym_agent.chat --no-tools --no-memory   # the agent as it was in Lab 1
 
 While chatting:
     /good, /bad <why>   score the last turn in Langfuse (this is how real traces become test cases)
@@ -32,10 +33,13 @@ def main() -> None:
     p.add_argument("--caller", default="dana", choices=sorted(load_callers()))
     p.add_argument("--prompt-label", default=None, help="Langfuse prompt label (default: production)")
     p.add_argument("--prompt-file", type=Path, default=None, help="use a local prompt file instead of Langfuse")
+    p.add_argument("--no-tools", action="store_true", help="talk to the agent without tools (like Labs 1-4)")
+    p.add_argument("--no-memory", action="store_true", help="don't use Pinecone even if the index exists (like Labs 1-3)")
     p.add_argument("--message", "-m", action="append", help="send these messages and exit (non-interactive)")
     args = p.parse_args()
 
-    agent = GymAgent.from_env(prompt_label=args.prompt_label, prompt_file=args.prompt_file)
+    agent = GymAgent.from_env(prompt_label=args.prompt_label, prompt_file=args.prompt_file,
+                              tools=[] if args.no_tools else None, memory=not args.no_memory)
     call = agent.start_call(args.caller)
     lf = get_client()
     console.print(Panel.fit(

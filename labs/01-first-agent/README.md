@@ -44,7 +44,8 @@ File: `workshop/gym_agent/agent.py`. Find the `TODO(lab1)` comments (`grep -n "T
 message (not the whole response):
 
 ```python
-return self.agent.client.chat.completions.create(**kwargs).choices[0].message
+resp = self.agent.client.chat.completions.create(**kwargs)
+return resp.choices[0].message
 ```
 
 Leave the `TODO(lab3)` and `TODO(lab5)` comments where they are. You'll come back to them.
@@ -64,7 +65,8 @@ Leave the `TODO(lab3)` and `TODO(lab5)` comments where they are. You'll come bac
 def send(self, user_text: str) -> TurnResult:
     self.ctx.turn += 1
     self.history.append({"role": "user", "content": user_text})
-    system = {"role": "system", "content": f"{self.agent.prompt.text}\n\n{self._context(user_text)}"}
+    context = self._context(user_text)
+    system = {"role": "system", "content": f"{self.agent.prompt.text}\n\n{context}"}
     msg = self._model_call([system, *self.history])
     self.history.append({"role": "assistant", "content": msg.content})
     return TurnResult(reply=msg.content, prompt_version=self.agent.prompt.version)

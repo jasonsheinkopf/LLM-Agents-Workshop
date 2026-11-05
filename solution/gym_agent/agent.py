@@ -64,7 +64,8 @@ class GymAgent:
 
     @classmethod
     def from_env(cls, *, prompt_label: str | None = None, prompt_file: Path | None = None,
-                 bookings: BookingStore | None = None) -> GymAgent:
+                 bookings: BookingStore | None = None, tools: list[str] | None = None,
+                 memory: bool = True) -> GymAgent:
         """Build the full agent from your .env.
 
         Memory switches on by itself once the Pinecone index exists (after Lab 4's `ingest`).
@@ -74,11 +75,12 @@ class GymAgent:
 
         client = get_llm()
         handbook = caller_memory = None
-        store = PineconeStore.try_connect()
+        store = PineconeStore.try_connect() if memory else None
         if store is not None:
             handbook, caller_memory = Handbook(client, store), CallerMemory(client, store)
         prompt = load_system_prompt(label=prompt_label, prompt_file=prompt_file)
-        return cls(client, handbook=handbook, caller_memory=caller_memory, prompt=prompt, bookings=bookings)
+        return cls(client, tools=tools, handbook=handbook, caller_memory=caller_memory, prompt=prompt,
+                   bookings=bookings)
 
     def start_call(self, caller_id: str) -> Call:
         return Call(self, caller_id)
