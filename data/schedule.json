@@ -1,0 +1,11 @@
+{
+  "_note": "Fictional weekly class schedule for Ridgeline Climbing Gym. 'booked' is the starting seat count; new bookings are saved in .runtime/bookings.json.",
+  "classes": [
+    {"id": "youth-sat-1000",       "name": "Youth Climbing",    "day": "Saturday",  "start": "10:00", "minutes": 90,  "min_age": 7,  "max_age": 11,   "capacity": 8,  "booked": 5, "price_usd": 35},
+    {"id": "youth-sun-1000",       "name": "Youth Climbing",    "day": "Sunday",    "start": "10:00", "minutes": 90,  "min_age": 7,  "max_age": 11,   "capacity": 8,  "booked": 8, "price_usd": 35},
+    {"id": "intro-belay-wed-1900", "name": "Intro to Belay",    "day": "Wednesday", "start": "19:00", "minutes": 120, "min_age": 12, "max_age": null, "capacity": 8,  "booked": 8, "price_usd": 55},
+    {"id": "intro-belay-sat-1400", "name": "Intro to Belay",    "day": "Saturday",  "start": "14:00", "minutes": 120, "min_age": 12, "max_age": null, "capacity": 8,  "booked": 3, "price_usd": 55},
+    {"id": "lead-101-thu-1900",    "name": "Lead Climbing 101", "day": "Thursday",  "start": "19:00", "minutes": 150, "min_age": 16, "max_age": null, "capacity": 6,  "booked": 2, "price_usd": 80, "requires": "belay certification"},
+    {"id": "yoga-tue-1800",        "name": "Climber's Yoga",    "day": "Tuesday",   "start": "18:00", "minutes": 60,  "min_age": 16, "max_age": null, "capacity": 15, "booked": 9, "price_usd": 20}
+  ]
+}

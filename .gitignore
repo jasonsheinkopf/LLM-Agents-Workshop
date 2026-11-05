@@ -1,0 +1,19 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python / uv
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# runtime state written by the agent (bookings, local logs)
+.runtime/
+
+# editors / OS
+.DS_Store
+.idea/
+.vscode/

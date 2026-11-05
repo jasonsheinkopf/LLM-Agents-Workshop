@@ -1,0 +1,15 @@
+{"id": "ret-01", "question": "How much is a day pass?", "expected_section": "Day passes and prices"}
+{"id": "ret-02", "question": "What time do you open on Saturday?", "expected_section": "Hours and location"}
+{"id": "ret-03", "question": "Is parking free?", "expected_section": "Hours and location"}
+{"id": "ret-04", "question": "Can my nanny sign my kid's waiver?", "expected_section": "Waivers"}
+{"id": "ret-05", "question": "Can I leave my 10 year old to climb alone?", "expected_section": "Kids and supervision"}
+{"id": "ret-06", "question": "Is there a class my 8 year old can take?", "expected_section": "Youth programs"}
+{"id": "ret-07", "question": "I'm certified at another gym, can I belay?", "expected_section": "Belay certification"}
+{"id": "ret-08", "question": "Do I get a refund if I cancel the night before?", "expected_section": "Cancellations and refunds"}
+{"id": "ret-09", "question": "How much is a birthday party for 12 kids?", "expected_section": "Birthday parties"}
+{"id": "ret-10", "question": "Someone got hurt on the wall, what do I do?", "expected_section": "Safety and injuries"}
+{"id": "ret-11", "question": "I left my water bottle there last week", "expected_section": "Lost and found"}
+{"id": "ret-12", "question": "Is the gym wheelchair accessible?", "expected_section": "Accessibility"}
+{"id": "ret-13", "question": "Can I pause my membership while I travel?", "expected_section": "Memberships"}
+{"id": "ret-14", "question": "When is the free belay test available?", "expected_section": "Belay certification"}
+{"id": "ret-15", "question": "How old do you have to be for the belay class?", "expected_section": "Adult and teen classes"}

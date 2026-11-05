@@ -1,0 +1,9 @@
+{
+  "_note": "Fictional callers. Phone numbers use the reserved 555-01xx range. caller_id is what the phone system would give the agent.",
+  "callers": [
+    {"caller_id": "dana",    "name": "Dana Ortiz",  "phone": "+1-555-0101", "member": false},
+    {"caller_id": "priya",   "name": "Priya Shah",  "phone": "+1-555-0102", "member": true, "membership": "family"},
+    {"caller_id": "marcus",  "name": "Marcus Lee",  "phone": "+1-555-0103", "member": true, "membership": "adult"},
+    {"caller_id": "unknown", "name": null,          "phone": "+1-555-0199", "member": false}
+  ]
+}

@@ -1,0 +1,41 @@
+[project]
+name = "llm-agents-workshop"
+version = "1.0.0"
+description = "Build a real AI phone agent for a (fictional) climbing gym: traces, evals, memory, tools and MCP."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "openai>=3.40",            # the model + embeddings
+    "langfuse>=5.0,<6",        # traces, prompt management, datasets, experiments
+    "pinecone>=10.0",          # the vector database (long-term memory)
+    "mcp>=2.3,<3",             # Model Context Protocol server + client
+    "pydantic>=2.10",          # tool-argument validation (guardrails)
+    "python-dotenv>=1.0",      # reads your .env file
+    "rich>=14.0",              # pretty terminal output
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3", "ruff>=0.9"]
+
+[tool.uv]
+package = false            # this repo is a course, not a library: run code with `uv run`
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# the starter code has imports and variables you'll use once you fill in the TODOs
+"workshop/**" = ["F401", "F841"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["gym_agent", "fakes", "helpers"]

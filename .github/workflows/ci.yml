@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check .
+      - name: Offline tests (reference solution)
+        run: uv run pytest --impl solution
+      - name: Starter code imports cleanly
+        run: cd workshop && uv run python -c "import gym_agent.agent, gym_agent.chat, gym_agent.memory, gym_agent.mcp_server, gym_agent.evals.run_experiment"
