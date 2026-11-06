@@ -167,7 +167,7 @@ All set.
 ```
 
 A FAIL line prints the real error message. The common ones are in
-[TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+[TROUBLESHOOTING.md](TROUBLESHOOTING.md), and the what-ifs in [FAQ.md](FAQ.md).
 
 Finally, check that the offline tests run. They need no keys:
 
