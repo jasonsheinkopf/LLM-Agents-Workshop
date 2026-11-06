@@ -9,6 +9,7 @@ Every term the course uses, in a sentence or two, with the lab where you meet it
 | **System prompt** | The instructions sent first on every call: the agent's job description. | 1 |
 | **Context window** | Everything the model sees in one call: the prompt, the history, retrieved text and tool results. The "desk". | 1, 4 |
 | **Agent** | A model plus instructions, memory and tools, running in a loop, measured by evals. | 1 |
+| **Workflow vs agent** | In a workflow, your code decides the steps and the model fills them in. In an agent, the model decides the next step. Start with the simplest one that solves the task. | 1 |
 | **Trace** | The record of one unit of work (one turn), as a tree of observations. | 2 |
 | **Observation** | One step inside a trace: a generation (model call), retriever, tool, span, or evaluator. | 2 |
 | **Session** | Traces grouped together: here, one phone call. | 2 |
