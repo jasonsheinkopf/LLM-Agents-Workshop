@@ -162,6 +162,13 @@ evidence, not vibes, that each piece earned its place.
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `test_tool_specs_have_name_description_schema` fails: `tool_specs` still returns `[]`; build one dict per name with `ARG_MODELS[n].model_json_schema()`.
+- `test_unknown_tool_is_refused` / `test_bad_json_and_bad_values_become_errors` fail: `validate_call` must raise `ToolError` for each of the three checks, in that order.
+- `test_booking_needs_confirmation_on_a_later_turn` fails: refuse when `ctx.turn <= pending.issued_on_turn`.
+- `test_loop_stops_after_max_steps` fails: the loop must run at most `settings.max_steps` times and reply `GIVE_UP` if it never got an answer.
+- OpenAI returns `400 … tool_call_id`: append the assistant message with its `tool_calls` *before* the tool results, with matching ids.
+
 `diff workshop/gym_agent/tools.py solution/gym_agent/tools.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#tools)
 

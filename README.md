@@ -182,6 +182,7 @@ LLM-Agents-Workshop/
 │   ├── 00-setup.md          ← Lab 0: uv, OpenAI, Langfuse and Pinecone keys, the doctor check
 │   ├── ARCHITECTURE.md      ← how the pieces fit, and what a trace looks like
 │   ├── TROUBLESHOOTING.md   ← the errors people actually hit, and their fixes
+│   ├── FAQ.md               ← "what if…": Windows, pip, other models, own data, costs, concepts
 │   └── GLOSSARY.md          ← every term used in the course, in one sentence each
 ├── CONTRIBUTING.md          ← for maintainers: keeping workshop/ and solution/ in sync
 ├── labs/                    ← one README per lab: goal, concepts, steps, checks, stretch goals

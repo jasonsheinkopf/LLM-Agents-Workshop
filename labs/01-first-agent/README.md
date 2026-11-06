@@ -125,6 +125,11 @@ caller> /end
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `AttributeError: 'NoneType' object has no attribute 'content'`: `_model_call` returned the response, not `.choices[0].message`.
+- `test_conversation_history_is_kept` fails: you're not appending the assistant reply to `self.history`, or you're appending the system message too (don't; it's rebuilt every turn).
+- The chat replies but every answer ignores who is calling: the system message must include `self._context(user_text)`.
+
 Compare with the answer: `diff workshop/gym_agent/agent.py solution/gym_agent/agent.py` (the
 solution also has Labs 2 to 5 done, so focus on `_model_call` and `send`).
 Common errors are in [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md).

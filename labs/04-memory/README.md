@@ -174,6 +174,12 @@ Langfuse. The difference is the value of memory, measured.
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `test_handbook_is_chunked_by_section` fails: split on `^## ` with `re.M`, and give each chunk the id `handbook-<slug>` and text `f"{heading}: {body}"`.
+- `test_caller_memories_are_filtered_by_caller` fails: `recall` must pass `filter={"caller_id": {"$eq": caller_id}}` to `query`.
+- `test_agent_puts_handbook_and_memories_on_the_desk` fails: `_context` must include a line starting `[<section>]` per hit and the memories block.
+- `ingest` works but `search` returns nothing: wait 10–30 s; serverless indexes are eventually consistent.
+
 `diff workshop/gym_agent/memory.py solution/gym_agent/memory.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#pinecone)
 

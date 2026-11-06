@@ -146,6 +146,10 @@ OAuth, and the server constructor takes `auth=` settings.
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `test_mcp_server_lists_and_runs_tools` fails: the three functions must be decorated with `@mcp.tool()` and named exactly `check_schedule`, `search_handbook`, `book_class`.
+- The Inspector shows only one tool: the other two aren't decorated, or the server crashed on import (run `uv run python -c "import gym_agent.mcp_server"` to see the error).
+
 `diff workshop/gym_agent/mcp_server.py solution/gym_agent/mcp_server.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#mcp)
 

@@ -224,6 +224,12 @@ Fill in this scoreboard, because you'll come back to it:
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `test_prompt_is_fetched_by_label_from_langfuse` fails: call `get_prompt` with `label=` and `fallback=`, and keep the returned object in `langfuse_prompt`.
+- `test_judge_parses_verdict` fails: pass `response_format={"type": "json_object"}` and read `.choices[0].message.content`.
+- `test_judge_survives_garbage` fails: wrap `json.loads` in `try/except json.JSONDecodeError` and treat failure as `{}`.
+- The experiment runs but every item errors: open one trace; it's usually a missing key or a 429 rate limit (see Troubleshooting).
+
 `diff workshop/gym_agent/evals/evaluators.py solution/gym_agent/evals/evaluators.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#evals)
 

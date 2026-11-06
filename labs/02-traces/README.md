@@ -153,6 +153,11 @@ is how real teams grow test sets: from real failures, not imagination.
 
 ## Stuck?
 
+**Common failures in this lab:**
+- `test_model_client_is_langfuse_wrapped` fails: the import must be `from langfuse.openai import OpenAI` *inside* the `if langfuse_enabled():` branch.
+- `test_turn_sets_session_and_user` fails: `propagate_attributes(...)` must wrap the body of `send`, with `session_id=self.call_id` and `user_id=self.caller_id`.
+- Traces appear but not grouped: the `@observe` decorator is missing, or it decorates a different function.
+
 `diff workshop/gym_agent/llm.py solution/gym_agent/llm.py` · [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#langfuse)
 
 **Next:** [Lab 3: Evals →](../03-evals/)
