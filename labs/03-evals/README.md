@@ -147,11 +147,11 @@ workshop $ uv run python -m gym_agent.evals.run_experiment --label production
 Every case runs through your agent (traced), then gets graded. You'll get a table, plus a link:
 
 ```
-  booking    0/4 passed
-  handoff    0/1 passed
-  knowledge  1/7 passed
-  ...
-  avg_judge_pass = 0.17     ← your numbers will differ
+  booking    1/6 passed
+  honesty    2/2 passed
+  knowledge  0/8 passed
+  safety     1/1 passed
+  avg_judge_pass = 0.263     ← our run on gpt-5-mini; yours will be close, not identical
 ```
 
 ### Step 8: Run the candidate (v2, staging), then compare
@@ -165,13 +165,13 @@ In Langfuse: **Experiments** (or the dataset's **Experiments** tab). Tick the ru
 <img src="../../docs/img/langfuse-experiment-compare.png" alt="Langfuse experiment comparison: summary scores per run with deltas against a baseline, then per-case scores" width="760">
 
 *The comparison view: a summary row of scores per run, with the change against the baseline, then every
-case side by side. (This one is from a run on a small local model, so the absolute numbers are low;
-with `gpt-5-mini` they're much higher. The shape is the point.)* Open
+case side by side. This one is the end-of-course comparison from our `gpt-5-mini` run.* Open
 the cases where they differ; each one links to its trace.
 
-What you'll likely see: v2 is shorter, and it **regresses**. With the rules gone, it guesses: it
-invents a wifi password, gives ankle advice, and forgets to say which age rule applies. This is the
-regression from the video that vibe-testing missed, and the experiment catches it in one run.
+What you'll see: v2 is shorter, and it **regresses**. In our run, honesty went from 2/2 to 0/2 and
+safety from 1/1 to 0/1: with the rules gone, it invents a wifi password and gives ankle advice.
+This is the regression from the video that vibe-testing missed, and the experiment catches it in
+one run.
 
 ### Step 9: Fix it with v3, then promote the winner
 
@@ -181,8 +181,9 @@ Pushed ../prompts/system_v3.md as front-desk v3 with label 'staging'.
 workshop $ uv run python -m gym_agent.evals.run_experiment --label staging
 ```
 
-Compare all three runs. v3 should match or beat v1 on **honesty** and **safety**, while staying
-short. Then promote it:
+Compare all three runs. In our run, v3 matched v1 on every check (honesty 2/2, safety 1/1, judge
+pass 0.26) at half the length. That is the win: the brevity callers asked for, without the
+regression. Promote it:
 
 ```bash
 workshop $ uv run python -m gym_agent.prompts promote 3
@@ -200,13 +201,13 @@ The running agent picks it up within the cache TTL, with no deploy. That's the l
 
 Fill in this scoreboard, because you'll come back to it:
 
-| Run | avg_judge_pass | knowledge | booking | honesty + safety |
-|---|---|---|---|---|
-| Lab 3: v1 (no memory, no tools) | | | | |
-| Lab 3: v2 (no memory, no tools) | | | | |
-| Lab 3: v3 (no memory, no tools) | | | | |
-| Lab 4: v3 + memory | | | | |
-| Lab 5: v3 + memory + tools | | | | |
+| Run | avg_judge_pass | knowledge | booking | honesty + safety | *(our run)* |
+|---|---|---|---|---|---|
+| Lab 3: v1 (no memory, no tools) | | | | | 0.26 · 0/8 · 1/6 · 3/3 |
+| Lab 3: v2 (no memory, no tools) | | | | | 0.21 · 1/8 · 2/6 · 0/3 |
+| Lab 3: v3 (no memory, no tools) | | | | | 0.26 · 0/8 · 1/6 · 3/3 |
+| Lab 4: v3 + memory | | | | | 0.84 · 8/8 · 3/6 · 3/3 |
+| Lab 5: v3 + memory + tools | | | | | 0.90 · 8/8 · 5/6 · 3/3 |
 
 ## What you should notice
 

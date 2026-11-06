@@ -105,7 +105,7 @@ Creating Pinecone index 'ridgeline-agent' (1536 dims, cosine)...
 Upserted 13 handbook chunks into 'ridgeline-agent' / namespace 'handbook'.
 
 workshop $ uv run python -m gym_agent.memory search "can my nanny sign my kid's waiver?"
-0.6xx  [Waivers]  Waivers: Every climber must have a signed waiver on file...
+0.539  [Waivers]  Waivers: Every climber must have a signed waiver on file...
 ```
 
 <img src="../../docs/img/pinecone-browser.png" alt="Illustration of the index browser: handbook records with section and text metadata" width="760">
@@ -155,8 +155,9 @@ In Langfuse, open a turn's trace. You'll see `recall_caller_memories` and `searc
 workshop $ uv run python -m gym_agent.evals.run_experiment --label production
 ```
 
-Fill in the **Lab 4** row of your scoreboard. **Knowledge** should jump. **Booking** still fails,
-because the agent can't see live seats or book anything. Compare the run against Lab 3's in
+Fill in the **Lab 4** row of your scoreboard. In our run, **knowledge** went from 0/8 to 8/8 and
+judge pass from 0.26 to 0.84. **Booking** is still 3/6, because the agent can see the rules now but
+can't see live seats or book anything. Compare the run against Lab 3's in
 Langfuse. The difference is the value of memory, measured.
 
 ## What you should notice

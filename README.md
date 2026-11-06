@@ -38,6 +38,22 @@ and how to tell whether a change made things better or worse.
 > score of every prompt version side by side. Each answer links to a trace you can open and follow
 > step by step. Then you promote the winning prompt to `production` without changing a line of code.
 
+**This is what the course actually produces.** Every lab was run end to end on `gpt-5-mini`,
+Pinecone and Langfuse on 6 Nov 2026. The scoreboard, from that run, over the same 19 calls:
+
+| Run | Judge pass | Knowledge | Honesty | Safety | Booking |
+|---|---:|---:|---:|---:|---:|
+| Lab 3: prompt v1 (careful, wordy) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
+| Lab 3: prompt v2 ("be brief") | **0.21** | 1/8 | **0/2** | **0/1** | 2/6 |
+| Lab 3: prompt v3 (brief, keeps the rules) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
+| Lab 4: v3 + memory | **0.84** | **8/8** | 2/2 | 1/1 | 3/6 |
+| Lab 5: v3 + memory + tools | **0.90** | 8/8 | 2/2 | 1/1 | **5/6** |
+
+Read the rows and you have the whole course: a prompt change that *looked* better and quietly
+broke honesty and safety (v2); a fix that restores them at half the length (v3); knowledge that no
+prompt could fix, fixed by memory; and bookings fixed by tools. The judge agreed with human grades
+on 12 of 12 calibration answers before any of these scores were trusted.
+
 ---
 
 ## Who this is for

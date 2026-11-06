@@ -113,8 +113,8 @@ caller> /end
 
 *A real trace. Notice the `user_feedback: False` score and the `user: dana` / session links at the top. The
 system message has instructions and the caller's name, but **nothing about classes**, and the model
-still "answered" the age question. (Captured from a self-hosted Langfuse running a small local model;
-Langfuse Cloud looks the same.)*
+still couldn't help the caller. (Captured from a self-hosted Langfuse with `gpt-5-mini`; Langfuse
+Cloud looks the same.)*
 
 | Where | What to look at |
 |---|---|

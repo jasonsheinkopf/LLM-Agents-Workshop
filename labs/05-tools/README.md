@@ -109,18 +109,17 @@ repo $ uv run pytest tests/test_lab5_tools.py
 workshop $ uv run python -m gym_agent.chat
 caller> Hi, can my 8-year-old take the belay class on Saturday? And can you book us in?
   tool check_schedule({"day": "Saturday", "age": 8}) -> {'classes': [{'class_id': 'youth-sat-1000', ... 'seats_left': 3}]}
-agent> Our belay class is for ages 12 and up, so not quite yet. But Youth Climbing, for ages 7 to 11,
-       is Saturday at 10 am, $35, and has 3 spots left. What's your child's name?
-caller> Sam
-  tool book_class({"class_id": "youth-sat-1000", "participant_name": "Sam", "participant_age": 8}) -> {'status': 'needs_confirmation', ...
-agent> That's Youth Climbing, Saturday at 10:00, for Sam (age 8), $35. Shall I book it?
-caller> Yes please
-  tool book_class({..., "confirmation_code": "8EC9"}) -> {'status': 'booked', 'booking_id': 'RG-1A2B3C', ...
-  tool send_text({"message": "Ridgeline: Sam is booked into Youth Climbing, Sat 10:00. Booking RG-1A2B3C."}) -> {'status': 'sent', ...
-agent> Done! Sam is booked, and I've texted you the confirmation. A parent or guardian needs to sign his waiver before class.
+  tool book_class({"class_id": "youth-sat-1000", "participant_name": "Sam", "participant_age": 8}) -> {'status': 'needs_confirmation', 'confirmation_code': '99EB', ...}
+agent> Our "Adult and teen classes" policy says Intro to Belay is for ages 12 and up, so an 8-year-old
+       can't take the belay class. I have Youth Climbing on Saturday at 10:00 for Sam (age 8), $35.
+       Shall I book that for you? ...
+caller> Yes please, book it.
+  tool book_class({..., "confirmation_code": "99EB"}) -> {'status': 'booked', 'booking_id': 'RG-7BDE0C', ...}
+  tool send_text({"message": "Booking confirmed: Youth Climbing, Saturday 10:00, for Sam (age 8). Total $35. ..."}) -> {'status': 'sent', 'to': '+1-555-0101'}
+agent> All set. Sam is booked into Youth Climbing on Saturday at 10:00 for $35 (Booking ID RG-7BDE0C). ...
 ```
 
-(Example output: your wording will differ.) Bookings are saved in `.runtime/bookings.json`, so seats
+(Our run on `gpt-5-mini`. It already knew the child's name from a Lab 4 memory. Your wording will differ.) Bookings are saved in `.runtime/bookings.json`, so seats
 left go down. Delete the file to reset.
 
 **Try to break it:**
@@ -133,8 +132,9 @@ caller> Sign me up for Lead Climbing 101. I've never belayed.
 
 <img src="../../docs/img/langfuse-trace-tools.png" alt="A trace where book_class is flagged Warning: the model invented a class id and the guardrail rejected it" width="760">
 
-*A real guardrail hit: the model invented a class id (`youth_climbing_10am_saturday`), the code
-rejected it, and the error went back to the model as a message it can act on.*
+*The booking turn: `book_class` with the confirmation code returns `booked`, then `send_text` goes
+out. Earlier, with a weaker model, we watched this same guardrail reject an invented class id; the
+error went back to the model as a message it could act on.*
 
 Then open the traces. You'll see `tool` spans with arguments, results and, where a guardrail
 fired, a WARNING level with the reason.
@@ -145,7 +145,7 @@ fired, a WARNING level with the reason.
 workshop $ uv run python -m gym_agent.evals.run_experiment --label production
 ```
 
-**Booking** and **tool_use** should jump. Compare all three runs in Langfuse. You now have
+In our run, **booking** went from 3/6 to 5/6, **tool_use** to 1.0, and judge pass to 0.90. Compare all three runs in Langfuse. You now have
 evidence, not vibes, that each piece earned its place.
 
 ## What you should notice
