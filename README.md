@@ -40,6 +40,16 @@ and how to tell whether a change made things better or worse.
 
 ---
 
+## Who this is for
+
+You've called an LLM API before (or can follow a Python function) and you want to know how a
+*real* agent is built and kept honest. You don't need to have used Langfuse, Pinecone or MCP.
+Each lab is a few short functions; the tests tell you when they work. If you're a leader rather
+than a builder, watch the episodes and read [docs/FACILITATOR.md](docs/FACILITATOR.md) for the
+90-minute version and the five questions to ask any agent team.
+
+**Prerequisites:** Python 3.11+, git, a terminal, and about $2 of OpenAI credit. Langfuse and Pinecone have free plans.
+
 ## The series
 
 Watch the episode, then do the lab. Each lab README starts with a link to its video.
