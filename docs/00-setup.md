@@ -189,4 +189,4 @@ uv run pytest tests/test_lab1_agent.py   # red: that's Lab 1's job
 - Search for `TODO(lab1)` to find your first tasks.
 - Keep two panes open: `workshop/gym_agent/<file>.py` on the left, the lab README on the right.
 
-**Next:** [Lab 1: Your first agent →](../labs/01-first-agent/)
+**Next:** [Read Lesson 1: What makes an agent? →](../lessons/01-first-agent/README.md), then complete Lab 1.

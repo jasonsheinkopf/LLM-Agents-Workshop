@@ -1,5 +1,7 @@
 # Lab 6: MCP
 
+**Self-paced reading:** [Read the concept lesson first](../../lessons/06-mcp/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+
 **Block 6** · In the room: 5 min explain and demo, 12 min build, 3 min debrief · On your own: about 30 min
 **Cost:** free · **Needs:** nothing new (Pinecone optional, for `search_handbook`)
 
@@ -177,4 +179,4 @@ No new row for this block. Reread the **actions** row of your [workflow canvas](
 
 **Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 7` gives you working Lab 6 code, so you start the next block with the room. Your own files are backed up first.
 
-**Next:** [Make it yours →](../07-ship-it/)
+**Next:** [Read the next lesson →](../../lessons/07-transfer/README.md), then follow its link to the lab.

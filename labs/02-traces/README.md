@@ -1,5 +1,7 @@
 # Lab 2: Traces
 
+**Self-paced reading:** [Read the concept lesson first](../../lessons/02-traces/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+
 **Block 2** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
 **Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`
 
@@ -185,4 +187,4 @@ On your [workflow canvas](../../handouts/workflow-canvas.md), fill in **a good o
 
 **Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 3` gives you working Lab 2 code, so you start the next block with the room. Your own files are backed up first.
 
-**Next:** [Lab 3: Evals →](../03-evals/)
+**Next:** [Read the next lesson →](../../lessons/03-evals/README.md), then follow its link to the lab.

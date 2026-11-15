@@ -1,5 +1,7 @@
 # Lab 5: Tools
 
+**Self-paced reading:** [Read the concept lesson first](../../lessons/05-tools/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+
 **Block 5** · In the room: 15 min explain and demo, 40 min build, then the red-team round · On your own: about 75 min
 **Cost:** cents · **Needs:** all keys
 
@@ -226,4 +228,4 @@ tool, so nobody can talk it into either. What is on your list?
 
 **Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 6` gives you working Lab 5 code, so you start the next block with the room. Your own files are backed up first.
 
-**Next:** [Lab 6: MCP →](../06-mcp/)
+**Next:** [Read the next lesson →](../../lessons/06-mcp/README.md), then follow its link to the lab.

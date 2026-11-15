@@ -1,5 +1,7 @@
 # Lab 3: Evals
 
+**Self-paced reading:** [Read the concept lesson first](../../lessons/03-evals/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+
 **Block 3** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
 **Cost:** about $0.10 to $0.30 · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`
 
@@ -261,4 +263,4 @@ On your [workflow canvas](../../handouts/workflow-canvas.md), start **five test 
 
 **Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 4` gives you working Lab 3 code, so you start the next block with the room. Your own files are backed up first.
 
-**Next:** [Lab 4: Memory →](../04-memory/)
+**Next:** [Read the next lesson →](../../lessons/04-memory/README.md), then follow its link to the lab.

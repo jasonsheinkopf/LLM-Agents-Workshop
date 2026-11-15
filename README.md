@@ -22,6 +22,12 @@ offline tests, an instructor's run of show and the participant handouts.
 | **By the end, each pair can** | [Build, diagnose, measure, guard and transfer](#what-participants-can-do-by-the-end) |
 | **Also here** | A [two-hour session for leaders](#the-same-material-for-a-different-audience), built on the same agent |
 
+## Start here — take the workshop
+
+**Want to learn this rather than just browse the project? [Start the guided course →](START_HERE.md).** Clone the repository, read a concept lesson, complete its coding lab, run the checkpoint, and follow the next link. All **seven written lessons** are available now; the videos are optional companions still in development.
+
+[Start learning](START_HERE.md) · [Track progress with local checkboxes](PROGRESS_TEMPLATE.md) · [Teaching guide](docs/FACILITATOR.md)
+
 **On this page:**
 [Why it is designed this way](#why-it-is-designed-this-way) ·
 [Who it is for](#who-it-is-for) ·
@@ -263,7 +269,7 @@ The materials are written so that the day does not depend on one instructor's me
 | Teach it | [docs/FACILITATOR.md](docs/FACILITATOR.md): what to say and demo in each block, the failure to show on purpose, the checkpoint, the debrief questions, and what to do when a third of the laptops fail |
 | Understand the design | [docs/DESIGN.md](docs/DESIGN.md) |
 | Send and print | [handouts/](handouts/): pre-work email, workflow canvas, exit ticket, follow-up emails |
-| Do it on your own | Start at [Lab 0](docs/00-setup.md) and take the labs in order. Budget about five and a half hours. Each lab page carries the idea, the steps, the checkpoint and the debrief questions |
+| Do it on your own | **[Start here](START_HERE.md)**: clone the repo, follow the written lesson → lab sequence, tick an [optional personal progress checklist](PROGRESS_TEMPLATE.md). Budget about five to seven hours plus setup |
 | Fix a problem | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) and [docs/FAQ.md](docs/FAQ.md) |
 | Look up a term | [docs/GLOSSARY.md](docs/GLOSSARY.md) |
 
@@ -271,6 +277,8 @@ Budget about $2 of OpenAI usage per person for the whole day on the default `gpt
 and Pinecone are used on their free plans.
 
 ## Quick start
+
+**New here?** The [Start here guide](START_HERE.md) is the recommended entry point. It links every concept lesson to its matching lab and explains how to track your progress in your own clone.
 
 You need Python 3.11 or later, git and a terminal. [Lab 0](docs/00-setup.md) has the full
 instructions, including how to get each API key.
@@ -288,6 +296,7 @@ uv run pytest --impl solution
 cp .env.example .env                  # edit .env (see docs/00-setup.md)
 cd workshop
 uv run python -m gym_agent.doctor     # three PASS lines means you are ready
+cd ..                                # return to the repository root
 ```
 
 To see the finished agent before building it, run the solution from the repo root:
@@ -329,8 +338,9 @@ session, with its run of show and printable handouts, is in [leaders/](leaders/R
 in CI, the evaluation set and graders, the facilitator guide, the design notes, the participant
 handouts, and the leaders' session with its handouts.
 
-**In development.** A six-part companion video series, one episode per block. Drafts exist and
-none are published, so nothing in the workshop depends on them.
+**Available to read.** Seven written [concept lessons](START_HERE.md) adapt the planned video narration and lead directly into the hands-on labs. The course can be completed without video.
+
+**In development.** A six-part companion video series, one episode per technical block. Drafts exist and none are published; the written lessons provide the explanations in the meantime.
 
 **Not claimed.** This workshop has not yet been taught to a cohort. The agenda timings are a
 design. There are no participant outcomes, follow-up data or adoption numbers, and the example

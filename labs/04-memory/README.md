@@ -1,5 +1,7 @@
 # Lab 4: Memory
 
+**Self-paced reading:** [Read the concept lesson first](../../lessons/04-memory/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+
 **Block 4** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
 **Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`, `PINECONE_API_KEY`
 
@@ -207,4 +209,4 @@ On your [workflow canvas](../../handouts/workflow-canvas.md), fill in **knowledg
 
 **Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 5` gives you working Lab 4 code, so you start the next block with the room. Your own files are backed up first.
 
-**Next:** [Lab 5: Tools →](../05-tools/)
+**Next:** [Read the next lesson →](../../lessons/05-tools/README.md), then follow its link to the lab.
