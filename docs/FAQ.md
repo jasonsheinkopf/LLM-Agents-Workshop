@@ -37,9 +37,7 @@ recommended only because it pins the exact library versions the workshop was tes
 
 **What if I want the ideas, not the labs?**
 Read the "idea in two minutes" section at the top of each lab page, and
-[docs/ARCHITECTURE.md](ARCHITECTURE.md). Neither needs any code. If you lead a team rather than build, the
-[leaders' track](../leaders/README.md) and the
-[five questions to ask any agent team](../handouts/questions-for-leaders.md) are written for you.
+[docs/ARCHITECTURE.md](ARCHITECTURE.md). Neither needs any code.
 
 ## While you work
 
@@ -97,9 +95,8 @@ treat the old keys as public forever). The repo's `.gitignore` excludes `.env` t
 to do by accident.
 
 **What if I want to run this for my team?**
-There are two run-of-show guides, each with timings, checkpoints and the things that go wrong:
-[FACILITATOR.md](FACILITATOR.md) for the one-day engineers' workshop, and
-[leaders/FACILITATOR.md](../leaders/FACILITATOR.md) for the two-hour leaders' session.
+[FACILITATOR.md](FACILITATOR.md) is the run of show for the one-day workshop, with timings,
+checkpoints and the things that go wrong.
 
 ## Concepts
 

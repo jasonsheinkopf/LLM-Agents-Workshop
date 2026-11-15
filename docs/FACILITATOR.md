@@ -225,7 +225,7 @@ canvas that goes with the block.
 | **The API or the network goes down** | The lab tests are offline and still run, so pairs keep writing code. Teach from your saved Langfuse project and the screenshots in `docs/img/`. Hand out the spare key if it is one account. |
 | **More than a third of the room is red at a checkpoint** | That is one unclear instruction, not a third of the room failing. Stop the build, show that step on the projector, and write down which step it was. |
 | **You are running 15 minutes late after lunch** | Shorten Block 6 to a demo, and keep the red-team round and Make it yours whole. They carry outcomes 4 and 5. |
-| **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. If they want people to build, slides cannot produce that: offer one block inside their agenda as proof. If they want people to decide, the room is leaders, not builders: run the [leaders' session](../leaders/README.md), two hours with no laptops. |
+| **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. If they want people to build, slides cannot produce that: offer one block inside their agenda as proof. |
 
 ## Measuring the day
 
@@ -250,7 +250,7 @@ before the next room.
 
 The emails for every step are in [handouts/follow-up-emails.md](../handouts/follow-up-emails.md).
 
-## Variant: half day (3.5 hours, engineers)
+## Variant: half day (3.5 hours)
 
 Blocks 1, 2, 3 and 5 in full. Demo Block 4 from your own laptop and have everyone run
 `uv run python scripts/catch_up.py 5` and `memory ingest`, so they have working memory for the tools lab. Set Block 6
@@ -262,11 +262,3 @@ lab to do alone afterward; tools are the hardest to debug alone, so tools stay i
 The same labs, self-paced, in about five and a half hours. The "idea in two minutes" section of
 each lab page stands in for the explanation, and `solution/` stands in for the demo. The debrief questions on each lab page are for the learner to answer in
 writing, and the canvas is still the last step. Nothing else changes.
-
-## Leaders get a different session
-
-Leaders who decide where agents are used do not get a shorter version of this day. They make a
-different decision, so they get a different session with a different outcome: two hours, no
-laptops, ending in one pilot with a named owner and a one-page plan. It uses this agent's trace,
-scoreboard and guardrails as its exhibits. It is in [leaders/](../leaders/README.md), with its
-own [run of show](../leaders/FACILITATOR.md) and [handouts](../leaders/handouts/README.md).

@@ -23,10 +23,6 @@ uv run pytest --impl solution                      # all labs pass on the refere
 grep -rn "TODO(lab" workshop/ | wc -l              # stubs are still there
 ```
 
-If you change `prompts/`, `data/handbook.md`, the test cases or the scoreboard in `README.md`,
-check the exhibits in `leaders/handouts/`. They quote the prompts, the handbook and the scores
-word for word, so that they can be printed.
-
 CI runs the same checks on every push. Tests are offline: they use the fake model in
 `tests/fakes.py` and `memory.InMemoryStore`, so contributors never need API keys.
 

@@ -64,6 +64,5 @@ Try the lab's **Stuck?** section, [troubleshooting guide](docs/TROUBLESHOOTING.m
 
 - **I'm teaching a class:** [Facilitator guide](docs/FACILITATOR.md)
 - **I want to understand the instructional design:** [Design rationale](docs/DESIGN.md)
-- **I'm working with executives instead of developers:** [Two-hour leaders' workshop](leaders/README.md)
 
 The six video companions are planned but not yet published. **The written lessons and labs are the complete path today.**
