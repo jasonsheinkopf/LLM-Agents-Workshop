@@ -1,7 +1,7 @@
 # Lab 6: MCP
 
 **Block 6** · In the room: 5 min explain and demo, 12 min build, 3 min debrief · On your own: about 30 min
-**Cost:** free · **Needs:** nothing new (Pinecone optional, for `search_handbook`) · **Recording:** *Agents Unpacked*, Episode 6 ([where to find it](../../README.md#recordings))
+**Cost:** free · **Needs:** nothing new (Pinecone optional, for `search_handbook`)
 
 ## Goal
 

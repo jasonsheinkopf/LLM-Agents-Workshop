@@ -1,7 +1,7 @@
 # Lab 2: Traces
 
 **Block 2** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
-**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*` · **Recording:** *Agents Unpacked*, Episode 2 ([where to find it](../../README.md#recordings))
+**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`
 
 ## Goal
 

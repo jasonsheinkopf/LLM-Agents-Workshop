@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 472" width="1200" height="472" role="img" aria-label="Judge pass rate over 19 test calls for five versions of the agent">
+  <title>Judge pass rate over 19 test calls for five versions of the agent</title>
+  <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#59636e" text-anchor="start" letter-spacing="1.6">JUDGE PASS RATE, SAME 19 TEST CALLS</text>
+  <line x1="300" y1="364" x2="860" y2="364" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="300" y1="364" x2="300" y2="370" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="300" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#818b98" text-anchor="middle">0%</text>
+  <line x1="440.0" y1="364" x2="440.0" y2="370" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="440.0" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#818b98" text-anchor="middle">25%</text>
+  <line x1="580.0" y1="364" x2="580.0" y2="370" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="580.0" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#818b98" text-anchor="middle">50%</text>
+  <line x1="720.0" y1="364" x2="720.0" y2="370" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="720.0" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#818b98" text-anchor="middle">75%</text>
+  <line x1="860.0" y1="364" x2="860.0" y2="370" stroke="#d1d9e0" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="860.0" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#818b98" text-anchor="middle">100%</text>
+  <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2328" text-anchor="start">Prompt v1</text>
+  <text x="0" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">careful, wordy</text>
+  <path d="M300,66 h140.6 a5,5 0 0 1 5,5 v24 a5,5 0 0 1 -5,5 h-140.6 Z" fill="#2a78d6"/>
+  <text x="457.6" y="90" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#1f2328" text-anchor="start">0.26</text>
+  <text x="0" y="142" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2328" text-anchor="start">Prompt v2</text>
+  <text x="0" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">&quot;be brief&quot;</text>
+  <path d="M300,128 h112.6 a5,5 0 0 1 5,5 v24 a5,5 0 0 1 -5,5 h-112.6 Z" fill="#2a78d6"/>
+  <text x="429.6" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#1f2328" text-anchor="start">0.21</text>
+  <text x="489.6" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">fails the honesty and safety cases</text>
+  <text x="0" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2328" text-anchor="start">Prompt v3</text>
+  <text x="0" y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">brief, keeps the rules</text>
+  <path d="M300,190 h140.6 a5,5 0 0 1 5,5 v24 a5,5 0 0 1 -5,5 h-140.6 Z" fill="#2a78d6"/>
+  <text x="457.6" y="214" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#1f2328" text-anchor="start">0.26</text>
+  <text x="0" y="266" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2328" text-anchor="start">v3 + memory</text>
+  <text x="0" y="288" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">the handbook, retrieved</text>
+  <path d="M300,252 h465.4 a5,5 0 0 1 5,5 v24 a5,5 0 0 1 -5,5 h-465.4 Z" fill="#2a78d6"/>
+  <text x="782.4" y="276" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#1f2328" text-anchor="start">0.84</text>
+  <text x="842.4" y="276" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">knowledge 0/8 to 8/8</text>
+  <text x="0" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#1f2328" text-anchor="start">v3 + memory + tools</text>
+  <text x="0" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">schedule and booking</text>
+  <path d="M300,314 h499.0 a5,5 0 0 1 5,5 v24 a5,5 0 0 1 -5,5 h-499.0 Z" fill="#2a78d6"/>
+  <text x="816.0" y="338" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#1f2328" text-anchor="start">0.90</text>
+  <text x="876.0" y="338" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">booking 3/6 to 5/6</text>
+  <line x1="300" y1="56" x2="300" y2="364" stroke="#818b98" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="0" y="450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#818b98" text-anchor="start">One recorded run on gpt-5-mini. Re-runs differ by a few cases, and v2 varies most.</text>
+</svg>

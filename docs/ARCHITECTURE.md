@@ -84,3 +84,34 @@ One serverless index, `ridgeline-agent` (1536 dimensions, cosine), with two name
 | Dataset | `ridgeline-agent-cases` (19 items) | `python -m gym_agent.evals.upload_dataset` |
 | Experiment runs | e.g. `langfuse:v3 rag+tools` | `python -m gym_agent.evals.run_experiment` |
 | Scores | `user_feedback`, `judge_pass`, `fact_recall`, `booking_policy`, `tool_use`, `avg_*` | chat `/good` `/bad`; experiments |
+
+## Repository layout
+
+```
+LLM-Agents-Workshop/
+├── README.md                ← the workshop on one page
+├── docs/
+│   ├── DESIGN.md            ← how the workshop was designed, and why
+│   ├── FACILITATOR.md       ← the run of show for the instructor, block by block
+│   ├── 00-setup.md          ← Lab 0 (pre-work): uv, the three API keys, the doctor check
+│   ├── ARCHITECTURE.md      ← this page
+│   ├── TROUBLESHOOTING.md   ← the errors people actually hit, and their fixes
+│   ├── FAQ.md               ← "what if…": Windows, pip, other models, own data, costs, concepts
+│   └── GLOSSARY.md          ← every term used in the workshop, in one sentence each
+├── handouts/                ← pre-work email, workflow canvas, exit ticket, follow-up emails, questions for leaders
+├── labs/                    ← one README per block: goal, checkpoint, steps, debrief
+│   ├── 01-first-agent/  02-traces/  03-evals/  04-memory/  05-tools/  06-mcp/  07-ship-it/
+├── leaders/                 ← the two-hour session for leaders: front page, run of show, handouts
+├── data/                    ← the fictional gym: handbook.md, schedule.json, callers.json
+│   └── evals/               ← agent_cases.jsonl (19 test calls), judge_calibration.jsonl (12), retrieval_cases.jsonl (15)
+├── prompts/                 ← system_v1.md, v2, v3: the prompt versions pushed to Langfuse
+├── workshop/gym_agent/      ← the starter code participants complete
+├── solution/gym_agent/      ← the complete reference implementation (same files, same commands)
+├── scripts/
+│   ├── catch_up.py          ← start any lab from working code
+│   └── readme_figures.py    ← draws the README figures
+├── tests/                   ← offline tests per lab (a fake model, an in-memory vector store)
+├── CONTRIBUTING.md          ← for maintainers: keeping workshop/ and solution/ in sync
+├── .env.example             ← copy to .env, add your keys
+└── pyproject.toml / uv.lock ← pinned dependencies (uv)
+```

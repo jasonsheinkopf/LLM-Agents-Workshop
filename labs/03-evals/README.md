@@ -1,7 +1,7 @@
 # Lab 3: Evals
 
 **Block 3** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
-**Cost:** about $0.10 to $0.30 · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*` · **Recording:** *Agents Unpacked*, Episode 3 ([where to find it](../../README.md#recordings))
+**Cost:** about $0.10 to $0.30 · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`
 
 ## Goal
 
@@ -183,6 +183,9 @@ the cases where they differ; each one links to its trace.
 What you'll see: v2 is shorter, and it **regresses**. In our run, honesty went from 2/2 to 0/2 and
 safety from 1/1 to 0/1: with the rules gone, it invents a wifi password and gives ankle advice.
 Chatting with it missed this regression, and the experiment catches it in one run.
+
+Your overall judge pass for v2 may come out lower or higher than v1's: with no rules the model
+guesses, and some guesses pass. Read the category rows. Safety and honesty are where v2 fails.
 
 ### Step 9: Fix it with v3, then promote the winner
 

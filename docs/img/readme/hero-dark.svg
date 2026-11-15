@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="One phone call, answered a little better after each of six blocks">
+  <title>One phone call, answered a little better after each of six blocks</title>
+  <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#9198a1" text-anchor="start" letter-spacing="1.6">THE CALL THE WHOLE DAY IS BUILT AROUND</text>
+  <rect x="0" y="52" width="760" height="118" rx="18" fill="#151b23" stroke="#3d444d" stroke-width="1.5"/>
+  <path d="M56,170 L56,196 L88,170 Z" fill="#151b23" stroke="#3d444d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="54" y="164" width="38" height="8" rx="0" fill="#151b23"/>
+  <text x="34" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="27" font-weight="600" fill="#f0f6fc" text-anchor="start">“Can my 8-year-old take the belay class on Saturday?</text>
+  <text x="34" y="138" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="27" font-weight="600" fill="#f0f6fc" text-anchor="start">And can you book us in?”</text>
+  <text x="800" y="84" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#9198a1" text-anchor="start">9:30</text>
+  <text x="800" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#f0f6fc" text-anchor="start">The agent cannot answer.</text>
+  <text x="800" y="144" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#9198a1" text-anchor="start">3:40</text>
+  <text x="800" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#f0f6fc" text-anchor="start">It answers from the handbook, books</text>
+  <text x="800" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#f0f6fc" text-anchor="start">after a yes, and you can prove it.</text>
+  <line x1="30" y1="268" x2="1050" y2="268" stroke="#3d444d" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="30" cy="268" r="19" fill="#3987e5"/>
+  <text x="30" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="11" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">First agent</text>
+  <text x="11" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">It holds a</text>
+  <text x="11" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">conversation</text>
+  <circle cx="234" cy="268" r="19" fill="#3987e5"/>
+  <text x="234" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="215" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">Traces</text>
+  <text x="215" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">You can see every</text>
+  <text x="215" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">step</text>
+  <circle cx="438" cy="268" r="19" fill="#3987e5"/>
+  <text x="438" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="419" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">Evals</text>
+  <text x="419" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">You can measure</text>
+  <text x="419" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">it</text>
+  <circle cx="642" cy="268" r="19" fill="#3987e5"/>
+  <text x="642" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="623" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">Memory</text>
+  <text x="623" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">It knows the</text>
+  <text x="623" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">handbook</text>
+  <circle cx="846" cy="268" r="19" fill="#3987e5"/>
+  <text x="846" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="827" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">Tools</text>
+  <text x="827" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">It acts, behind</text>
+  <text x="827" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">guardrails</text>
+  <circle cx="1050" cy="268" r="19" fill="#3987e5"/>
+  <text x="1050" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+  <text x="1031" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc" text-anchor="start">MCP</text>
+  <text x="1031" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">Other agents can</text>
+  <text x="1031" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="400" fill="#9198a1" text-anchor="start">use it</text>
+</svg>

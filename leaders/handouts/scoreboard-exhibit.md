@@ -134,7 +134,7 @@ is the fifth of the [five questions](../../handouts/questions-for-leaders.md).
 | What | Source in this repo |
 |---|---|
 | The two sets of instructions | `prompts/system_v1.md` and `prompts/system_v2.md`, complete. Version 3 is `prompts/system_v3.md` |
-| The scores | The scoreboard in the [main README](../../README.md#what-you-leave-with), from a full run of the engineers' labs on `gpt-5-mini`. The comparison as the engineers see it is `docs/img/langfuse-experiment-compare.png` |
+| The scores | The scoreboard in the [main README](../../README.md#evidence-from-evaluating-the-example-agent), from a full run of the engineers' labs on `gpt-5-mini`. The comparison as the engineers see it is `docs/img/langfuse-experiment-compare.png` |
 | What version 2 did wrong | [Lab 3](../../labs/03-evals/README.md#step-8-run-the-candidate-v2-staging-then-compare), which reports the invented wifi password and the ankle advice. The replies themselves are not recorded in this repo |
 | The 19 test calls | `data/evals/agent_cases.jsonl` |
 | The 12 graded replies | `data/evals/judge_calibration.jsonl` |

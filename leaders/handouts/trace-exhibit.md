@@ -128,4 +128,4 @@ the step that failed. "The model hallucinated" is a warning sign. It is the firs
 |---|---|
 | The trace | A real trace of the agent on `gpt-5-mini`, before it had the handbook or any tools: `docs/img/langfuse-trace-tree.png`, from [Lab 2](../../labs/02-traces/README.md#look-around-langfuse). In the reply, one dash is replaced by a full stop |
 | The system message | `prompts/system_v3.md`, followed by the line the agent adds about who is calling |
-| The scores | The scoreboard in the [main README](../../README.md#what-you-leave-with): knowledge 0 of 8, 1 of 8 and 0 of 8 for the three prompt versions, then 8 of 8 with the handbook |
+| The scores | The scoreboard in the [main README](../../README.md#evidence-from-evaluating-the-example-agent): knowledge 0 of 8, 1 of 8 and 0 of 8 for the three prompt versions, then 8 of 8 with the handbook |

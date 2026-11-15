@@ -1,7 +1,7 @@
 # Lab 5: Tools
 
 **Block 5** · In the room: 15 min explain and demo, 40 min build, then the red-team round · On your own: about 75 min
-**Cost:** cents · **Needs:** all keys · **Recording:** *Agents Unpacked*, Episode 5 ([where to find it](../../README.md#recordings))
+**Cost:** cents · **Needs:** all keys
 
 ## Goal
 

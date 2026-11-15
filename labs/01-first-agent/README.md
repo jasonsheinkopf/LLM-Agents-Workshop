@@ -1,7 +1,7 @@
 # Lab 1: Your first agent
 
 **Block 1** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
-**Cost:** a few cents · **Needs:** `OPENAI_API_KEY` · **Recording:** *Agents Unpacked*, Episode 1 ([where to find it](../../README.md#recordings))
+**Cost:** a few cents · **Needs:** `OPENAI_API_KEY`
 
 ## Goal
 
