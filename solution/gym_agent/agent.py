@@ -7,10 +7,10 @@
 
 Lab by lab, this file grows:
   Lab 1  one model call with a system prompt           -> Call._model_call, Call.send
-  Lab 2  every turn traced in Langfuse                 -> @observe + propagate_attributes
-  Lab 3  the system prompt fetched from Langfuse       -> load_system_prompt(label)
+  Lab 2  every turn traced in Langfuse                 -> Call.send (@observe + propagate_attributes)
+  Lab 3  each model call linked to its prompt version  -> Call._model_call (prompts.py fetches it)
   Lab 4  handbook RAG + per-caller memories            -> Call._context
-  Lab 5  tools in a think -> act -> observe loop       -> Call.send's loop, tools.run_tool
+  Lab 5  tools in a think -> act -> observe loop       -> Call._model_call, Call.send
 """
 
 from __future__ import annotations
@@ -33,6 +33,8 @@ GIVE_UP = "Sorry, I'm having trouble with that one. Let me transfer you to someo
 
 @dataclass
 class TurnResult:
+    """What one turn of a call returns: the reply, and from Lab 5 the tools used to reach it."""
+
     reply: str
     tool_calls: list[dict] = field(default_factory=list)  # [{"name", "arguments", "result"}]
     trace_id: str | None = None
@@ -40,6 +42,11 @@ class TurnResult:
 
 
 class GymAgent:
+    """The agent: a model client, its instructions, and the memory and tools it may use.
+
+    One agent serves many calls. Each call gets its own `Call`, with its own history.
+    """
+
     def __init__(
         self,
         client,
@@ -83,6 +90,7 @@ class GymAgent:
                    bookings=bookings)
 
     def start_call(self, caller_id: str) -> Call:
+        """Answer the phone: a new call from `caller_id`, with an empty history."""
         return Call(self, caller_id)
 
 
@@ -96,9 +104,14 @@ class Call:
         self.history: list[dict] = []
         self.ctx = CallContext(caller_id=caller_id, bookings=agent.bookings, handbook=agent.handbook)
 
-    # ----------------------------------------------------------------- context (Lab 4)
+    # ----------------------------------------------------------------- context: Lab 4
     def _context(self, user_text: str) -> str:
-        """What goes on the model's desk this turn: who is calling, memories, handbook pages."""
+        """Build what goes on the model's desk this turn, besides its instructions.
+
+        Returns one string, which `send` adds to the system message. Until Lab 4 it only says who
+        is calling. Lab 4 adds what the agent remembers about the caller and the handbook sections
+        that best match what they just said.
+        """
         parts = [describe_caller(self.caller_id)]
         if self.agent.caller_memory is not None:
             memories = self.agent.caller_memory.recall(self.caller_id, user_text)
@@ -111,8 +124,17 @@ class Call:
                          + "\n".join(f"[{h['section']}] {h['text']}" for h in hits))
         return "\n\n".join(parts)
 
-    # ----------------------------------------------------------------- one model call (Lab 1)
+    # ----------------------------------------------------------------- model call: Lab 1, extended in Labs 3 and 5
     def _model_call(self, messages: list[dict]):
+        """Send the conversation to the model once, and return the model's reply.
+
+        `messages` is the whole conversation, system message first. Returns the reply message
+        (`response.choices[0].message`), not the whole response: `send` reads its `.content`, and
+        from Lab 5 its `.tool_calls`.
+
+        Lab 1 writes the call itself, the last step below. Labs 3 and 5 each add one option to
+        `kwargs` before it.
+        """
         kwargs = {"model": self.agent.settings.model, "messages": messages}
         specs = tool_specs(self.agent.tools)
         if specs:
@@ -121,9 +143,17 @@ class Call:
             kwargs["langfuse_prompt"] = self.agent.prompt.langfuse_prompt  # links trace -> prompt version
         return self.agent.client.chat.completions.create(**kwargs).choices[0].message
 
-    # ----------------------------------------------------------------- the loop (Labs 2 + 5)
+    # ----------------------------------------------------------------- one turn: Lab 1, extended in Labs 2 and 5
     @observe(name="phone-turn", as_type="agent")
     def send(self, user_text: str) -> TurnResult:
+        """Handle one turn of the call: the caller says `user_text`, and the agent replies.
+
+        Adds the caller's message to `self.history`, builds this turn's system message, asks the
+        model, adds its reply to the history and returns it.
+
+        Lab 1 writes the turn with a single model call. Lab 2 wraps it in a trace. Lab 5 replaces
+        the single call with a loop, so the model can use tools before it answers.
+        """
         with propagate_attributes(
             session_id=self.call_id,  # every turn of this call groups into one Langfuse session
             user_id=self.caller_id,
@@ -160,6 +190,7 @@ class Call:
             self.history.append({"role": "assistant", "content": result.reply})
             return result
 
+    # ----------------------------------------------------------------- after the call: Lab 4 (written for you)
     def end(self) -> list[str]:
         """After the call: extract durable facts about the caller and store them (Lab 4)."""
         if self.agent.caller_memory is None:

@@ -52,6 +52,8 @@ be the smallest unit that still answers a question on its own.
 
 All in `workshop/gym_agent/memory.py`, plus one function in `agent.py`. `PineconeStore` (the real
 database) and `InMemoryStore` (the tests' stand-in) are written for you, and share one interface.
+Each function you write in `memory.py` ends in a `raise NotImplementedError(...)` line: delete it
+once the function is written.
 
 ### Step 1: `chunk_markdown(markdown)`
 
@@ -86,7 +88,8 @@ transcript) are written for you. Read them.
 
 ### Step 5: Put it on the desk: `Call._context` in `agent.py`
 
-After the caller line, add two blocks:
+This one has no placeholder to delete. Keep the caller line, and add two blocks before the
+`return`:
 
 ```python
 if self.agent.caller_memory is not None:

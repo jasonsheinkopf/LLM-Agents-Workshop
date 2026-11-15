@@ -29,7 +29,11 @@ class SystemPrompt:
 
 
 def load_system_prompt(label: str | None = None, prompt_file: Path | None = None) -> SystemPrompt:
-    """Fetch the prompt with `label` from Langfuse, or fall back to a local file."""
+    """Return the agent's instructions: the Langfuse prompt that carries `label`, or a local file.
+
+    `label` defaults to `production`. A `prompt_file`, or no Langfuse keys, means the file is used.
+    The returned `version` shows in the chat banner and on every trace.
+    """
     if prompt_file is not None or not langfuse_enabled():
         path = Path(prompt_file or DEFAULT_PROMPT_FILE)
         return SystemPrompt(text=path.read_text().strip(), version=f"file:{path.name}")

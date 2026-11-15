@@ -83,6 +83,11 @@ class ToolError(Exception):
 
 
 def validate_call(name: str, raw_arguments: str, allowed: set[str]) -> BaseModel:
+    """Check a tool call the model proposed, before anything runs, and return its parsed arguments.
+
+    `raw_arguments` is the JSON string the model wrote. Returns the tool's Pydantic arguments
+    object. Raises ToolError, with a message the model can act on, if the call is refused.
+    """
     if name not in allowed:
         raise ToolError(f"Unknown tool '{name}'. Available tools: {sorted(allowed)}.")
     try:

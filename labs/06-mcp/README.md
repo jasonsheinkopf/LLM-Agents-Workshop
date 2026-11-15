@@ -47,7 +47,8 @@ MCP Inspector  ─┘
 File: `workshop/gym_agent/mcp_server.py`. `check_schedule` is done as an example: a decorated
 function whose **type hints become the JSON schema** and whose **docstring becomes the description**.
 
-Add the other two tools the same way:
+Add the other two tools the same way, below the `TODO(lab6)` comment. There's no placeholder to
+delete. Use these exact names and parameters, because the test looks for them:
 
 ```python
 @mcp.tool()

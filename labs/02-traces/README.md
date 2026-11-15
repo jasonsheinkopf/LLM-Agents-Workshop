@@ -53,6 +53,7 @@ you'll turn real traces into test cases.
 
 Langfuse ships a drop-in replacement for the OpenAI client. Same class, same methods, but every
 call becomes a `generation` observation, with prompt, completion, model, token counts, cost and latency.
+Replace the single `from openai import OpenAI` line with an `if`/`else` that picks one of the two:
 
 ```python
 def get_client():
@@ -89,7 +90,12 @@ def send(self, user_text: str) -> TurnResult:
                           trace_id=get_client().get_current_trace_id())
 ```
 
-`trace_id` lets the chat CLI attach your `/good` and `/bad` scores to the right trace.
+`trace_id` lets the chat CLI attach your `/good` and `/bad` scores to the right trace. In
+`agent.py`, `get_client` is Langfuse's client (it's imported from `langfuse` at the top of the
+file), not the OpenAI client from `llm.py`.
+
+Everything inside `send` moves one level in, including `self.ctx.turn += 1`. Nothing else in the
+method changes.
 
 ### Step 3: Check it offline
 

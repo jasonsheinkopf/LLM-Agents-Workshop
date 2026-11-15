@@ -50,19 +50,28 @@ and handbook pages too.
 
 File: `workshop/gym_agent/agent.py`. Find the `TODO(lab1)` comments (`grep -n "TODO(lab1)" workshop/gym_agent/agent.py`).
 
+> **How the TODOs work, in every lab.** Each piece of work is tagged `TODO(labN)`. Do only this
+> lab's, and leave the others where they are: you'll come back to the same functions in later labs.
+> A `raise NotImplementedError(...)` line marks a function the app can't run without. Once you've
+> written the function, delete that line. Leaving it in means your code never gets to run.
+
 ### Step 1: `Call._model_call(messages)`: one model call
 
 `kwargs` already holds the model name and the messages. Make the call, and return the model's
-message (not the whole response):
+message (not the whole response). Replace the `raise NotImplementedError(...)` line with:
 
 ```python
 resp = self.agent.client.chat.completions.create(**kwargs)
 return resp.choices[0].message
 ```
 
-Leave the `TODO(lab3)` and `TODO(lab5)` comments where they are. You'll come back to them.
+Leave the `TODO(lab3)` and `TODO(lab5)` comments above it where they are. Each of those labs adds
+one option to `kwargs` before the call.
 
 ### Step 2: `Call.send(user_text)`: one turn of the call
+
+Write these steps after the `self.ctx.turn += 1` line, which stays, and delete the
+`raise NotImplementedError(...)` line at the end of the method.
 
 1. Append the caller's message to `self.history` as `{"role": "user", "content": user_text}`.
 2. Build the system message: the prompt text, a blank line, then `self._context(user_text)`.
@@ -87,6 +96,9 @@ def send(self, user_text: str) -> TurnResult:
 Why isn't the system message stored in `history`? Its context changes every turn. In Lab 4 it
 will hold *this* turn's handbook pages, so it is rebuilt each time instead.
 </details>
+
+You'll extend `send` twice: Lab 2 wraps it in a trace, and Lab 5 turns the single model call into
+a loop.
 
 ### Step 3: Check it offline
 
@@ -150,6 +162,7 @@ On your [workflow canvas](../../handouts/workflow-canvas.md), fill in the first 
 ## Stuck?
 
 **Common failures in this lab:**
+- `NotImplementedError: Lab 1: write Call.send` (or `Call._model_call`) after you've written the code: the `raise` line is still there, below your code. Delete it.
 - `AttributeError: 'NoneType' object has no attribute 'content'`: `_model_call` returned the response, not `.choices[0].message`.
 - `test_conversation_history_is_kept` fails: you're not appending the assistant reply to `self.history`, or you're appending the system message too (don't; it's rebuilt every turn).
 - The chat replies but every answer ignores who is calling: the system message must include `self._context(user_text)`.
