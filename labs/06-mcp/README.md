@@ -1,6 +1,6 @@
 # Lab 6: MCP
 
-**Self-paced reading:** [Read the concept lesson first](../../lessons/06-mcp/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+**Self-paced reading:** [Read the concept lesson first](../../lessons/06-mcp/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS.md).
 
 **Block 6** · In the room: 5 min explain and demo, 12 min build, 3 min debrief · On your own: about 30 min
 **Cost:** free · **Needs:** nothing new (Pinecone optional, for `search_handbook`)

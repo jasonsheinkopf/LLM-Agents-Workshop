@@ -1,6 +1,6 @@
 # Lab 5: Tools
 
-**Self-paced reading:** [Read the concept lesson first](../../lessons/05-tools/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+**Self-paced reading:** [Read the concept lesson first](../../lessons/05-tools/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS.md).
 
 **Block 5** · In the room: 15 min explain and demo, 40 min build, then the red-team round · On your own: about 75 min
 **Cost:** cents · **Needs:** all keys

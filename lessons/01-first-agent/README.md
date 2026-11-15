@@ -55,4 +55,4 @@ Ask yourself:
 
 Now **[build Lab 1](../../labs/01-first-agent/README.md)**. Fill in the model call and conversation turn, run the tests, ask it to book, and write down the three gaps you observe.
 
-[Course map](../../START_HERE.md) · [Personal checklist template](../../PROGRESS_TEMPLATE.md)
+[Course map](../../START_HERE.md) · [Progress checklist](../../PROGRESS.md)

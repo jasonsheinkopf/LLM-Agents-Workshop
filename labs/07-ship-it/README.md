@@ -1,6 +1,6 @@
 # Lab 7: Make it yours
 
-**Self-paced reading:** [Read the concept lesson first](../../lessons/07-transfer/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+**Self-paced reading:** [Read the concept lesson first](../../lessons/07-transfer/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS.md).
 
 **Last block** · In the room: 25 min on your canvas, then 15 min of demos and the exit ticket · On your own: about 30 min, plus an hour in the following week
 **Needs:** all keys
@@ -130,4 +130,4 @@ What this workshop covered, and what you'd add before real customers call:
 You didn't just call an LLM today. You built an agent, measured it, tried to break it, and you
 know what you would do next with your own.
 
-**Finished?** Update your local [progress checklist](../../PROGRESS_TEMPLATE.md), revisit your workflow canvas in 30 days, or [return to Start here](../../START_HERE.md).
+**Finished?** Update your local [progress checklist](../../PROGRESS.md), revisit your workflow canvas in 30 days, or [return to Start here](../../START_HERE.md).

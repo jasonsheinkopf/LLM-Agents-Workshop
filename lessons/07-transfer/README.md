@@ -51,6 +51,6 @@ The gym assistant remains a **teaching prototype**, not a production telephone s
 
 What did someone actually use? What changed in their workflow? If the experiment stalled, what blocked it? An impressive demo is not the same as improved work.
 
-**Finish here:** [Lab 7 — Make it yours](../../labs/07-ship-it/README.md). Complete the canvas, then tick your local [progress checklist](../../PROGRESS_TEMPLATE.md).
+**Finish here:** [Lab 7 — Make it yours](../../labs/07-ship-it/README.md). Complete the canvas, then tick your local [progress checklist](../../PROGRESS.md).
 
 [Previous: Lab 6](../../labs/06-mcp/README.md) · [Course map](../../START_HERE.md)

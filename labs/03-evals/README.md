@@ -1,6 +1,6 @@
 # Lab 3: Evals
 
-**Self-paced reading:** [Read the concept lesson first](../../lessons/03-evals/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+**Self-paced reading:** [Read the concept lesson first](../../lessons/03-evals/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS.md).
 
 **Block 3** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
 **Cost:** about $0.10 to $0.30 · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`

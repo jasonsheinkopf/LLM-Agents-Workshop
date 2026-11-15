@@ -1,6 +1,6 @@
 # Lab 1: Your first agent
 
-**Self-paced reading:** [Read the concept lesson first](../../lessons/01-first-agent/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS_TEMPLATE.md).
+**Self-paced reading:** [Read the concept lesson first](../../lessons/01-first-agent/README.md), then return here for the coding exercise. [Course map](../../START_HERE.md) · [Checklist](../../PROGRESS.md).
 
 **Block 1** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
 **Cost:** a few cents · **Needs:** `OPENAI_API_KEY`
