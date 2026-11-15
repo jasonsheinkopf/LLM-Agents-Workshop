@@ -19,5 +19,5 @@ __pycache__/
 .idea/
 .vscode/
 
-# local progress checklist, personal to each learner
+# ignored local file used in earlier course versions
 /MY_PROGRESS.md
