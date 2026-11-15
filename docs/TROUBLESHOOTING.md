@@ -14,7 +14,7 @@ cd workshop && uv run python -m gym_agent.doctor
 | `Missing OPENAI_API_KEY in …/.env` | Run `cp .env.example .env` in the repo root and fill it in. The `.env` file lives in the repo root, not in `workshop/`. |
 | `uv: command not found` | Open a new terminal after installing uv, or follow the PATH hint the installer printed. |
 | `uv sync` picks the wrong Python | `uv python install 3.12`, then `uv sync` again. The repo pins 3.12 in `.python-version`. |
-| Tests say `NotImplementedError: Lab N: …` | That's expected: it's a `TODO(labN)` you haven't written yet. Run only the labs you've done: `uv run pytest tests/test_lab1_agent.py`. |
+| Tests say `NotImplementedError: Lab N: …` | For a lab you haven't reached, that's expected: run only the labs you've done, e.g. `uv run pytest tests/test_lab1_agent.py`. For a lab you've finished, the `raise NotImplementedError(...)` line is still in the function: delete it. |
 | `uv run pytest` says `no tests ran` or `file not found` | Run it from the **repo root**, not from `workshop/`. |
 | `ModuleNotFoundError: No module named 'pydantic'` (or `openai`, `langfuse`…) | `uv sync` hasn't run, or ran in another folder. Run `uv sync` in the repo root, then use `uv run …` for every command. |
 | `SSL: CERTIFICATE_VERIFY_FAILED` behind a corporate proxy | Your company intercepts HTTPS. Point Python at the company CA bundle: `SSL_CERT_FILE=/path/to/ca.pem` (and `REQUESTS_CA_BUNDLE` for the Langfuse client). Ask IT for the file. Never disable verification. |

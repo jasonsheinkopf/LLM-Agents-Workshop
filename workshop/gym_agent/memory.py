@@ -46,18 +46,21 @@ def chunk_markdown(markdown: str) -> list[Chunk]:
     Sections are short and self-contained, so a heading is a natural chunk boundary. Each chunk
     keeps its heading in the text, which helps both the embedding and the model's citation.
     """
-    # TODO(lab4): split on lines starting with "## " (re.split(r"^## ", markdown, flags=re.M)[1:]).
-    #   For each block: heading = first line, body = the rest with whitespace collapsed.
+    # TODO(lab4): return one Chunk per section, then delete the `raise` line below.
+    #   Split on lines that start with "## ": re.split(r"^## ", markdown, flags=re.M)[1:].
+    #   For each block: the heading is its first line; the body is the rest, with runs of
+    #   whitespace collapsed to single spaces. Skip a section with an empty body.
     #   id = "handbook-" + a slug of the heading (e.g. "handbook-day-passes-and-prices"),
-    #   section = heading, text = f"{heading}: {body}". Skip empty bodies.
+    #   section = the heading, text = f"{heading}: {body}".
     raise NotImplementedError("Lab 4: write chunk_markdown (labs/04-memory/README.md)")
 
 
 # --------------------------------------------------------------------------- embeddings
 def embed(client, texts: list[str]) -> list[list[float]]:
-    """Turn texts into vectors. Similar meanings end up close together."""
-    # TODO(lab4): one call: client.embeddings.create(model=SETTINGS.embedding_model, input=texts),
-    #   then return [d.embedding for d in response.data]
+    """Turn texts into vectors, one per text, in the same order. Similar meanings land close together."""
+    # TODO(lab4): make one request for all the texts, then delete the `raise` line below.
+    #   Call client.embeddings.create(model=SETTINGS.embedding_model, input=texts), and return
+    #   the .embedding of each item in the response's .data.
     raise NotImplementedError("Lab 4: write embed (labs/04-memory/README.md)")
 
 
@@ -161,22 +164,28 @@ class InMemoryStore:
 
 # --------------------------------------------------------------------------- the handbook drawer
 class Handbook:
+    """The gym's handbook in the vector store: written once by `ingest`, read on every turn."""
+
     def __init__(self, client, store: VectorStore) -> None:
         self.client, self.store = client, store
 
     def ingest(self) -> int:
         """Chunk -> embed -> store (vector + text + metadata). Safe to re-run: ids are stable."""
-        # TODO(lab4): chunk the handbook (load_handbook()), embed every chunk's text in one call,
-        #   then self.store.upsert([...], namespace=HANDBOOK_NS) with one record per chunk:
-        #   {"id": chunk.id, "values": vector, "metadata": {"section": ..., "text": ...}}
+        # TODO(lab4): chunk, embed and store the handbook, then delete the `raise` line below.
+        #   1. chunk_markdown(load_handbook()).
+        #   2. embed every chunk's text in one call.
+        #   3. self.store.upsert([...], namespace=HANDBOOK_NS), with one record per chunk:
+        #      {"id": chunk.id, "values": vector, "metadata": {"section": ..., "text": ...}}.
         #   Return the number of chunks.
         raise NotImplementedError("Lab 4: write Handbook.ingest (labs/04-memory/README.md)")
 
     @observe(name="search_handbook", as_type="retriever")
     def search(self, query: str, k: int = 3) -> list[dict]:
-        """Embed the question, return the k nearest handbook sections."""
-        # TODO(lab4): embed the query, self.store.query(vector, top_k=k, namespace=HANDBOOK_NS),
-        #   and return [{"section": ..., "text": ..., "score": round(score, 3)}] from each hit's metadata.
+        """Return the k handbook sections nearest to `query`, best first."""
+        # TODO(lab4): embed the query, look it up, then delete the `raise` line below.
+        #   Query with self.store.query(vector, top_k=k, namespace=HANDBOOK_NS). Each hit has an
+        #   "id", a "score" and the "metadata" you stored in ingest. Return one dict per hit:
+        #   {"section": ..., "text": ..., "score": <the score rounded to 3 places>}.
         raise NotImplementedError("Lab 4: write Handbook.search (labs/04-memory/README.md)")
 
 
@@ -192,6 +201,8 @@ Transcript:
 
 
 class CallerMemory:
+    """Short facts about each caller, written at the end of a call and recalled on the next one."""
+
     def __init__(self, client, store: VectorStore) -> None:
         self.client, self.store = client, store
 
@@ -211,9 +222,11 @@ class CallerMemory:
 
     @observe(name="recall_caller_memories", as_type="retriever")
     def recall(self, caller_id: str, query: str, k: int = 5) -> list[str]:
-        # TODO(lab4): like Handbook.search, but in namespace MEMORY_NS and with a metadata filter
+        """Return up to k of this caller's memories that best match `query`, as plain text."""
+        # TODO(lab4): write this like Handbook.search, then delete the `raise` line below.
+        #   Two differences: query namespace MEMORY_NS, and pass the metadata filter
         #   {"caller_id": {"$eq": caller_id}}. That filter is the privacy boundary: without it, one
-        #   caller's memories could show up in another caller's call. Return the texts.
+        #   caller's memories could turn up in another caller's call. Return just the texts.
         raise NotImplementedError("Lab 4: write CallerMemory.recall (labs/04-memory/README.md)")
 
     def forget(self, caller_id: str) -> None:

@@ -83,13 +83,21 @@ class ToolError(Exception):
 
 
 def validate_call(name: str, raw_arguments: str, allowed: set[str]) -> BaseModel:
-    # TODO(lab5): three checks, each raising ToolError with a message the model can act on:
-    #   1. allow-list: if name not in allowed -> ToolError("Unknown tool '<name>'. Available tools: [...]")
-    #   2. JSON: json.loads(raw_arguments or "{}"); on JSONDecodeError -> ToolError("Arguments were not valid JSON: ...")
-    #   3. schema: ARG_MODELS[name].model_validate(data); on ValidationError -> ToolError naming each
-    #      bad field (err["loc"]) and why (err["msg"]).
-    #   Return the validated Pydantic object.
-    _ = (json, ValidationError)  # imported for you
+    """Check a tool call the model proposed, before anything runs, and return its parsed arguments.
+
+    `raw_arguments` is the JSON string the model wrote. Returns the tool's Pydantic arguments
+    object. Raises ToolError, with a message the model can act on, if the call is refused.
+    """
+    # TODO(lab5): three checks, in this order, each raising ToolError. Then delete the two
+    #   placeholder lines at the end of this function.
+    #   1. Allow-list: refuse a name that isn't in `allowed`. The test looks for "Unknown tool".
+    #   2. JSON: parse raw_arguments (treat an empty string as "{}"). On json.JSONDecodeError,
+    #      refuse with "Arguments were not valid JSON".
+    #   3. Schema: validate the parsed data with ARG_MODELS[name].model_validate. On
+    #      ValidationError, refuse with a message naming each bad field (err["loc"]) and why
+    #      (err["msg"]), for each err in e.errors().
+    #   Return the validated object.
+    _ = (json, ValidationError)  # placeholder: both are imported for you
     raise NotImplementedError("Lab 5: write validate_call (labs/05-tools/README.md)")
 
 

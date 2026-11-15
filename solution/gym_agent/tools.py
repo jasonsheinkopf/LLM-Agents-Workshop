@@ -141,6 +141,7 @@ def book_class(ctx: CallContext, args: BookClassArgs) -> dict:
         return {"status": "needs_confirmation", "summary": summary, "confirmation_code": code,
                 "next_step": "Read the summary to the caller and ask them to confirm. Do not say it is booked."}
 
+    # Step two: the caller said yes, so the model calls again with the code.
     pending = ctx.pending.get(args.confirmation_code.upper())
     if pending is None:
         raise ToolError("That confirmation code is not valid. Call book_class without a code first.")

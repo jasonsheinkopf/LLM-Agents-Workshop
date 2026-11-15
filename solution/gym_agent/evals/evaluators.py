@@ -56,6 +56,12 @@ Reply with JSON only:
 
 def judge_reply(client, *, turns: list[str], reply: str, facts: list[str], must_not: list[str],
                 model: str | None = None) -> dict:
+    """Ask the judge model whether `reply` meets the case's expectations.
+
+    Returns {"pass": bool, "facts_covered": int, "violations": list, "reason": str}. A judge reply
+    that isn't valid JSON must come back as a fail, not an exception, so one garbled verdict can't
+    crash a whole experiment.
+    """
     prompt = JUDGE_PROMPT.format(
         turns="\n".join(f"- {t}" for t in turns),
         reply=reply,

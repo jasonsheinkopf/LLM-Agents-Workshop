@@ -61,11 +61,11 @@ DESCRIPTIONS = {
 
 def tool_specs(names: list[str]) -> list[dict]:
     """The OpenAI `tools=[...]` list: name + description + JSON schema, for each tool."""
-    # TODO(lab5): one entry per name:
-    #   {"type": "function", "function": {"name": n, "description": DESCRIPTIONS[n],
-    #                                     "parameters": ARG_MODELS[n].model_json_schema()}}
-    # Until then the agent gets no tools, and simply talks.
-    return []
+    # TODO(lab5): replace `return []` with one entry per name in `names`:
+    #   {"type": "function", "function": {"name": ..., "description": ..., "parameters": ...}}
+    #   The description comes from DESCRIPTIONS. The parameters are the JSON schema of the tool's
+    #   Pydantic model in ARG_MODELS, so the contract the model sees is the one validate_call checks.
+    return []  # placeholder until Lab 5: the agent is offered no tools, and only talks
 
 
 @dataclass
@@ -135,14 +135,17 @@ def book_class(ctx: CallContext, args: BookClassArgs) -> dict:
         return {"status": "needs_confirmation", "summary": summary, "confirmation_code": code,
                 "next_step": "Read the summary to the caller and ask them to confirm. Do not say it is booked."}
 
-    # TODO(lab5): step two, the confirmation guardrail. Raise ToolError if:
-    #   - the code isn't in ctx.pending (done for you below),
-    #   - ctx.turn <= pending.issued_on_turn (the caller hasn't replied since the summary: the model
-    #     is trying to confirm on the caller's behalf), or
-    #   - the details changed: compare pending.args.model_dump(exclude={"confirmation_code"}) with args'.
+    # Step two: the caller said yes, so the model calls again with the code.
     pending = ctx.pending.get(args.confirmation_code.upper())
     if pending is None:
         raise ToolError("That confirmation code is not valid. Call book_class without a code first.")
+    # TODO(lab5): add the confirmation guardrail here: two more checks, each raising ToolError with
+    #   a message the model can act on.
+    #   1. ctx.turn <= pending.issued_on_turn: the caller hasn't spoken since the summary, so the
+    #      model is trying to confirm on the caller's behalf.
+    #   2. The details changed since the summary: compare pending.args with args, both dumped
+    #      with model_dump(exclude={"confirmation_code"}).
+    #   Until you add them, a booking goes through on the same turn its summary was given.
 
     booking = ctx.bookings.add(class_id=cls["id"], caller_id=ctx.caller_id,
                                participant_name=args.participant_name, participant_age=args.participant_age)

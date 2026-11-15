@@ -29,18 +29,23 @@ class SystemPrompt:
 
 
 def load_system_prompt(label: str | None = None, prompt_file: Path | None = None) -> SystemPrompt:
-    """Fetch the prompt with `label` from Langfuse, or fall back to a local file."""
+    """Return the agent's instructions: the Langfuse prompt that carries `label`, or a local file.
+
+    `label` defaults to `production`. A `prompt_file`, or no Langfuse keys, means the file is used.
+    The returned `version` shows in the chat banner and on every trace.
+    """
     if prompt_file is not None or not langfuse_enabled():
         path = Path(prompt_file or DEFAULT_PROMPT_FILE)
         return SystemPrompt(text=path.read_text().strip(), version=f"file:{path.name}")
 
-    # TODO(lab3): fetch the prompt from Langfuse instead of the file:
-    #   from langfuse import get_client
-    #   prompt = get_client().get_prompt(SETTINGS.prompt_name, label=label or SETTINGS.prompt_label,
-    #                                    fallback=<the default file's text>, cache_ttl_seconds=60)
-    #   version is "fallback" if prompt.is_fallback, else f"langfuse:v{prompt.version}"
-    #   return SystemPrompt(text=prompt.compile(), version=version, langfuse_prompt=prompt)
-    path = DEFAULT_PROMPT_FILE
+    # TODO(lab3): fetch the prompt from Langfuse. Replace the two placeholder lines at the end of
+    #   this function, which still read the file. Keep the `if` above.
+    #   1. Call get_prompt on Langfuse's client (from langfuse import get_client) for
+    #      SETTINGS.prompt_name, with label=label or SETTINGS.prompt_label, the default file's text
+    #      as fallback= (so the phone keeps working if Langfuse is down) and cache_ttl_seconds=60.
+    #   2. version is "fallback" if prompt.is_fallback, else f"langfuse:v{prompt.version}".
+    #   3. Return SystemPrompt(text=prompt.compile(), version=version, langfuse_prompt=prompt).
+    path = DEFAULT_PROMPT_FILE  # placeholder until Lab 3
     return SystemPrompt(text=path.read_text().strip(), version=f"file:{path.name}")
 
 

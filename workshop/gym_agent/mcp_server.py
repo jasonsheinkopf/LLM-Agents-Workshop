@@ -62,12 +62,14 @@ def check_schedule(day: Day | None = None, age: int | None = None) -> dict:
     return _call("check_schedule", day=day, age=age)
 
 
-# TODO(lab6): expose two more tools the same way as check_schedule above:
-#   search_handbook(query: str) -> dict
-#   book_class(class_id: str, participant_name: str, participant_age: int,
-#              confirmation_code: str | None = None) -> dict
-#     (in book_class, do CTX.turn += 1 first: each MCP request counts as a new step)
-# The docstring becomes the tool description that MCP clients show to their model, so write it well.
+# TODO(lab6): add two more tools here, written the same way as check_schedule above. There is no
+#   placeholder to remove. Use these exact names and parameters: the test looks for them.
+#   - search_handbook(query: str) -> dict
+#   - book_class(class_id: str, participant_name: str, participant_age: int,
+#                confirmation_code: str | None = None) -> dict
+#     Start book_class with CTX.turn += 1. Each MCP request counts as a new step, which is what
+#     lets the confirmation guardrail tell the summary and the confirmation apart.
+#   Each docstring becomes the description an MCP client shows its model, so say when to use it.
 
 
 def main() -> None:

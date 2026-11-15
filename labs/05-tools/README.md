@@ -64,7 +64,8 @@ There's no tool for refunds or deleting bookings, so the agent can't be talked i
 
 ### Step 1: `tool_specs(names)`: `workshop/gym_agent/tools.py`
 
-Return the OpenAI `tools=[...]` list. The JSON schema comes from the Pydantic models in
+Replace the placeholder `return []` with the OpenAI `tools=[...]` list. Until you do, the agent
+is offered no tools. The JSON schema comes from the Pydantic models in
 `guardrails.py` (`ARG_MODELS[n].model_json_schema()`), so the contract the model sees and the
 validation you run are the same object. Read the `DESCRIPTIONS`. Each one says *when* to use the tool.
 
@@ -75,6 +76,8 @@ Three checks. Each raises `ToolError` with a message the model can act on:
 2. **JSON:** the model's arguments are a *string*, and might not parse;
 3. **schema:** `ARG_MODELS[name].model_validate(data)` catches wrong types and out-of-range values (age 400).
 
+Delete the two placeholder lines at the end of the function (`_ = ...` and the `raise`).
+
 `run_tool` (written for you) turns `ToolError` into a result like `{"error": "..."}`, so the
 model sees what went wrong and can try again. It also traces each call as a `tool` observation.
 
@@ -82,12 +85,15 @@ model sees what went wrong and can try again. It also traces each call as a `too
 
 The first step (no code → summary + code) is written. Complete the second: refuse the booking if
 `ctx.turn <= pending.issued_on_turn` (the caller hasn't spoken since the summary), or if the
-details changed since the summary.
+details changed since the summary. Add both checks where the `TODO(lab5)` is, after the
+`if pending is None` check, because they need `pending`.
 
 ### Step 4: The agent loop: `Call.send` and `Call._model_call` in `agent.py`
 
 1. In `_model_call`, offer the tools: `specs = tool_specs(self.agent.tools)`, and if there are any, `kwargs["tools"] = specs`.
-2. In `send`, replace the single model call with a loop of at most `settings.max_steps` steps:
+2. In `send`, replace the last three lines of your Lab 1 code (the model call, the history
+   append and the `return`) with a loop of at most `settings.max_steps` steps. Keep everything
+   above them, and keep the loop inside Lab 2's `with propagate_attributes(...)` block:
 
 ```python
 result = TurnResult(reply=GIVE_UP, prompt_version=..., trace_id=...)

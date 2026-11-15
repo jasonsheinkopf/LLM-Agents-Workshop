@@ -10,6 +10,10 @@ from .config import langfuse_enabled, require
 
 
 def get_client():
+    """Return the OpenAI client the app uses for chat, embeddings and the judge.
+
+    From Lab 2 it is Langfuse's drop-in wrapper, so every call through it is traced.
+    """
     require("OPENAI_API_KEY")
     if langfuse_enabled():
         from langfuse.openai import OpenAI  # same interface, plus tracing

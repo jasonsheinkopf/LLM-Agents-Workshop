@@ -80,7 +80,9 @@ in chat, then ask the phone-call question. v2 *feels* better: it's snappier. Hol
 ### Step 2: Fetch by label: `workshop/gym_agent/prompts.py`
 
 Complete `load_system_prompt`. When Langfuse is on, fetch the prompt that carries a label, with a
-local **fallback** so the phone keeps working if Langfuse is down:
+local **fallback** so the phone keeps working if Langfuse is down. Replace the two placeholder lines
+at the end of the function, which still read the file, and keep the `if` at the top: it covers
+`--prompt-file` and running with no Langfuse keys.
 
 ```python
 from langfuse import get_client
@@ -124,7 +126,8 @@ Find it under **Datasets**. Each item has an `input` (caller and turns) and an `
 
 ### Step 5: Write the graders: `workshop/gym_agent/evals/evaluators.py`
 
-`booking_policy` is done for you as an example. Write:
+`booking_policy` is done for you as an example. Write the other two, and delete the
+`raise NotImplementedError(...)` line in each:
 
 1. **`tool_use`**, a code check. If the case expects a tool, pass only if the agent called it.
 2. **`judge_reply`**, the LLM-as-a-judge. The rubric (`JUDGE_PROMPT`) is written for you. Make the

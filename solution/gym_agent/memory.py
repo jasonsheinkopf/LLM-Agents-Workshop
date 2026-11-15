@@ -58,7 +58,7 @@ def chunk_markdown(markdown: str) -> list[Chunk]:
 
 # --------------------------------------------------------------------------- embeddings
 def embed(client, texts: list[str]) -> list[list[float]]:
-    """Turn texts into vectors. Similar meanings end up close together."""
+    """Turn texts into vectors, one per text, in the same order. Similar meanings land close together."""
     resp = client.embeddings.create(model=SETTINGS.embedding_model, input=texts)
     return [d.embedding for d in resp.data]
 
@@ -163,6 +163,8 @@ class InMemoryStore:
 
 # --------------------------------------------------------------------------- the handbook drawer
 class Handbook:
+    """The gym's handbook in the vector store: written once by `ingest`, read on every turn."""
+
     def __init__(self, client, store: VectorStore) -> None:
         self.client, self.store = client, store
 
@@ -181,7 +183,7 @@ class Handbook:
 
     @observe(name="search_handbook", as_type="retriever")
     def search(self, query: str, k: int = 3) -> list[dict]:
-        """Embed the question, return the k nearest handbook sections."""
+        """Return the k handbook sections nearest to `query`, best first."""
         [vector] = embed(self.client, [query])
         hits = self.store.query(vector, top_k=k, namespace=HANDBOOK_NS)
         return [{"section": h["metadata"]["section"], "text": h["metadata"]["text"], "score": round(h["score"], 3)} for h in hits]
@@ -199,6 +201,8 @@ Transcript:
 
 
 class CallerMemory:
+    """Short facts about each caller, written at the end of a call and recalled on the next one."""
+
     def __init__(self, client, store: VectorStore) -> None:
         self.client, self.store = client, store
 
@@ -218,6 +222,7 @@ class CallerMemory:
 
     @observe(name="recall_caller_memories", as_type="retriever")
     def recall(self, caller_id: str, query: str, k: int = 5) -> list[str]:
+        """Return up to k of this caller's memories that best match `query`, as plain text."""
         [vector] = embed(self.client, [query])
         # The filter is the privacy boundary: only this caller's memories can come back.
         hits = self.store.query(vector, top_k=k, namespace=MEMORY_NS, filter={"caller_id": {"$eq": caller_id}})

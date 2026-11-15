@@ -26,9 +26,12 @@ def booking_policy(*, output, expected_output, **_) -> Evaluation:
 
 def tool_use(*, output, expected_output, **_) -> Evaluation:
     """If the case expects a tool (e.g. check the schedule before answering), was it used?"""
-    # TODO(lab3): expected_output["tool"] is a tool name or None. If None, pass. Otherwise pass
-    #   only if that name appears in output["tool_calls"] (a list of {"name": ..., "status": ...}).
-    #   Return Evaluation(name="tool_use", value=<bool>, data_type="BOOLEAN", comment=<why>).
+    # TODO(lab3): write this check, then delete the `raise` line below.
+    #   expected_output["tool"] is a tool name, or None when the case needs no tool.
+    #   - None: the case passes.
+    #   - A name: it passes only if that name is among the calls in output["tool_calls"], a list
+    #     of {"name": ..., "status": ...}.
+    #   Return Evaluation(name="tool_use", value=<True or False>, data_type="BOOLEAN", comment=<why>).
     raise NotImplementedError("Lab 3: write tool_use (labs/03-evals/README.md)")
 
 
@@ -55,18 +58,26 @@ Reply with JSON only:
 
 def judge_reply(client, *, turns: list[str], reply: str, facts: list[str], must_not: list[str],
                 model: str | None = None) -> dict:
+    """Ask the judge model whether `reply` meets the case's expectations.
+
+    Returns {"pass": bool, "facts_covered": int, "violations": list, "reason": str}. A judge reply
+    that isn't valid JSON must come back as a fail, not an exception, so one garbled verdict can't
+    crash a whole experiment.
+    """
     prompt = JUDGE_PROMPT.format(
         turns="\n".join(f"- {t}" for t in turns),
         reply=reply,
         facts="\n".join(f"- {f}" for f in facts) or "- (nothing specific)",
         must_not="\n".join(f"- {m}" for m in must_not) or "- (nothing specific)",
     )
-    # TODO(lab3): ask the judge model for a verdict.
-    #   1. client.chat.completions.create(model=model or SETTINGS.judge_model,
-    #        messages=[{"role": "user", "content": prompt}], response_format={"type": "json_object"})
-    #   2. json.loads the message content (treat invalid JSON as {} so a bad reply counts as a fail)
-    #   3. return {"pass": bool, "facts_covered": int, "violations": list, "reason": str}
-    raise NotImplementedError(f"Lab 3: write judge_reply (labs/03-evals/README.md); prompt was {len(prompt)} chars")
+    # TODO(lab3): ask the judge for a verdict, then delete the `raise` line below. `prompt` above
+    #   is the finished rubric.
+    #   1. Send it as one user message to model or SETTINGS.judge_model, with
+    #      response_format={"type": "json_object"} so the reply is JSON.
+    #   2. Parse the reply with json.loads. If it isn't valid JSON, use {} instead.
+    #   3. Return the four keys above. Default anything missing to a fail: pass False,
+    #      facts_covered 0, no violations, and a reason that says the verdict was unreadable.
+    raise NotImplementedError("Lab 3: write judge_reply (labs/03-evals/README.md)")
 
 
 def make_judge(client):
