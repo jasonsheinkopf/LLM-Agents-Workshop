@@ -1,6 +1,6 @@
 # Glossary
 
-Every term the course uses, in a sentence or two, with the lab where you meet it.
+Every term the workshop uses, in a sentence or two, with the lab where you meet it.
 
 | Term | Meaning | Lab |
 |---|---|---|

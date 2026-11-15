@@ -50,7 +50,7 @@ sequenceDiagram
 - **One source of truth for tool contracts.** The Pydantic model *is* the JSON schema the model
   sees *and* the validator your code runs.
 - **Features switch on when they're ready.** No Langfuse keys → no tracing (silently).
-  No Pinecone index → no memory. The app runs at every stage of the course.
+  No Pinecone index → no memory. The app runs at every stage of the workshop.
 - **Experiments never touch real state.** Each eval case gets a fresh in-memory `BookingStore`, and caller memories are off.
 
 ## What a trace looks like (after Lab 5)

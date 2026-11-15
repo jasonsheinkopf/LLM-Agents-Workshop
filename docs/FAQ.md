@@ -6,16 +6,16 @@ Short answers to the questions that come up. Errors with exact fixes are in
 ## Before you start
 
 **What if I've never used Python?**
-This course is not the place to learn Python from zero. If you can read a function and change a
+This workshop is not the place to learn Python from zero. If you can read a function and change a
 few lines, you'll be fine: every lab is a handful of short functions, and the answer is always in
 `solution/`. If `def` and `return` are new to you, do a one-day Python intro first, then come back.
 
 **What if I don't want to pay for OpenAI?**
-You need about $2 of credit for the whole course; there is no free tier. Set a $5 monthly limit so
+You need about $2 of credit for the whole workshop; there is no free tier. Set a $5 monthly limit so
 there is no risk of a surprise. If you truly can't use OpenAI, the code works with any
 OpenAI-compatible endpoint: set `OPENAI_BASE_URL` (for example to a local Ollama server) and
 `AGENT_MODEL`, `JUDGE_MODEL`, `EMBEDDING_MODEL` and `EMBEDDING_DIM` to match. Expect lower scores
-from small local models; the course was built and verified on `gpt-5-mini`.
+from small local models; the workshop was built and verified on `gpt-5-mini`.
 
 **What if I use Google sign-in for Langfuse or Pinecone?**
 That's fine. Sign-in method doesn't matter; you still create an API key inside the project
@@ -29,16 +29,17 @@ accounts, with the synthetic data in this repo. Never put company data into a pe
 **What if I'm on Windows?**
 Everything runs on Windows with PowerShell. Use `Copy-Item .env.example .env` instead of `cp`, and
 `.venv\Scripts\activate` if you ever activate the environment by hand (you don't need to with
-`uv run`). WSL also works and is closer to the course's terminal output.
+`uv run`). WSL also works and is closer to the workshop's terminal output.
 
 **What if I'd rather use pip, conda, or Poetry?**
 See the "Prefer pip?" note in [Lab 0](00-setup.md). Then drop `uv run` from every command. `uv` is
-recommended only because it pins the exact library versions the course was tested with.
+recommended only because it pins the exact library versions the workshop was tested with.
 
-**What if I only want the videos, not the labs?**
-Watch Episodes 1 to 6; each one's first half teaches the idea without code. Then read
-[FACILITATOR.md](FACILITATOR.md) for the 90-minute version and the five questions to ask any
-agent team.
+**What if I want the ideas, not the labs?**
+Watch the [recordings](../README.md#recordings): the first half of each episode teaches the idea
+without code. If you lead a team rather than build, the
+[leaders' track](../leaders/README.md) and the
+[five questions to ask any agent team](../handouts/questions-for-leaders.md) are written for you.
 
 ## While you work
 
@@ -81,11 +82,11 @@ plus a `connect`). `InMemoryStore` in the same file is a complete example in thi
 **What if I want to use Claude, Gemini or Llama instead?**
 The agent loop and tools use the OpenAI chat-completions format. Any provider with an
 OpenAI-compatible endpoint works by setting `OPENAI_BASE_URL`. For native SDKs you'd rewrite
-`llm.py` and `_model_call` in `agent.py`; the rest of the course (traces, evals, memory, guardrails,
+`llm.py` and `_model_call` in `agent.py`; the rest of the workshop (traces, evals, memory, guardrails,
 MCP) is provider-neutral.
 
 **What if a lab's "real run" costs more than I expected?**
-It shouldn't: the whole course is under $2 on `gpt-5-mini`. Experiments are the most expensive step
+It shouldn't: the whole workshop is under $2 on `gpt-5-mini`. Experiments are the most expensive step
 (19 cases × a few calls each). Use `--limit 5` while iterating, and check Usage on
 platform.openai.com. If a loop ever ran away, `AGENT_MAX_STEPS` (default 6) is the brake.
 
@@ -96,15 +97,16 @@ treat the old keys as public forever). The repo's `.gitignore` excludes `.env` t
 to do by accident.
 
 **What if I want to run this for my team?**
-[FACILITATOR.md](FACILITATOR.md) has a 90-minute executive briefing and a one-day engineer
-workshop, with timings, checkpoints and the things that go wrong.
+There are two run-of-show guides, each with timings, checkpoints and the things that go wrong:
+[FACILITATOR.md](FACILITATOR.md) for the one-day engineers' workshop, and
+[leaders/FACILITATOR.md](../leaders/FACILITATOR.md) for the two-hour leaders' session.
 
 ## Concepts
 
 **What's the difference between a workflow and an agent?**
 In a workflow, your code decides the steps and the model fills them in. In an agent, the model
 decides the next step (which tool, or whether to answer). Use the simplest one that solves the
-task; this course's agent needs the loop because a booking takes a variable number of steps.
+task; this workshop's agent needs the loop because a booking takes a variable number of steps.
 
 **Why both traces and evals?**
 Traces tell you *what happened* on one call. Evals tell you *how often it goes right* across many.
@@ -124,5 +126,5 @@ MCP is for the day your tools are used by an agent you didn't write: a desktop a
 another team's bot. One server, any client, same guardrails.
 
 **Is Ridgeline a real gym?**
-No. The gym, its policies, its prices and its callers are invented for this course, and the phone
+No. The gym, its policies, its prices and its callers are invented for this workshop, and the phone
 numbers use the reserved 555-01xx range.

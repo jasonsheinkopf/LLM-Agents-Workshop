@@ -1,11 +1,18 @@
-"""Maintainer check: workshop/ and solution/ may differ only in files that contain TODO(labN) stubs."""
+"""Maintainer check: workshop/ and solution/ may differ only in files that contain TODO(labN) stubs.
+
+Runs with `--impl solution` only. Once you have written your own code in workshop/, it is meant to differ.
+"""
 
 from pathlib import Path
+
+import pytest
 
 REPO = Path(__file__).resolve().parents[1]
 
 
-def test_workshop_and_solution_stay_in_sync():
+def test_workshop_and_solution_stay_in_sync(request):
+    if request.config._workshop_impl != "solution":
+        pytest.skip("maintainer check: run with --impl solution")
     sol, ws = REPO / "solution" / "gym_agent", REPO / "workshop" / "gym_agent"
     sol_files = {p.relative_to(sol) for p in sol.rglob("*.py")}
     ws_files = {p.relative_to(ws) for p in ws.rglob("*.py")}

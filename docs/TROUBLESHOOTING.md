@@ -53,7 +53,7 @@ cd workshop && uv run python -m gym_agent.doctor
 | Scores change between identical runs | LLMs aren't deterministic. Compare averages over the whole set, re-run close calls, and grow the test set. That's normal, and part of the lesson. |
 | Rate limit errors during experiments | Lower `max_concurrency` in `run_experiment.py` (it's 4), or try `--limit 5` first. |
 | `429 rate_limit_exceeded` during an experiment | Brand-new accounts have low limits. Run with `--limit 5` first, or lower `max_concurrency` in `run_experiment.py` from 4 to 2. Limits rise automatically after a few days of use. |
-| Using a local model (Ollama) and scores are terrible | Expected: 3B-class models can't follow the rubric or call tools reliably. The course was verified on `gpt-5-mini`. A 7B+ model with tool calling is the minimum for the labs to make sense. |
+| Using a local model (Ollama) and scores are terrible | Expected: 3B-class models can't follow the rubric or call tools reliably. The workshop was verified on `gpt-5-mini`. A 7B+ model with tool calling is the minimum for the labs to make sense. |
 
 ## Pinecone
 

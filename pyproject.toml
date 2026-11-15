@@ -19,7 +19,7 @@ dependencies = [
 dev = ["pytest>=8.3", "ruff>=0.9"]
 
 [tool.uv]
-package = false            # this repo is a course, not a library: run code with `uv run`
+package = false            # this repo is a workshop, not a library: run code with `uv run`
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -36,6 +36,7 @@ ignore = ["E501"]
 [tool.ruff.lint.per-file-ignores]
 # the starter code has imports and variables you'll use once you fill in the TODOs
 "workshop/**" = ["F401", "F841"]
+"scripts/checkpoints/**" = ["F401", "F841"]   # the same starter code, part-way through the labs
 
 [tool.ruff.lint.isort]
 known-first-party = ["gym_agent", "fakes", "helpers"]
