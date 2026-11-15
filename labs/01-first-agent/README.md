@@ -1,19 +1,29 @@
 # Lab 1: Your first agent
 
-📺 **Video:** [Agents Unpacked, Episode 1: What makes an agent?](https://youtube.com/@TODO)
-⏱️ **Time:** 30 min · 💳 **Cost:** a few cents · 🔑 **Needs:** `OPENAI_API_KEY`
+**Block 1** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
+**Cost:** a few cents · **Needs:** `OPENAI_API_KEY` · **Recording:** *Agents Unpacked*, Episode 1 ([where to find it](../../README.md#recordings))
 
 ## Goal
 
 Make one model call with a system prompt and keep the conversation going. Then call the gym and
-watch the bare model fail in the three ways the video describes. The rest of the course fixes them.
+watch the bare model fail in three ways. The rest of the day fixes them.
+
+**The failure to look for:** ask it to book. It says it can't, or says it has when nothing happened.
 
 **By the end of this lab you can:**
 - explain what a chat completion call is: messages in, one message out;
 - explain the roles in a conversation (`system`, `user`, `assistant`) and why history is resent every turn;
 - name the three gaps between a model and an agent: **knowledge**, **action** and **quality**.
 
-## Concepts in two minutes
+## Checkpoint
+
+| | You're there when |
+|---|---|
+| **Floor** (every pair, before the debrief) | `uv run pytest tests/test_lab1_agent.py` is green, and you have asked your agent the phone-call question and asked it to book |
+| **Target** (most pairs) | You have seen all three gaps for yourself, and can say which later block fixes each one |
+| **Ceiling** (if you finish early) | The tasks under [Ceiling](#ceiling-if-you-finish-early), below |
+
+## The idea in two minutes
 
 A language model is a function: **text in → the next likely text out**. It has no memory between
 calls. Every turn, you send the *whole* conversation:
@@ -96,7 +106,7 @@ workshop $ uv run python -m gym_agent.chat
 You're calling as **Dana** (`--caller` picks someone else). The banner shows what's switched on:
 `tools: none · memory: off · tracing: off`. That's right for now.
 
-Try the running example from the videos, then a few more:
+Try the phone call the day is built around, then a few more:
 
 ```
 caller> Hi, can my 8-year-old take the belay class on Saturday? And can you book us in?
@@ -113,11 +123,23 @@ caller> /end
 | **Action** | It says "You're booked!" but nothing was booked. Or it apologises that it can't book. | A model only writes text. It can't touch your systems. | Lab 5 (tools) |
 | **Quality** | Every answer *sounds* fine. Is it right? Is v2 of the prompt better than v1? You can't tell. | You're judging on vibes, one chat at a time. | Labs 2 and 3 (traces, evals) |
 
-> 💡 The system prompt it's using is `prompts/system_v3.md` (read it). Even with careful
+> The system prompt it's using is `prompts/system_v3.md` (read it). Even with careful
 > instructions such as "only state facts from your context", it has no facts to state yet. That's
 > the point: **prompting can't fix missing knowledge or missing abilities.**
 
-## Stretch goals
+## Debrief
+
+Answer these with your pair before you move on. In a room, the instructor asks pairs for their answers. On your own, write yours down.
+
+1. What happened when you asked it to book?
+2. Why can't a better system prompt fix that? Which of the three gaps is it?
+3. The next time someone shows you an impressive agent demo, what will you ask to see?
+
+## Make it yours
+
+On your [workflow canvas](../../handouts/workflow-canvas.md), fill in the first row: **the workflow and its trigger**. What starts it, and what does a finished one look like?
+
+## Ceiling: if you finish early
 
 - Run `--caller priya` and ask about her membership. The model knows her name from `_context`, but nothing else.
 - Swap the prompt: `uv run python -m gym_agent.chat --prompt-file ../prompts/system_v1.md` uses the wordy v1 prompt instead of `system_v3.md`. Ask the same questions and compare. Keep the comparison in mind for Lab 3.
@@ -133,5 +155,7 @@ caller> /end
 Compare with the answer: `diff workshop/gym_agent/agent.py solution/gym_agent/agent.py` (the
 solution also has Labs 2 to 5 done, so focus on `_model_call` and `send`).
 Common errors are in [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md).
+
+**Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 2` gives you working Lab 1 code, so you start the next block with the room. Your own files are backed up first.
 
 **Next:** [Lab 2: Traces →](../02-traces/)

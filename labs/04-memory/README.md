@@ -1,7 +1,7 @@
 # Lab 4: Memory
 
-📺 **Video:** [Agents Unpacked, Episode 4: Memory, where agents keep what they know](https://youtube.com/@TODO)
-⏱️ **Time:** 60 min · 💳 **Cost:** cents · 🔑 **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`, `PINECONE_API_KEY`
+**Block 4** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
+**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`, `PINECONE_API_KEY` · **Recording:** *Agents Unpacked*, Episode 4 ([where to find it](../../README.md#recordings))
 
 ## Goal
 
@@ -10,13 +10,23 @@ retrieve the right sections on every turn (**RAG**). Then give the agent **long-
 each caller, kept private with a metadata filter. Re-run your Lab 3 experiment and watch the
 knowledge score move.
 
+**The failure to look for:** run the retrieval check with `-k 1`. Some questions miss, and when retrieval misses, the model never sees the fact.
+
 **By the end of this lab you can:**
 - explain the context window (the **desk**) vs. a vector database (the **filing cabinet**);
 - explain embeddings: text → vector, where similar meanings land close together;
 - build an ingestion pipeline and a retriever, and **evaluate retrieval on its own**;
 - write and read per-user memories safely, using namespaces and metadata filters.
 
-## Concepts
+## Checkpoint
+
+| | You're there when |
+|---|---|
+| **Floor** (every pair, before the debrief) | The handbook is in Pinecone, `memory search` finds the waiver section, and your experiment re-run shows the knowledge score moving |
+| **Target** (most pairs) | The Lab 4 tests are green, you have measured retrieval on its own (`hit@3`), and the agent remembers Sam on Dana's second call but not on Priya's |
+| **Ceiling** (if you finish early) | The tasks under [Ceiling](#ceiling-if-you-finish-early), below |
+
+## The idea in two minutes
 
 ```
 INGEST (once)                                   RETRIEVE (every turn)
@@ -166,7 +176,19 @@ Langfuse. The difference is the value of memory, measured.
 - Metadata is as important as the vector: `section` for citations, `caller_id` for privacy.
 - Memory is a *write* path too. Deciding what to keep (and what not to, such as health or payment details) is a design choice. See `EXTRACT_PROMPT`.
 
-## Stretch goals
+## Debrief
+
+Answer these with your pair before you move on. In a room, the instructor asks pairs for their answers. On your own, write yours down.
+
+1. Which score moved when you added memory, and which one did not?
+2. Why did booking stay where it was?
+3. A user says the agent got a policy wrong. What do you check first now: the prompt, or what was retrieved?
+
+## Make it yours
+
+On your [workflow canvas](../../handouts/workflow-canvas.md), fill in **knowledge it needs**. What is your workflow's "handbook"? Where does it live today, and who keeps it up to date?
+
+## Ceiling: if you finish early
 
 - Chunk smaller (by paragraph), then re-ingest and re-run `evals.retrieval`. Better or worse? Why?
 - Add a `## Wifi` section to `data/handbook.md`, re-ingest, and re-run the `h-wifi` case. Does the test now need updating? (Yes: test sets must evolve with the business.)
@@ -182,5 +204,7 @@ Langfuse. The difference is the value of memory, measured.
 
 `diff workshop/gym_agent/memory.py solution/gym_agent/memory.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#pinecone)
+
+**Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 5` gives you working Lab 4 code, so you start the next block with the room. Your own files are backed up first.
 
 **Next:** [Lab 5: Tools →](../05-tools/)

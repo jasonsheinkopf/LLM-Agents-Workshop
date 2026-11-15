@@ -1,7 +1,7 @@
 # Lab 6: MCP
 
-📺 **Video:** [Agents Unpacked, Episode 6: MCP, one plug for every tool](https://youtube.com/@TODO)
-⏱️ **Time:** 30 min · 💳 **Cost:** free · 🔑 **Needs:** nothing new (Pinecone optional, for `search_handbook`)
+**Block 6** · In the room: 5 min explain and demo, 12 min build, 3 min debrief · On your own: about 30 min
+**Cost:** free · **Needs:** nothing new (Pinecone optional, for `search_handbook`) · **Recording:** *Agents Unpacked*, Episode 6 ([where to find it](../../README.md#recordings))
 
 ## Goal
 
@@ -9,12 +9,22 @@ Serve Ridgeline's tools over the **Model Context Protocol**, so *any* MCP client
 your own Python client, the MCP Inspector, Claude Desktop, Claude Code, Cursor. You'll write the
 server once, and plug it in everywhere, with the same guardrails.
 
+**The failure to look for:** an outside client tries to book. It hits your confirmation step, and an age of 400 is rejected, although the model on the other side is not yours.
+
 **By the end of this lab you can:**
 - explain the problem MCP solves (N apps × M tools → N + M);
 - write an MCP server whose tools reuse your existing code and guardrails;
 - connect to it from code, from the Inspector, and from a desktop AI app.
 
-## Concepts
+## Checkpoint
+
+| | You're there when |
+|---|---|
+| **Floor** (every pair, before the debrief) | `uv run python -m gym_agent.mcp_client` lists your three tools, and its booking comes back asking for confirmation |
+| **Target** (most pairs) | You have called a tool from the MCP Inspector, Claude Desktop or Claude Code, and read the validation error for an age of 400 |
+| **Ceiling** (if you finish early) | The tasks under [Ceiling](#ceiling-if-you-finish-early), below |
+
+## The idea in two minutes
 
 Without MCP, every app that wants your booking tool wires it in by hand, each with its own format.
 With MCP, you publish a **server** that lists its tools (name, description, JSON schema, the
@@ -139,7 +149,19 @@ OAuth, and the server constructor takes `auth=` settings.
   thing that protects your systems, so they *must* live in the server, not in a prompt.
 - Good tool descriptions matter even more over MCP: they're the only instructions the other agent gets.
 
-## Stretch goals
+## Debrief
+
+Answer these with your pair before you move on. In a room, the instructor asks pairs for their answers. On your own, write yours down.
+
+1. What happened when the outside client tried to book?
+2. Why did the confirmation step still hold, when the model calling it wasn't yours?
+3. If you published your workflow's tools to other teams, what would you check first?
+
+## Make it yours
+
+No new row for this block. Reread the **actions** row of your [workflow canvas](../../handouts/workflow-canvas.md): would you let another team's agent call those tools as they stand?
+
+## Ceiling: if you finish early
 
 - Expose the handbook as an MCP **resource** (read-only content) instead of a tool. When is each one right?
 - Point your *own* agent at the MCP server instead of calling `run_tool` directly: list the tools, convert them to OpenAI specs, and call them through `Client.call_tool`.
@@ -153,4 +175,6 @@ OAuth, and the server constructor takes `auth=` settings.
 `diff workshop/gym_agent/mcp_server.py solution/gym_agent/mcp_server.py` ·
 [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#mcp)
 
-**Next:** [Ship it →](../07-ship-it/)
+**Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 7` gives you working Lab 6 code, so you start the next block with the room. Your own files are backed up first.
+
+**Next:** [Make it yours →](../07-ship-it/)

@@ -1,161 +1,283 @@
-# Running this as a live workshop
+# Facilitator guide
 
-This repo is built for self-paced learners, but it runs well as a live workshop. The principle is
-the same one the course teaches: **build, inspect, improve**, not lecture, memorize, repeat. Design
-backwards from what people should be able to build or change at work the next morning, teach only
-enough theory to enable that, get them building early, make failure visible, measure what they
-built, and finish with an owner and a next step.
+The run of show for the instructor. Read it once end to end, then keep
+[the day on one page](#the-day-on-one-page) open while you teach. The reasoning behind the design
+is in [DESIGN.md](DESIGN.md).
 
-## 1. Start from the outcomes
+**The spine, if you remember nothing else:** start with the learner and the outcome, teach only
+enough to act, get them building early, make failure visible, measure what they built, and finish
+with an owner and a next step.
 
-Decide which outcomes your room needs. Everything else follows from that choice.
+## The outcomes you are teaching to
 
-| Outcome | Who needs it | Evidence it landed |
+By 5:00, every pair can do these five things. If you have to cut something on the day, cut what
+does not serve one of them.
+
+| | Outcome | The evidence you look for |
 |---|---|---|
-| **O1.** Explain what an agent is: a model plus instructions, memory and tools, in a loop, measured by evals; and tell a scripted workflow from an agent that directs its own steps | Everyone | They can draw the diagram and say what each piece fixes |
-| **O2.** Diagnose a bad answer from its trace, not from guesswork | Everyone | Shown a trace, they name the layer that failed: prompt, data, tool or model |
-| **O3.** Judge an agent with a test set and a calibrated judge, not vibes | Everyone | They can read an experiment comparison and say whether to ship |
-| **O4.** Build the pieces: tracing, evals, retrieval, tools, guardrails | Engineers | Their `workshop/` code passes the lab tests |
-| **O5.** Ask the right questions of a vendor or a team building agents | Leaders | They can list the five questions in the executive close |
-| **O6.** Map one of their own workflows onto the agent pattern, with a named owner | Everyone | A filled-in workflow canvas with a next step and a success measure |
+| 1 | **Build** an agent that answers from a handbook and books only after the caller confirms | Lab tests green on their own code; one live booking |
+| 2 | **Diagnose** a wrong answer from its trace, and name the layer that failed | Each person opens a bad trace of their own and says what was missing |
+| 3 | **Measure** a change before shipping it | A scoreboard: a regression caught, a better prompt promoted |
+| 4 | **Guard** the actions that matter in code | One guardrail that held under attack; one failure turned into a test case |
+| 5 | **Transfer** the pattern to their own work | A workflow canvas with five test cases, an owner and a next step |
 
-Executives need O1, O2, O3, O5 and O6. Engineers need O1 to O4 and O6. Don't give one room both.
+**Target for the room:** at 5:00, at least four pairs in five have green tests through Lab 5 and a
+filled-in scoreboard, and every pair hands in a canvas with an owner.
 
-**Four levels of success**, from weakest to strongest evidence. Plan to measure all four:
+## One week before
 
-| Level | Question | How this course measures it |
+**The sponsor.** Find the person on the client side who owns the outcome. Ask two things: which
+workflows matter to this team, and what happens to the best prototypes afterward. Without a
+sponsor, the prototypes stay demos.
+
+**Pre-work.** Send the [pre-work email](../handouts/pre-work-email.md). It asks each participant to
+set up their laptop and send you the doctor output, to bring one workflow from their own job, and
+to answer three questions you use for pairing. Chase the doctor output two days before. Every
+laptop you fix in advance is ten minutes of the day you keep.
+
+### The data rule
+
+Agree it with the sponsor before the day, and say it out loud at 9:00.
+
+- **Green:** public, synthetic, or made up for the workshop. Everything in `data/` is green.
+- **Yellow:** internal, non-sensitive data the sponsor has approved for the workshop.
+- **Red:** customer personal information, health data, credentials, legal or unreleased financial
+  material. Never in the workshop unless the client's security team has signed off, and never
+  into a third-party service without it.
+
+**Pairs.** Use the pre-work answers. Pair a stronger coder with someone who knows the business
+process, not strongest with strongest. Write the pairs on the board before people arrive.
+
+**Staffing.** One instructor can circulate around about 16 builders. From 17 to 24, add a teaching
+assistant whose job is to unblock single laptops so you never stop the room for one person. If the
+client's laptops have single sign-on, proxies or blocked installs, bring someone who can fix
+accounts and nothing else.
+
+**Your own preparation.** The day before:
+
+| Have ready | Why |
+|---|---|
+| The solution running on your laptop with real keys, and a Langfuse project from a full run | Your demos, and something to show if a participant's run is slow |
+| The [recordings](../README.md#recordings) downloaded | The backup for every live explanation and demo |
+| A spare OpenAI key with credit | Someone's key will fail or hit a limit |
+| `uv run pytest --impl solution` green on the room's network | Proves the install works behind their firewall |
+| The catch-up command tried once: `uv run python scripts/catch_up.py 3` | You will use it before 11:00 |
+| Printed [canvases](../handouts/workflow-canvas.md) and [exit tickets](../handouts/exit-ticket.md), one per pair and per person | The network cannot break paper |
+
+## The day on one page
+
+| Time | Block | Explain and demo | Build | Debrief | Checkpoint: the floor every pair reaches |
+|---|---|---:|---:|---:|---|
+| 9:00 | Arrive and check | | | | Three PASS lines on every laptop; everyone knows their pair |
+| 9:15 | 1. First agent | 10 | 25 | 10 | Lab 1 tests green; they have watched the bare model fail to book |
+| 10:00 | 2. Traces | 10 | 25 | 10 | Each person has one of their own traces open and can say what is missing from it |
+| 10:45 | Break | | | | |
+| 11:00 | 3. Evals | 15 | 50 | 10 | Baseline and v2 experiments run; the room votes which to ship |
+| 12:15 | Lunch | | | | |
+| 1:15 | 4. Memory | 15 | 50 | 10 | The handbook is in Pinecone; the knowledge score moved in their re-run |
+| 2:30 | Break | | | | |
+| 2:45 | 5. Tools | 15 | 40 | | One live booking through the two-step confirmation |
+| 3:40 | Red-team round | | 15 | 5 | Five hostile inputs tried; one guardrail that held, named by file |
+| 4:00 | 6. MCP | 5 | 12 | 3 | The Python client lists their three tools |
+| 4:20 | Make it yours | | 25 | | A finished canvas with an owner |
+| 4:45 | Demos, exit ticket, close | | | 15 | Three demos; every exit ticket and canvas collected |
+
+Minutes of working time: 70 explaining and demonstrating, 242 building, 78 checking and debriefing.
+
+## How every block runs
+
+**Explain (5 to 15 minutes).** One idea, and the problem it solves, starting from the phone call.
+Each lab README has an "idea in two minutes" section with what to say and draw. If you catch
+yourself past 15 minutes, stop and start the build.
+
+**Demo (inside the same time).** Do the first step of the lab live on the projector, thinking out
+loud, in the same repo the room has. Then show the planned failure for the block (listed below).
+If a live demo breaks in a way you did not plan, narrate the diagnosis: read the error, open the
+trace, form a guess, try a fix. If it is not fixed in two minutes, play the recording and move on.
+
+**Build.** Pairs work. You circulate. Three rules:
+
+- Tests are the checkpoint. Don't ask "is everyone done?" Ask "whose Lab 3 tests are green?" and
+  send the greens to help the reds.
+- When a pair is stuck, open `solution/` with them and diff. The answer is always there, so being
+  stuck never blocks them for long.
+- Five minutes before the build ends, protect the floor. Any pair not there gets the shortcut
+  listed for that block. Nobody starts the next block behind.
+
+**Debrief.** Three questions, on the lab page: what happened, why, and what will you do
+differently? Take answers from pairs, not volunteers. Then give two minutes for the row of the
+canvas that goes with the block.
+
+## Block by block
+
+### 9:00 Arrive and check (15 minutes)
+
+- Everyone runs `uv run python -m gym_agent.doctor` from `workshop/`. Pair reds with greens.
+- Say the outcome for the day in one sentence, and play or read the phone call.
+- Say the data rule.
+- **If more than a few laptops are red at 9:15:** do not start teaching over it. Fix the most
+  common error once on the projector, sit each red laptop's owner with a green pair, and let the
+  assistant work through the rest during Block 1. Lab 1 needs only the OpenAI key.
+
+### 9:15 Block 1: First agent ([Lab 1](../labs/01-first-agent/README.md))
+
+- **Explain:** a model predicts the next text; it has no memory and cannot act. An agent is a
+  model plus instructions, memory and tools, in a loop, measured by evals.
+- **Demo:** write `_model_call` live. Run the chat and ask the phone-call question.
+- **The failure on purpose:** ask it to book. It cannot. Ask the room why before you tell them.
+- **Watch for:** `_model_call` returning the whole response instead of the message.
+- **Shortcut to the floor:** the full answer is on the lab page; have them type it, not paste it.
+- **Debrief line to land:** prompting cannot fix missing knowledge or missing abilities.
+
+### 10:00 Block 2: Traces ([Lab 2](../labs/02-traces/README.md))
+
+- **Explain:** a trace is the record of one turn; a session is one call; a score is a judgment
+  attached to a trace. You trace before you tune.
+- **Demo:** wrap the client, run one turn, open the trace.
+- **The failure on purpose:** open the trace of the answer that could not help. The system
+  message has no class information in it. "The model didn't fail. It never had the fact."
+- **Watch for:** traces that never arrive because the chat was closed with Ctrl-C, not `/end`.
+- **Shortcut to the floor:** `uv run python scripts/catch_up.py 3`, then run one chat turn.
+- **Debrief line to land:** "the agent is wrong" becomes "which step was wrong?"
+
+### 11:00 Block 3: Evals ([Lab 3](../labs/03-evals/README.md))
+
+- **Explain:** vibes do not scale. A test set, graders (code checks and a model judge), and an
+  experiment that runs every case against a prompt version.
+- **Demo:** push v1 and v2. Chat with both. Ask the room which feels better. Most will say v2.
+- **The failure on purpose:** the v2 experiment. Honesty and safety drop. Nobody saw it in chat.
+- **Watch for:** rate limits on brand-new OpenAI accounts. Have them run with `--limit 5` first.
+- **Give judge calibration time.** A judge that disagrees with the human grades is the lesson,
+  not a problem. This is where the room usually goes quiet and then loud.
+- **Shortcut to the floor:** at minute 25 of the build, any pair still writing graders copies
+  `solution/gym_agent/evals/evaluators.py` over their own. The experiment matters more.
+- **Debrief line to land:** good evals tell you what kind of problem you have. Here it is
+  knowledge and action, not wording.
+
+### 1:15 Block 4: Memory ([Lab 4](../labs/04-memory/README.md))
+
+- **Explain:** the context window is a desk, a vector store is a filing cabinet. Embeddings put
+  similar meanings close together. Chunk, embed, store; then retrieve the right three pages.
+- **Demo:** ingest the handbook live and search it with one odd phrasing ("can my nanny sign?").
+- **The failure on purpose:** `evals.retrieval -k 1`. Some questions miss. If retrieval misses,
+  the model never sees the fact.
+- **Watch for:** a new Pinecone index returning nothing for the first 10 to 30 seconds.
+- **Shortcut to the floor:** `uv run python scripts/catch_up.py 5`, then `memory ingest` and the
+  experiment re-run.
+- **Debrief line to land:** retrieval quality and answer quality are separate, and you can
+  measure each. The caller filter is a privacy boundary.
+
+### 2:45 Block 5: Tools ([Lab 5](../labs/05-tools/README.md))
+
+- **Explain:** a tool is a name, a description and a schema. The model proposes a call; your code
+  decides whether to run it. Risk rises when a system can act, not only answer.
+- **Demo:** write `validate_call` live, then show a booking stopping at the confirmation step.
+- **The failure on purpose:** saved for the red-team round, which is this block's debrief.
+- **Watch for:** OpenAI `400 … tool_call_id`: the assistant message with its tool calls must go
+  into history before the tool results.
+- **Shortcut to the floor:** the loop is on the lab page in full. If the guardrails are not
+  passing by minute 30, `uv run python scripts/catch_up.py 6`.
+
+### 3:40 Red-team round ([Lab 5, part 2](../labs/05-tools/README.md#break-it-the-red-team-round))
+
+- No explanation. Give the five inputs and fifteen minutes. Pairs try to break their own agent,
+  then swap and try to break another pair's.
+- **Debrief (5 minutes):** each pair names one guardrail that held and the file it lives in, and
+  one answer that should become a test case. Ask every time: which layer?
+- **Line to land:** for inputs 1 to 3 there is code behind the model, so the booking is refused
+  even if the model goes along. For inputs 4 and 5 there is only a sentence in the prompt. Ask
+  which they would bet on after ten prompt changes.
+
+### 4:00 Block 6: MCP ([Lab 6](../labs/06-mcp/README.md))
+
+- **Explain (5 minutes):** one server, many clients. The model on the other side is not yours.
+- **Demo:** the MCP Inspector calling `check_schedule`, then `book_class` with an age of 400.
+- **Shortcut to the floor:** both functions are on the lab page.
+- **Line to land:** the confirmation step still holds, because it lives in the server.
+
+### 4:20 Make it yours ([Lab 7](../labs/07-ship-it/README.md))
+
+- No steps. Each pair finishes the canvas for the workflow one of them brought. Most rows are
+  already drafted from the earlier blocks.
+- Circulate and push on two rows: "what we will not automate" and "owner and next step." A canvas
+  without a name on it is not finished.
+- If the sponsor is in the room, this is where they walk around.
+
+### 4:45 Demos, exit ticket, close
+
+- Three pairs, two minutes each: the call, then the scoreboard, then one failure they would fix
+  next and the layer it lives in. Choose pairs with different failures.
+- Hand out the [exit ticket](../handouts/exit-ticket.md). Collect it with the canvas.
+- Close with what happens next: the recap tomorrow, the office hour, the email at day thirty.
+
+## When things go wrong
+
+| What happens | What to do |
+|---|---|
+| **A third of the laptops fail at 9:15** | Stop. Fix the most common error once on the projector for everyone. Seat failed laptops with working pairs. Protect the floor for Block 1, and let the assistant handle individual cases while the room builds. |
+| **Your live demo crashes** | Narrate it. Read the error aloud, open the trace, say your guess. This is the failure lesson arriving early. If it is not fixed in two minutes, switch to the recording and keep the schedule. |
+| **A fast pair is done in ten minutes** | Point them at the ceiling on the lab page. If they finish that, make them helpers for the pair next to them. |
+| **Someone says "this is all hype"** | Thank them, and turn the doubt into a test: "What would it have to get right for you to trust it? Let's add that as a case." Skeptics often become the most engaged people in the room once their doubt is part of the exercise. |
+| **The API or the network goes down** | The lab tests are offline and still run, so pairs keep writing code. Teach from the recording and your saved Langfuse project. Hand out the spare key if it is one account. |
+| **More than a third of the room is red at a checkpoint** | That is one unclear instruction, not a third of the room failing. Stop the build, show that step on the projector, and write down which step it was. |
+| **You are running 15 minutes late after lunch** | Shorten Block 6 to a demo, and keep the red-team round and Make it yours whole. They carry outcomes 4 and 5. |
+| **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. Then offer the 90-minute briefing below, with its ten minutes of live agent. |
+
+## Measuring the day
+
+| When | What you collect | What it tells you |
 |---|---|---|
-| Knowledge | Did they understand it? | The checkpoint questions in each block below |
-| Skill | Can they do it? | Lab tests green; a working agent in their own repo |
-| Transfer | Did they use it afterwards? | The 30-day email: did you build anything? |
-| Impact | Did work improve? | The sponsor's measure for the workflow they chose (hours, cycle time, error rate) |
+| Before | Doctor output, one workflow per person, the three pairing questions | Who needs help before the day; how to pair; a baseline for confidence |
+| During | The checkpoint in every block | Where the room is stuck, while you can still do something about it |
+| At 5:00 | Green tests, scoreboards, canvases, [exit tickets](../handouts/exit-ticket.md) | Whether the five outcomes happened |
+| Week one | The questions people bring to the office hour | What the labs did not teach |
+| Day 30 | One email: did you build it, and did it reach anyone? | The number that matters |
+| Day 60 to 90 | The sponsor check | Whether a second cohort runs |
 
-The workshop KPI that matters is not "did they like it". It is: **what share of participants left
-with a working, measured workflow, and what share of those reached real use within 30 days?**
+**The number to report:** what share of participants left with a working, measured agent and a
+canvas with an owner, and what share of those canvases reached real use within thirty days.
 
-## 2. Pre-work (one week before)
+**The funnel for the sponsor:** invited → attended → finished the labs → left with an owner →
+built something → in use by someone else.
 
-- **Environment:** send [Lab 0](00-setup.md). "You're ready" means the doctor command prints three PASS lines. Budget 15 minutes on the day for the ones who didn't.
-- **Bring one workflow:** each participant names a repetitive or decision-heavy task from their own job, with its trigger, inputs, decisions and output. This becomes their challenge in the last block.
-- **Data rule, agreed with the sponsor before the day:**
-  - **Green:** public, synthetic or deliberately created workshop data. Everything in `data/` is green.
-  - **Yellow:** internal, non-sensitive data the sponsor has approved for the workshop.
-  - **Red:** customer PII, health data, credentials, legal or unreleased financial material. Never in a workshop unless explicitly approved, and never into a third-party service without it.
-- **Sponsor:** a named person who can say which workflows matter and who will own the prototypes afterwards. Without one, the prototypes stay demos.
+**After each room,** read the "stuck longest" answers on the exit tickets. Anything that appears
+three times becomes a fix in the lab README and a line in [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+before the next room.
 
-## 3. Format A: Executive briefing (90 minutes, no laptops)
+The emails for every step are in [handouts/follow-up-emails.md](../handouts/follow-up-emails.md).
+
+## Variant: half day (3.5 hours, engineers)
+
+Blocks 1, 2, 3 and 5 in full. Demo Block 4 from your own laptop and have everyone run
+`uv run python scripts/catch_up.py 5` and `memory ingest`, so they have working memory for the tools lab. Set Block 6
+as homework. Keep the red-team round and Make it yours, at ten minutes each. Memory is the easiest
+lab to do alone afterward; tools are the hardest to debug alone, so tools stay in the room.
+
+## Variant: on your own
+
+The same labs, self-paced, in about five and a half hours. The recordings stand in for the
+explanation and demo. The debrief questions on each lab page are for the learner to answer in
+writing, and the canvas is still the last step. Nothing else changes.
+
+## Variant: executive briefing (90 minutes, no laptops)
 
 **For:** leaders deciding whether and how to use agents.
-**Promise:** they leave able to tell a real agent from a demo, and to ask for evidence instead of vibes.
+**Outcome:** by the end, each leader can tell a working agent from a demo, names one workflow and
+what they would not automate in it, and can ask a team for evidence. Shown by the workflow they
+name and by the questions they ask in the last ten minutes.
 **You need:** a projector; the solution running on your laptop with real keys; a Langfuse project
-from a previous run (traces, an experiment comparison, a trace with a guardrail hit); and a cached
-screen recording of the live parts, in case the network or an API fails.
+from a full run (traces, an experiment comparison, a trace with a guardrail hit); the recordings,
+in case the network fails.
 
 | Time | Block | What happens | Checkpoint |
 |---|---|---|---|
-| 0:00 | **The call** | Play the phone call. Ask the room: what would the AI need to get this right? Collect answers on a board. | The board has knowledge, action and quality on it, in their words |
-| 0:10 | **What makes an agent** (Ep 1) | Map their answers onto model, memory, tools, evals. One slide. Then: workflow vs agent, and why you start with the simplest thing that works. | Someone re-explains the diagram |
-| 0:25 | **Live: fail, then work** | Run the bare model on the call (`chat --no-tools --no-memory`), then the full agent. Same question, two answers. | Someone says "the first one couldn't actually help" |
-| 0:40 | **Live: the trace** (Ep 2) | Open a wrong or useless answer's trace. Show the system message has no class facts. "The model didn't fail. It never had the fact." | Ask: whose fault was it? (not the model's) |
-| 0:55 | **Evals in one picture** (Ep 3) | The experiment comparison: v1, v2 (regressed), v3 (promoted). The regression nobody saw in the chat demo. | Ask: would you have shipped v2 from the demo? |
-| 1:10 | **Guardrails** (Ep 5) | The trace where the model proposed a bad tool call and the code rejected it. "The model proposes. Your code decides." Risk rises when a system can *act*, not just answer. | Ask: what should never be left to the model? |
-| 1:20 | **Your workflow + the five questions** | Each leader names one workflow and what they would not automate in it. Hand out the five questions. | They can repeat at least three |
+| 0:00 | **The call** | Play the phone call. Ask the room: what would an AI need to get this right? Collect the answers on a board. | The board has knowledge, action and quality on it, in their words |
+| 0:10 | **What makes an agent** | Map their answers onto model, memory, tools and evals. One slide. Then: start with the simplest thing that works. | Someone re-explains the diagram |
+| 0:25 | **Live: fail, then work** | Run the bare model on the call (`chat --no-tools --no-memory`), then the full agent. Same question, two answers. | Someone says the first one could not actually help |
+| 0:40 | **Live: the trace** | Open the useless answer's trace. The system message has no class facts. | Ask: whose fault was it? (Not the model's.) |
+| 0:55 | **Evals in one picture** | The experiment comparison: v1, v2 (regressed), v3 (promoted). | Ask: would you have shipped v2 from the demo? |
+| 1:10 | **Guardrails** | The trace where the model proposed a bad tool call and the code rejected it. The model proposes; your code decides. | Ask: what should never be left to the model? |
+| 1:20 | **Your workflow, and five questions** | Each leader names one workflow and what they would not automate in it. Hand out the [five questions](../handouts/questions-for-leaders.md). | Each can repeat at least three |
 | 1:30 | End | | |
 
-**The five questions** (last slide and handout):
-1. Show me a trace of a wrong answer. What went wrong, and how do you know?
-2. What's in your test set, and where did it come from?
-3. Who grades the answers, and how do you know the grader is right?
-4. What can the agent do without a human confirming, and what stops it doing more?
-5. When you change the prompt, what tells you it got better?
-
-## 4. Format B: Engineer workshop (one day, laptops)
-
-**For:** developers who have called an LLM API but haven't built an agent with evals and tools.
-**Promise:** every participant leaves with a working, traced, tested agent in their own repo, and a
-plan for one workflow of their own.
-**Rhythm:** 10–15 minutes of teaching, then build. No block of talking longer than 15 minutes.
-**Staffing:** one instructor up to 20 people; add a TA per 10 beyond that. For a room with cloud
-or SSO complications, one person whose only job is unblocking laptops.
-
-| Time | Block | Mode | Checkpoint |
-|---|---|---|---|
-| 9:00 | Setup triage | Everyone runs the doctor. Pair reds with greens. | All green by 9:15 |
-| 9:15 | Ep 1 teach + **Lab 1** | Teach 10 min, build 25 | `pytest tests/test_lab1_agent.py` green; everyone has made the bare model fail |
-| 10:00 | Ep 2 teach + **Lab 2** | Teach 10, build 20 | Each person opens one of their own traces and finds the missing fact |
-| 10:45 | Break | | |
-| 11:00 | Ep 3 teach + **Lab 3** | Teach 15, build 45 | Experiment comparison on screen; the room votes which prompt to promote |
-| 12:15 | Lunch | | |
-| 1:15 | Ep 4 teach + **Lab 4** | Teach 15, build 45 | `retrieval -k 3` hit rate on screen; the knowledge score moves in their re-run |
-| 2:30 | Break | | |
-| 2:45 | Ep 5 teach + **Lab 5** | Teach 15, build 40 | A live booking through the two-step confirmation |
-| 3:40 | **Red-team round** | Everyone throws five adversarial inputs at their agent: the injection case, a wrong age, a changed detail after the summary, a question the handbook can't answer, an injury. | Each pair shows one guardrail that held and one answer that needs a test case |
-| 4:00 | Ep 6 teach + **Lab 6** | Teach 10, build 15 | Their tools appear in the MCP Inspector |
-| 4:25 | **Make it yours** | Pairs map the workflow they brought onto the pattern: what's the handbook, what are the tools, what needs confirmation, what are five test cases. Fill the canvas below. | A canvas per pair, with an owner |
-| 4:50 | Demo round + close | Three pairs demo. Each names the failing case they'd fix next and which layer it's in. | They name a layer, not a prompt tweak |
-| 5:00 | End | | |
-
-**The workflow canvas** (one page per pair; also the executive handout):
-
-| | |
-|---|---|
-| Workflow and trigger | |
-| What a good outcome looks like (the success measure) | |
-| Knowledge it needs (the "handbook") | |
-| Actions it takes (the "tools"), and which need a human to confirm | |
-| Five test cases, including one adversarial | |
-| What we will *not* automate | |
-| Owner and next step | |
-
-**Facilitation notes**
-- Tests are the checkpoint. Don't ask "is everyone done?"; ask "whose Lab 3 tests are green?" and send the greens to help the reds.
-- When someone is stuck, open `solution/` with them and diff. The answer is always there, so being stuck never blocks the room.
-- Show a failure on purpose in every live demo. A flawless demo teaches syntax; a failure teaches engineering.
-- Judge calibration is where the "aha" usually happens. Give it time. A judge that disagrees with the humans is the lesson, not a problem.
-- Rate limits: experiments run four cases at a time per person. Thirty people on a paid account is fine; on a brand-new account, run with `--limit 5` first.
-- Mixed skill levels: pair a stronger coder with a domain expert, not strongest with strongest. Stretch goals in every lab README keep the fast ones busy.
-- If the API or network fails mid-demo, switch to the cached recording and keep teaching. Carry a spare key.
-
-## 5. Half-day variant (3.5 hours, engineers)
-
-Labs 1, 2, 3 and 5 in full; demo Lab 4; set Lab 6 as homework. Keep the red-team round and "make
-it yours", shortened to ten minutes each. Memory is the easiest lab to do alone; tools are the
-hardest to debug alone, so keep tools in the room.
-
-## 6. Assessment and follow-up
-
-Measure the workshop the way the course measures agents.
-
-| When | What | Looks like |
-|---|---|---|
-| Before | Confidence survey, environment check, one workflow per person | Doctor green; a filled workflow line |
-| During | Lab checkpoints; the red-team round | If more than a third are red at a checkpoint, stop and teach |
-| End of day | Three questions: most valuable lab, where you were stuck longest, what you'll build next week | "Stuck longest" answers go into [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
-| Week 1 | Office hour | The questions people bring tell you what the labs didn't teach |
-| Day 30 | One email: did you build anything? Did it reach anyone? | This is the number that matters |
-| Day 60–90 | Sponsor check: what shipped, what it changed, what's next | Decide whether the next cohort runs |
-
-**Adoption funnel to report to the sponsor:** invited → attended → completed → built → piloted → adopted.
-
-**Project rubric** for the "make it yours" demos, if you score them:
-
-| Dimension | Weight |
-|---|---:|
-| Problem clarity and business value | 25% |
-| Works on its five test cases | 25% |
-| Evaluation: a test set exists, and the judge was checked | 20% |
-| Safety: confirmation on actions, least privilege, nothing red in the data | 20% |
-| Explanation: can they say which layer each failure lived in | 10% |
-
-## 7. Things that go wrong, and what to do
-
-| Risk | What it looks like | Mitigation built into this course |
-|---|---|---|
-| Confident wrong answers | Fluency mistaken for correctness | The Episode 1/2 "bare model" moment; the test set; the judge |
-| Data leakage | Real customer data in a third-party service | The green/yellow/red rule; everything in `data/` is fictional |
-| Prompt injection | Retrieved or tool text steers the agent | Tool results as data; the `g-injection` case; the red-team round |
-| Excess autonomy | An action nobody confirmed | The two-step confirmation in code; no delete or refund tools exist |
-| Cost runaway | Loops | `AGENT_MAX_STEPS`; experiments capped at four at a time |
-| Demo fragility | API or network down on the day | Cached recording; spare key; offline tests still run |
-| Skill gap | Some bored, some lost | Pre-work doctor; pairing; stretch goals; `solution/` to diff against |
-| Workshop theater | Prototypes never reach work | The sponsor, the canvas, the owner, the 30-day email |
+Leaders still do hands-on work here. It is a vote, a board and a decision, not code.

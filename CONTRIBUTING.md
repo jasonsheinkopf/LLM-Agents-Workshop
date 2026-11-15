@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping make the course better. Issues for confusing steps are as welcome as code.
+Thanks for helping make the workshop better. Issues for confusing steps are as welcome as code.
 
 ## The one rule: keep `workshop/` and `solution/` in sync
 
@@ -11,13 +11,15 @@ When you change the agent:
 
 1. Change `solution/` first, and add or adjust a test in `tests/test_labN_*.py`.
 2. Mirror the change in `workshop/`: copy files that have no `TODO(lab` markers verbatim, and update the stubs and their hint comments in the files that do.
-3. Update the lab README if a step, a command or an expected output changed.
-4. Run the checks:
+3. If you changed `agent.py`, make the same change in `scripts/checkpoints/agent_start_of_labN.py`.
+   Those are `agent.py` as it stands at the start of Labs 2 to 5, used by `scripts/catch_up.py`.
+4. Update the lab README if a step, a command or an expected output changed.
+5. Run the checks:
 
 ```bash
 uv run ruff check .
-uv run pytest --impl solution                      # all labs pass on the reference
-uv run pytest tests/test_repo_sync.py              # workshop and solution haven't drifted
+uv run pytest --impl solution                      # all labs pass on the reference; workshop/ hasn't drifted;
+                                                   # every catch-up checkpoint passes its earlier labs
 grep -rn "TODO(lab" workshop/ | wc -l              # stubs are still there
 ```
 

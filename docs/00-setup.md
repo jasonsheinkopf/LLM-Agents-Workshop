@@ -1,7 +1,10 @@
 # Lab 0: Setup
 
+**This is the pre-work.** Do it before the day, not on it: a laptop that is ready at 9:00 is worth
+ten minutes of building. If a step fails, send the instructor what you see.
+
 **Goal:** by the end of this page, `uv run python -m gym_agent.doctor` prints three green PASS lines.
-**Time:** about 20 minutes. **Cost:** free, except OpenAI usage (well under $2 for the whole course).
+**Time:** about 20 minutes. **Cost:** free, except OpenAI usage (well under $2 for the whole workshop).
 
 You'll set up:
 
@@ -21,7 +24,7 @@ You'll set up:
 
 [uv](https://docs.astral.sh/uv/) is a fast Python package and project manager. One tool replaces
 `pyenv`, `venv` and `pip`, and it reads the repo's `uv.lock`, so you get exactly the versions the
-course was tested with.
+workshop was tested with.
 
 <img src="img/uv-install.png" alt="The uv installation page, showing the one-line installers" width="640">
 
@@ -58,7 +61,7 @@ python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\a
 pip install openai "langfuse>=5,<6" pinecone "mcp>=2.3,<3" pydantic python-dotenv rich pytest ruff
 ```
 
-Then drop the `uv run` prefix from every command in the course.
+Then drop the `uv run` prefix from every command in the workshop.
 </details>
 
 ---
@@ -67,7 +70,7 @@ Then drop the `uv run` prefix from every command in the course.
 
 1. Sign in at **[platform.openai.com](https://platform.openai.com)**.
 2. Add a payment method under **Settings → Billing**. API usage is billed separately from a ChatGPT subscription.
-3. **Recommended:** set a monthly budget under **Settings → Limits**, for example $5. The course uses far less.
+3. **Recommended:** set a monthly budget under **Settings → Limits**, for example $5. The workshop uses far less.
 4. Go to **[API keys](https://platform.openai.com/api-keys)**, then **Create new secret key**. Give it a name such as `llm-agents-workshop`.
    <img src="img/openai-api-keys.png" alt="Illustration of the API keys page and the one-time 'save your key' dialog" width="640">
 
@@ -98,7 +101,7 @@ The key is shown only once. If you lose it, delete it and make a new one.
 ## Step 3: Langfuse (needed from Lab 2)
 
 [Langfuse](https://langfuse.com) is an open-source LLM engineering platform: tracing, prompt
-management, datasets and evals. This course uses **Langfuse Cloud**, which is free for this amount
+management, datasets and evals. This workshop uses **Langfuse Cloud**, which is free for this amount
 of usage. You can also [self-host it](https://langfuse.com/self-hosting) with Docker; the code doesn't change.
 
 1. Sign up at **[cloud.langfuse.com](https://cloud.langfuse.com)** (EU region) or

@@ -1,7 +1,7 @@
 # Lab 2: Traces
 
-📺 **Video:** [Agents Unpacked, Episode 2: Traces, see what your agent did](https://youtube.com/@TODO)
-⏱️ **Time:** 30 min · 💳 **Cost:** cents · 🔑 **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`
+**Block 2** · In the room: 10 min explain and demo, 25 min build, 10 min debrief · On your own: about 30 min
+**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*` · **Recording:** *Agents Unpacked*, Episode 2 ([where to find it](../../README.md#recordings))
 
 ## Goal
 
@@ -9,13 +9,23 @@ Record every turn of every call in **Langfuse**, so you can open any conversatio
 what the model was sent, what it said back, how long it took and what it cost. Then grade turns
 with `/good` and `/bad`. Those graded traces become your first test cases in Lab 3.
 
+**The failure to look for:** open the trace of an answer that didn't help. Read the system message. The fact the caller needed was never in it.
+
 **By the end of this lab you can:**
 - explain **traces, observations and sessions**, and why you trace *before* you tune;
 - instrument an LLM app with a drop-in client wrapper and one decorator;
 - find a bad answer in production and see *why* it happened;
 - attach **scores** (user feedback) to traces.
 
-## Concepts
+## Checkpoint
+
+| | You're there when |
+|---|---|
+| **Floor** (every pair, before the debrief) | The Lab 2 tests are green, and one of your own traces is open in Langfuse. You can point at what is missing from its system message |
+| **Target** (most pairs) | You have scored a turn with `/bad`, found it again with a filter, and replayed the whole call as a session |
+| **Ceiling** (if you finish early) | The tasks under [Ceiling](#ceiling-if-you-finish-early), below |
+
+## The idea in two minutes
 
 A **trace** is the record of one unit of work: here, one turn of a phone call. Inside it,
 **observations** form a tree:
@@ -144,8 +154,21 @@ is how real teams grow test sets: from real failures, not imagination.
 - Latency and cost are visible per turn, which matters when you add retrieval and tool loops.
 - "The agent is wrong" becomes a precise question: *which step* was wrong?
 
-## Stretch goals
+## Debrief
 
+Answer these with your pair before you move on. In a room, the instructor asks pairs for their answers. On your own, write yours down.
+
+1. What did the trace of your worst answer show you that the chat window did not?
+2. Was that answer wrong because of the prompt, the knowledge, a tool, or the model? How do you know?
+3. In a system you work on today, what would you want traced that isn't?
+
+## Make it yours
+
+On your [workflow canvas](../../handouts/workflow-canvas.md), fill in **a good outcome**. How would you know an answer was good? How would a user tell you it was bad?
+
+## Ceiling: if you finish early
+
+- Do [turn a bad trace into a test case](#turn-a-bad-trace-into-a-test-case-preview-of-lab-3), above, if you skipped it.
 - Add `metadata={"channel": "phone"}` to `propagate_attributes`, and filter by it in Langfuse.
 - Call with `--caller priya` and `--caller marcus`, then look at the **Users** view.
 - Read `tools.run_tool` in the solution. It uses `start_as_current_observation(as_type="tool")` to
@@ -159,5 +182,7 @@ is how real teams grow test sets: from real failures, not imagination.
 - Traces appear but not grouped: the `@observe` decorator is missing, or it decorates a different function.
 
 `diff workshop/gym_agent/llm.py solution/gym_agent/llm.py` · [TROUBLESHOOTING.md](../../docs/TROUBLESHOOTING.md#langfuse)
+
+**Out of time for this lab?** `repo $ uv run python scripts/catch_up.py 3` gives you working Lab 2 code, so you start the next block with the room. Your own files are backed up first.
 
 **Next:** [Lab 3: Evals →](../03-evals/)
