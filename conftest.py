@@ -23,12 +23,14 @@ os.environ["PINECONE_API_KEY"] = ""
 
 
 def pytest_addoption(parser):
-    parser.addoption("--impl", default=os.getenv("WORKSHOP_IMPL", "workshop"), choices=["workshop", "solution"],
+    parser.addoption("--impl", default=os.getenv("WORKSHOP_IMPL", "workshop"),
                      help="which folder to test: workshop (your code, default) or solution")
 
 
 def pytest_configure(config):
     impl = config.getoption("--impl")
+    if not (REPO / impl / "gym_agent").is_dir():
+        raise pytest.UsageError(f"--impl {impl}: no gym_agent package in {REPO / impl}")
     sys.path.insert(0, str(REPO / impl))
     sys.path.insert(0, str(REPO / "tests"))
     config._workshop_impl = impl

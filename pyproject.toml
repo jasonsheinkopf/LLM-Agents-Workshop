@@ -36,6 +36,7 @@ ignore = ["E501"]
 [tool.ruff.lint.per-file-ignores]
 # the starter code has imports and variables you'll use once you fill in the TODOs
 "workshop/**" = ["F401", "F841"]
+"scripts/checkpoints/**" = ["F401", "F841"]   # the same starter code, part-way through the labs
 
 [tool.ruff.lint.isort]
 known-first-party = ["gym_agent", "fakes", "helpers"]

@@ -12,6 +12,7 @@ __pycache__/
 
 # runtime state written by the agent (bookings, local logs)
 .runtime/
+.checkpoint_test/
 
 # editors / OS
 .DS_Store
