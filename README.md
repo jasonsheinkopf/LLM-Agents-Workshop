@@ -12,7 +12,7 @@ an agent you built, traced, tested and tried to break, and a plan for one of you
 |---|---|
 | **Format** | One day, 9:00 to 5:00, instructor-led, working in pairs |
 | **Room** | 12 to 24 engineers. One instructor, plus a teaching assistant above 16 |
-| **Before the day** | 30 minutes of [pre-work](#before-you-arrive) |
+| **Before the day** | 35 minutes of [pre-work](#before-you-arrive) |
 | **Cost per person** | Under $2 of OpenAI usage. Langfuse and Pinecone are used on their free plans |
 | **On your own** | The same labs, self-paced, in about five and a half hours. See [two ways to run it](#two-ways-to-run-it) |
 
@@ -121,7 +121,7 @@ with the room.
 
 ## Before you arrive
 
-About 30 minutes, one week before. The instructor sends [this email](handouts/pre-work-email.md).
+About 35 minutes, one week before. The instructor sends [this email](handouts/pre-work-email.md).
 
 1. **Set up your laptop** with [Lab 0](docs/00-setup.md). You are ready when
    `uv run python -m gym_agent.doctor` prints three PASS lines. This takes about 20 minutes, and
@@ -129,7 +129,7 @@ About 30 minutes, one week before. The instructor sends [this email](handouts/pr
 2. **Bring one workflow** from your own job: something repetitive or decision-heavy. One sentence
    each for what triggers it, what it needs to know, and what it produces.
 3. **Answer three questions** about what you have built before, so the instructor can pair you well.
-4. **Watch Episode 1** of the [recordings](#recordings) (8 minutes). It is the map for the day.
+4. **Watch Episode 1** of the [recordings](#recordings) (about 10 minutes). It is the map for the day.
 
 Nothing private goes into the workshop. All the data in `data/` is invented, and the
 [data rule](docs/FACILITATOR.md#the-data-rule) says what may and may not be used when you adapt
@@ -149,7 +149,7 @@ Budget about five and a half hours.
 
 <a id="recordings"></a>
 **Recordings.** The explanation and demo for each block are also recorded, as a six-episode
-series called *Agents Unpacked* (about half an hour in total). In a room they are the instructor's
+series called *Agents Unpacked* (about 40 minutes in total). In a room they are the instructor's
 backup if a live demo fails. On your own they are the instructor.
 <!-- Playlist link: replace this comment with [Watch the playlist](https://...) -->
 
