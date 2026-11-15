@@ -20,67 +20,14 @@ what would prove it, and only then the agenda. The agenda is the fourth decision
 | 7 | **Measure**: how do we know it worked? | Four moments: before, during, at the end, and thirty days later. |
 | 8 | **Follow-through**: what happens next? | Every pair leaves with an owner and a next step. An office hour in week one, one email at day thirty. |
 
-That table is the engineers' day. The same eight decisions, answered for leaders, are
-[side by side below](#same-topic-two-workshops).
-
 ## Who it is for, and who it is not
 
-Executives, product managers and engineers do not need the same workshop with different examples.
-They make different decisions and fail in different ways. So this repo holds two workshops, not
-one workshop at two levels of difficulty.
+It is for engineers who will build an agent. Its artifact is a working repository with tests and
+traces.
 
-**The engineers' day** is for people who will build an agent. Its artifact is a working
-repository with tests and traces. It is the main body of this repo, and of this page.
-
-**The leaders' session** is for people who decide where an agent is used, who owns it and what it
-may do alone. Its artifact is a decision: a one-page pilot plan with an owner. It is in
-[leaders/](../leaders/README.md), it takes two hours, and it asks nobody to write code.
-
-Neither is for the other room. An engineer in the leaders' session learns nothing they can
-build. A leader in the engineers' day learns syntax they will never use, and their own decision
-goes untaught. There is no third track here for the people in between, such as product managers
-and operations leads, who specify what an agent should do.
-
-## Same topic, two workshops
-
-The topic is the same: AI agents. The agent is the same: Ridgeline's phone assistant. The eight
-design decisions are the same. The answers differ in every row, because the two rooms decide
-different things.
-
-| | Decision | Engineers: one day | Leaders: two hours |
-|---|---|---|---|
-| 1 | **Who** is in the room, and what do they decide? | Engineers who have called an LLM API and now have to build something reliable with one. Their question is "how do I make this trustworthy?" Their usual failure is a demo that works once. | Senior leaders who decide where agents are used, who owns them and what risk is acceptable. Their question is "where should we use this, and what should we never automate?" Their usual failure is buying the most impressive demo. |
-| 2 | **Outcome**: what can they do afterward that you could watch them do? | Build, diagnose, measure, guard, transfer. | Judge an answer by its evidence, ask for the evidence behind a claim, choose a pilot, gate it, commit to it. |
-| 3 | **Evidence**: what proves it? | Green tests on their own code, a scoreboard of experiments, a red-team record, and a filled-in workflow canvas. | Votes counted before and after each reveal, a scorecard from every table, a gate map, and a signed one-page pilot plan. |
-| 4 | **Arc**: how does a block run? | Explain one idea, demo it with a failure, build in pairs, debrief. Six times. | Explain one idea, show an exhibit with a failure in it, vote or score at tables, debrief. Six times. |
-| 5 | **Labs**: what is the hands-on work, and how is the help structured? | Code, in a starter repo where the boring parts are done. Floor, target and ceiling in every lab. Help that shrinks through the day. | Paper: cards, a scorecard, a map, a plan. Three exhibits from the engineers' agent, then the leaders' own workflows. Help that shrinks the same way, from one question about an exhibit to a one-page plan the room writes itself. |
-| 6 | **Room**: what has to be true on the day? | Pre-work done, synthetic data only, pairs chosen on purpose, a backup for everything live. | Two workflows sent by each leader, the sponsor in the room, mixed tables, nothing confidential on the wall, and nothing live that could fail. |
-| 7 | **Measure**: how do we know it worked? | Four moments: before, during, at the end, and thirty days later. The number that matters is how many canvases reached real use. | The same four moments. The number that matters is whether the pilot started, and whether its owner could show evidence at the review on day thirty. |
-| 8 | **Follow-through**: what happens next? | Every pair leaves with an owner and a next step. An office hour in week one, one email at day thirty. | The room leaves with one owner, one plan and a review date. The baseline is counted in week one. At day thirty the owner answers five questions with evidence, and the group decides to go on, change it or stop. |
-
-**What carries over.** The loop, the planned failures, the four moments of measurement and the
-rule that nothing ends without an owner. So does the agent: the leaders' exhibits are things the
-engineers' day produces.
-
-| The engineers build | The leaders are shown | The question it teaches leaders to ask |
-|---|---|---|
-| A trace of the answer that could not help (Block 2) | The same trace, printed. The system message has no class information in it | "Show me a trace of a wrong answer." |
-| A scoreboard where prompt v2 feels better and scores worse (Block 3) | The same scoreboard, after a vote on whether to ship v2 | "When you change the prompt, what tells you it got better?" |
-| A judge checked against 12 human grades (Block 3) | The 12 of 12, as the answer to "who marks the test?" | "Who grades the answers, and how do you know the grader is right?" |
-| A booking that waits for the caller, enforced in code (Block 5) | The booking that stopped, and where each rule lives | "What can it do without a human confirming, and what stops it doing more?" |
-
-Leaders learn to ask for evidence by being shown some. That is why the exhibits are real outputs
-of this repo and not slides.
-
-**What does not carry over.** Leaders write no code, so "hands-on" changes meaning: a vote, a
-score, a map and a decision. The time on the running example changes too. Engineers stay on
-Ridgeline until the last block, because one example saves attention while they learn to build.
-Leaders leave Ridgeline before the first hour is over, because their outcome is a decision about
-their own work. And the artifact changes: a repository proves that an engineer can build, and a
-plan with a name on it proves that a leader has decided.
-
-The leaders' run of show is in [leaders/FACILITATOR.md](../leaders/FACILITATOR.md). The rest of
-this page is about the engineers' day.
+It is not for people who will not write code. People who decide where an agent is used, rather
+than build one, make different decisions and fail in different ways. They need a workshop designed
+from their own outcomes, not this one with easier examples.
 
 ## The outcomes, and the evidence for each
 

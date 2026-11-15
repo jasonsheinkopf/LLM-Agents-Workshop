@@ -20,7 +20,6 @@ offline tests, an instructor's run of show and the participant handouts.
 | **Format** | One day, instructor-led, working in pairs. The same labs also run self-paced |
 | **What gets built** | A front-desk agent for a fictional climbing gym, with tracing, evals, retrieval, memory, tools and guardrails |
 | **By the end, each pair can** | [Build, diagnose, measure, guard and transfer](#what-participants-can-do-by-the-end) |
-| **Also here** | A [two-hour session for leaders](#the-same-material-for-a-different-audience), built on the same agent |
 
 ## Start here — take the workshop
 
@@ -82,9 +81,7 @@ bar:
 | A terminal, git, and a laptop where you can install software | An agent framework. The loop is written by hand, in about twenty lines |
 | To have called an LLM API once, or be able to follow a call when shown one | A machine learning background |
 
-It is not a Python course, and it will not work for someone who does not write code. People who
-decide where agents get used, and will never build one, need a different session with a different
-outcome. It is described [further down](#the-same-material-for-a-different-audience).
+It is not a Python course, and it will not work for someone who does not write code.
 
 **Before the day**, about 25 minutes. The instructor sends [this email](handouts/pre-work-email.md)
 a week ahead.
@@ -315,28 +312,11 @@ uv run pytest tests/test_lab1_agent.py     # from the repo root: is Lab 1 done?
 uv run python scripts/catch_up.py 4        # behind? start Lab 4 from working code
 ```
 
-## The same material for a different audience
-
-Leaders who decide where agents are used do not need this day with easier examples. They make
-different decisions, so the session was designed again from its outcomes.
-
-| | Engineers | Leaders |
-|---|---|---|
-| **Their question** | How do I make this reliable? | Where does this belong, who owns it, and what must it never do alone? |
-| **Format** | One day, laptops, pairs | Two hours, no laptops, tables of three to five |
-| **They do** | Build, trace, test and attack an agent | Vote on three answers, read one trace, score their own workflows, mark where a person must approve |
-| **They leave with** | Working code, tests and a scoreboard | One pilot, a named owner and a one-page plan |
-| **Evidence it worked** | Tests pass, experiments run, a guardrail held | The plan is signed, and the owner brings evidence to a review thirty days later |
-
-The two sessions share one agent. The leaders' session uses this agent's trace, its scoreboard and
-its guardrails as exhibits, so leaders learn to ask for evidence by being shown some. The complete
-session, with its run of show and printable handouts, is in [leaders/](leaders/README.md).
-
 ## Project status
 
 **Available now.** The starter code and reference solution, seven labs, 45 offline tests that run
-in CI, the evaluation set and graders, the facilitator guide, the design notes, the participant
-handouts, and the leaders' session with its handouts.
+in CI, the evaluation set and graders, the facilitator guide, the design notes, and the participant
+handouts.
 
 **Available to read.** Seven written [concept lessons](START_HERE.md) adapt the planned video narration and lead directly into the hands-on labs. The course can be completed without video.
 

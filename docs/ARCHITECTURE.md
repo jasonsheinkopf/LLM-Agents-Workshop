@@ -98,10 +98,9 @@ LLM-Agents-Workshop/
 │   ├── TROUBLESHOOTING.md   ← the errors people actually hit, and their fixes
 │   ├── FAQ.md               ← "what if…": Windows, pip, other models, own data, costs, concepts
 │   └── GLOSSARY.md          ← every term used in the workshop, in one sentence each
-├── handouts/                ← pre-work email, workflow canvas, exit ticket, follow-up emails, questions for leaders
+├── handouts/                ← pre-work email, workflow canvas, exit ticket, follow-up emails
 ├── labs/                    ← one README per block: goal, checkpoint, steps, debrief
 │   ├── 01-first-agent/  02-traces/  03-evals/  04-memory/  05-tools/  06-mcp/  07-ship-it/
-├── leaders/                 ← the two-hour session for leaders: front page, run of show, handouts
 ├── data/                    ← the fictional gym: handbook.md, schedule.json, callers.json
 │   └── evals/               ← agent_cases.jsonl (19 test calls), judge_calibration.jsonl (12), retrieval_cases.jsonl (15)
 ├── prompts/                 ← system_v1.md, v2, v3: the prompt versions pushed to Langfuse
