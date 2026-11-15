@@ -30,6 +30,12 @@ word for word, so that they can be printed.
 CI runs the same checks on every push. Tests are offline: they use the fake model in
 `tests/fakes.py` and `memory.InMemoryStore`, so contributors never need API keys.
 
+## The README figures
+
+The figures at the top of `README.md` are drawn by `scripts/readme_figures.py`, in a light and a
+dark version. If the scoreboard or the agenda changes, edit `SCORES`, `TIME` or `BLOCKS` in that
+script and run it again. Don't edit the SVG files by hand.
+
 ## Style
 
 - Python 3.11+, formatted for `ruff` (line length 100).

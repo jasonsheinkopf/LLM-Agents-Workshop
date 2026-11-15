@@ -1,7 +1,7 @@
 # Lab 4: Memory
 
 **Block 4** · In the room: 15 min explain and demo, 50 min build, 10 min debrief · On your own: about 60 min
-**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`, `PINECONE_API_KEY` · **Recording:** *Agents Unpacked*, Episode 4 ([where to find it](../../README.md#recordings))
+**Cost:** cents · **Needs:** `OPENAI_API_KEY`, `LANGFUSE_*`, `PINECONE_API_KEY`
 
 ## Goal
 
@@ -131,7 +131,7 @@ If retrieval misses, the model never sees the fact, and no prompt can save it.
 workshop $ uv run python -m gym_agent.evals.retrieval -k 3
 hit  How much is a day pass?                          want [Day passes and prices]  got [...]
 ...
-hit@3 = 100% over 14 questions
+hit@3 = 100% over 15 questions
 ```
 
 Try `-k 1`. Which questions miss, and why? Short, vague questions are the hardest.

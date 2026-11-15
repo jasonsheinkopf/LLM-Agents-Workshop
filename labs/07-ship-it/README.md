@@ -1,7 +1,7 @@
 # Lab 7: Make it yours
 
 **Last block** · In the room: 25 min on your canvas, then 15 min of demos and the exit ticket · On your own: about 30 min, plus an hour in the following week
-**Needs:** all keys · **Recording:** *Agents Unpacked*, Episode 6, second half ([where to find it](../../README.md#recordings))
+**Needs:** all keys
 
 ## Goal
 

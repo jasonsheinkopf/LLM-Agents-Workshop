@@ -1,11 +1,11 @@
 # Pre-work email
 
-Send one week before. It asks for about 35 minutes. Send a one-line reminder two days before to
+Send one week before. It asks for about 25 minutes. Send a one-line reminder two days before to
 anyone whose doctor output you have not received.
 
 ---
 
-**Subject:** Before [day, date]: 35 minutes of preparation for the agents workshop
+**Subject:** Before [day, date]: 25 minutes of preparation for the agents workshop
 
 Hi [name],
 
@@ -13,7 +13,7 @@ On [day, date] we spend the day building an AI agent, piece by piece: one that a
 handbook, takes actions safely, and that you can measure. You will work in pairs, and you will be
 writing code within the first half hour.
 
-To make that possible, four things before the day. Together they take about 35 minutes.
+To make that possible, three things before the day. Together they take about 25 minutes.
 
 **1. Set up your laptop (20 minutes).** Follow Lab 0:
 https://github.com/jasonsheinkopf/LLM-Agents-Workshop/blob/main/docs/00-setup.md
@@ -42,8 +42,6 @@ You will come back to this workflow all day, and leave with a plan for it.
 - Which of these have you used: tracing, evals, a vector database, tool calling, MCP?
 - From 1 to 5, how confident are you that you could tell whether an agent's answers are good
   enough to ship?
-
-**4. Watch one 10-minute video.** [Link to Episode 1.] It is the map for the day.
 
 **Costs.** You need an OpenAI API key with about $2 of credit. [We will provide keys. / Please
 expense it.] Langfuse and Pinecone are free at the size we use.

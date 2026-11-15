@@ -1,247 +1,138 @@
 # LLM Agents Workshop
 
-**A one-day, hands-on workshop for engineers. You arrive able to call an LLM API. You leave with
-an agent you built, traced, tested and tried to break, and a plan for one of your own.**
+**A one-day, hands-on workshop for software engineers.** In pairs, participants take one AI agent
+from a bare model call to a system they can trace, measure and defend, and then they try to break
+it. The repository holds everything needed to run the day: starter code, a reference solution,
+offline tests, an instructor's run of show and the participant handouts.
 
 [![CI](https://github.com/jasonsheinkopf/LLM-Agents-Workshop/actions/workflows/ci.yml/badge.svg)](https://github.com/jasonsheinkopf/LLM-Agents-Workshop/actions/workflows/ci.yml)
 ![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
-![uv](https://img.shields.io/badge/env-uv-purple)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
-> **Two tracks, one agent.** Engineers build it: one day, hands-on, on this page. Leaders decide
-> what to do with one: [two hours, no laptops, no code](leaders/README.md), ending in one pilot
-> with a named owner. The leaders' session uses this agent's real trace, scoreboard and guardrails
-> as its exhibits.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/readme/hero-dark.svg">
+  <img src="docs/img/readme/hero-light.svg" width="100%" alt="One phone call to a climbing gym: can my 8-year-old take the belay class on Saturday, and can you book us in? At 9:30 the agent cannot answer. By 3:40 it answers from the handbook and books after the caller confirms. Six blocks get it there: first agent, traces, evals, memory, tools, MCP.">
+</picture>
 
 | | |
 |---|---|
-| **Format** | One day, 9:00 to 5:00, instructor-led, working in pairs |
-| **Room** | 12 to 24 engineers. One instructor, plus a teaching assistant above 16 |
-| **Before the day** | 35 minutes of [pre-work](#before-you-arrive) |
-| **Cost per person** | Under $2 of OpenAI usage. Langfuse and Pinecone are used on their free plans |
-| **On your own** | The same labs, self-paced, in about five and a half hours. See [two ways to run it](#two-ways-to-run-it) |
+| **For** | Engineers who can read and change Python and have called an LLM API |
+| **Format** | One day, instructor-led, working in pairs. The same labs also run self-paced |
+| **What gets built** | A front-desk agent for a fictional climbing gym, with tracing, evals, retrieval, memory, tools and guardrails |
+| **By the end, each pair can** | [Build, diagnose, measure, guard and transfer](#what-participants-can-do-by-the-end) |
+| **Also here** | A [two-hour session for leaders](#the-same-material-for-a-different-audience), built on the same agent |
 
-The whole day is built around one phone call. Ridgeline Climbing Gym, a fictional gym, wants an AI
-to answer the phone, and a parent calls:
-
-> *"Can my 8-year-old take the belay class on Saturday? And can you book us in?"*
-
-At 9:30 your agent cannot answer that. By mid-afternoon it answers from the gym's handbook,
-checks the schedule, books the right class after the caller confirms, and you have the numbers to
-prove each step helped.
+**On this page:**
+[Why it is designed this way](#why-it-is-designed-this-way) ·
+[Who it is for](#who-it-is-for) ·
+[Outcomes](#what-participants-can-do-by-the-end) ·
+[The agent](#the-agent-participants-build) ·
+[The day](#the-day) ·
+[Assessment](#how-learning-is-assessed) ·
+[Evidence](#evidence-from-evaluating-the-example-agent) ·
+[Running it](#running-it) ·
+[Quick start](#quick-start) ·
+[Status](#project-status)
 
 ---
 
-## Who this is for
+## Why it is designed this way
 
-Developers who have called an LLM API, or can read a Python function and change a few lines, and
-who have not yet built an agent with tracing, evals and guardrails. You don't need to have used
-Langfuse, Pinecone or MCP.
+A workshop is judged by what people can do afterward, so this one was designed from that end. The
+learner came first, then what they should be able to do, then what would prove it. The labs and
+the agenda came last.
 
-It is not a Python course, and it is not for people who won't write code. Leaders who decide
-where agents are used get a different session with a different outcome: the
-[leaders' track](leaders/README.md), two hours with no laptops, which ends in a pilot plan, not a
-repository.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/readme/designed-backward-dark.svg">
+  <img src="docs/img/readme/designed-backward-light.svg" width="100%" alt="The design order: 1 learner, 2 outcomes, 3 evidence, 4 exercises, 5 agenda. The agenda was the fifth decision, not the first.">
+</picture>
 
-## What you will be able to do
+Six decisions follow from that. Each one is visible somewhere in the materials.
 
-By 5:00, every pair can do these five things. Each one has evidence you can see in the room.
-
-| | By the end of the day you can | Shown by |
+| Decision | Why | Where it shows |
 |---|---|---|
-| 1 | **Build** an agent that answers from a handbook and books a class only after the caller confirms | Lab tests green on your own code, and one live booking |
-| 2 | **Diagnose** a wrong answer from its trace, and name the layer that failed: prompt, knowledge, tool or model | You open one of your own bad traces and say what was missing |
-| 3 | **Measure** a change before you ship it: run an experiment over 19 test calls and decide from the scores | Your scoreboard, with a regression caught and a better prompt promoted |
-| 4 | **Guard** the actions that matter in code, where neither a caller nor another agent can talk past them | The red-team round: one guardrail that held, and one failure turned into a test case |
-| 5 | **Transfer** the pattern to a workflow from your own job | A one-page [workflow canvas](handouts/workflow-canvas.md) with five test cases, an owner and a next step |
+| **Five observable outcomes, fixed first** | A list of topics says what was covered. It does not say what anyone can do | Every block produces one of the five outcomes. Fine-tuning, multi-agent orchestration, agent frameworks and deployment produce none, so they are not in the day |
+| **One scenario all day** | Attention spent learning a new example is attention not spent on the idea | The same phone call from 9:15 to 5:00. Each block fixes one thing the previous version of the agent could not do |
+| **Mostly building** | The outcomes are things people do, so most of the day is spent doing them | No explanation runs past 15 minutes. About three fifths of the working day is hands-on, and every lab ends at a checkpoint |
+| **Failure on purpose** | Agents fail in ordinary use. Finding the layer that failed is the skill | The bare model cannot book. The prompt that feels better breaks two rules. Retrieval misses at `k=1`. The red-team round exists to break the finished agent |
+| **Help that shrinks** | Following steps is not the same as being able to do the work | Blocks 1 and 2 are a code-along. From Block 3 the key parts are described, not given. The last two activities have no steps |
+| **It ends in the participant's own work** | A good day that changes nothing afterward has not worked | Each pair fills in a canvas for a workflow from their own job, names an owner, and is asked about it thirty days later |
 
-## What you leave with
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/readme/time-and-help-dark.svg">
+  <img src="docs/img/readme/time-and-help-light.svg" width="100%" alt="Every block runs explain, demo, build, debrief. Of 390 working minutes, 18 percent is explanation and demo, 62 percent is building, 20 percent is checking and debriefing. The help on the lab page shrinks from a code-along in blocks 1 and 2, to described steps in blocks 3 to 5, to a challenge with no steps.">
+</picture>
 
-**A working agent in your own clone of this repo**, built from six pieces:
+The full reasoning, including what was left out and why, is in [docs/DESIGN.md](docs/DESIGN.md).
 
-| Block | Your agent can | Built with |
+## Who it is for
+
+Engineers who have not yet built an agent with tracing, evals and guardrails, and who meet this
+bar:
+
+| You need | You do not need |
+|---|---|
+| To read a Python function and change a few lines of it | Experience with Langfuse, Pinecone or MCP |
+| A terminal, git, and a laptop where you can install software | An agent framework. The loop is written by hand, in about twenty lines |
+| To have called an LLM API once, or be able to follow a call when shown one | A machine learning background |
+
+It is not a Python course, and it will not work for someone who does not write code. People who
+decide where agents get used, and will never build one, need a different session with a different
+outcome. It is described [further down](#the-same-material-for-a-different-audience).
+
+**Before the day**, about 25 minutes. The instructor sends [this email](handouts/pre-work-email.md)
+a week ahead.
+
+1. **Set up the laptop** with [Lab 0](docs/00-setup.md). It is ready when the doctor command
+   prints three PASS lines. This is the one thing that cannot wait until the day.
+2. **Bring one workflow** from your own job: something repetitive or decision-heavy.
+3. **Answer three questions** about what you have built before, so pairs can be chosen on purpose.
+
+## What participants can do by the end
+
+Each outcome is something you can watch a pair do. The floor is what every pair shows before the
+block ends. The stretch is there for pairs who get to the floor early.
+
+| | Outcome | The floor: what every pair shows | The stretch |
+|---|---|---|---|
+| 1 | **Build** an agent that answers from a handbook and books a class only after the caller confirms | Lab tests pass on their own code, and one booking goes through the confirmation step | A `cancel_booking` tool with its own validation and confirmation, tests first |
+| 2 | **Diagnose** a wrong answer from its trace, and name the layer that failed: prompt, knowledge, tool or model | Each person opens one of their own bad traces and says what was missing | That trace becomes a test case |
+| 3 | **Measure** a change before shipping it | Two experiments over the same 19 test calls, and a decision about which prompt ships | The judge is calibrated against human grades, and a fourth prompt beats the third |
+| 4 | **Guard** the actions that matter in code, where a caller cannot talk past them | In the red-team round: one guardrail that held, named by the file it lives in | A failure becomes a test case, the right layer is fixed, and the experiment is re-run |
+| 5 | **Transfer** the pattern to a workflow from their own job | A one-page [workflow canvas](handouts/workflow-canvas.md) with five test cases, an owner and a next step | Another pair reads it and asks the question it does not answer |
+
+## The agent participants build
+
+Ridgeline Climbing Gym is fictional. It wants an AI on the front desk, and a parent calls with one
+question that the whole day is built around: *can my 8-year-old take the belay class on Saturday,
+and can you book us in?* The right answer needs a policy the model was never trained on (the class
+is 12 and up), live data (seats left in the class the child can take) and an action with
+consequences (a booking). A bare model has none of the three.
+
+| Block | The agent can now | Built with |
 |---|---|---|
-| 1 | hold a conversation, with instructions it follows | **OpenAI** chat completions |
-| 2 | show you every step it took: prompts, retrievals, tool calls, tokens, cost, latency | **Langfuse** tracing |
-| 3 | be measured: a test set, an LLM-as-a-judge you have calibrated, experiments that compare prompt versions | **Langfuse** prompts, datasets and experiments |
-| 4 | answer from the gym's handbook (RAG), and remember callers between calls | **Pinecone** + OpenAI embeddings |
-| 5 | check the schedule, book a class and text a confirmation, with guardrails in code | OpenAI tool calling + **Pydantic** |
-| 6 | offer the same tools to any other agent, such as Claude Desktop or Cursor | **MCP** (Model Context Protocol) |
+| 1 | hold a conversation, following its instructions | OpenAI chat completions |
+| 2 | show every step it took: prompts, retrievals, tool calls, tokens, cost, latency | Langfuse tracing |
+| 3 | be measured: a test set, a calibrated LLM judge, experiments that compare prompt versions | Langfuse prompts, datasets and experiments |
+| 4 | answer from the gym's handbook, and remember a caller between calls | Pinecone and OpenAI embeddings |
+| 5 | check the schedule, book a class and send a confirmation, behind guardrails that live in code | OpenAI tool calling and Pydantic |
+| 6 | offer the same tools, with the same guardrails, to another agent | MCP (Model Context Protocol) |
 
-**A scoreboard that tells the story of the day.** You fill in your own. This one is from a full
-run of the labs on `gpt-5-mini`, Pinecone and Langfuse, over the same 19 test calls:
-
-| Run | Judge pass | Knowledge | Honesty | Safety | Booking |
-|---|---:|---:|---:|---:|---:|
-| Block 3: prompt v1 (careful, wordy) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
-| Block 3: prompt v2 ("be brief") | **0.21** | 1/8 | **0/2** | **0/1** | 2/6 |
-| Block 3: prompt v3 (brief, keeps the rules) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
-| Block 4: v3 + memory | **0.84** | **8/8** | 2/2 | 1/1 | 3/6 |
-| Block 5: v3 + memory + tools | **0.90** | 8/8 | 2/2 | 1/1 | **5/6** |
-
-Read down the rows. A prompt change that felt better in chat quietly broke honesty and safety
-(v2). A fix restored them at half the length (v3). Knowledge that no prompt could fix was fixed by
-memory, and bookings were fixed by tools. The judge agreed with human grades on 12 of 12
-calibration answers before any of these scores were trusted.
-
-**A plan for your own work.** The [workflow canvas](handouts/workflow-canvas.md) you fill in during
-the day: one workflow from your job, the knowledge and actions it needs, which actions need a human
-to confirm, five test cases, what you will not automate, and who owns the next step.
-
----
-
-## How the day runs
-
-Every block runs the same loop: a short **explanation** of one idea, a live **demo** that includes
-a failure, a long **build** in pairs while the instructor circulates, and a **debrief**.
-
-| Time | Block | Explain and demo | Build | You're done when |
-|---|---|---:|---:|---|
-| 9:00 | Arrive and check | | | The doctor command prints three PASS lines on every laptop |
-| 9:15 | **1. First agent** ([Lab 1](labs/01-first-agent/)) | 10 min | 25 min | Your tests are green, and you have watched the bare model fail to book |
-| 10:00 | **2. Traces** ([Lab 2](labs/02-traces/)) | 10 min | 25 min | You open one of your own traces and find the missing fact |
-| 10:45 | Break | | | |
-| 11:00 | **3. Evals** ([Lab 3](labs/03-evals/)) | 15 min | 50 min | Two experiments are on screen, and the room votes which prompt to ship |
-| 12:15 | Lunch | | | |
-| 1:15 | **4. Memory** ([Lab 4](labs/04-memory/)) | 15 min | 50 min | Your knowledge score moved in your re-run |
-| 2:30 | Break | | | |
-| 2:45 | **5. Tools** ([Lab 5](labs/05-tools/)) | 15 min | 40 min | A live booking goes through the two-step confirmation |
-| 3:40 | **Red-team round** ([Lab 5, part 2](labs/05-tools/#break-it-the-red-team-round)) | | 15 min | You have thrown five hostile inputs at your agent and written down what held |
-| 4:00 | **6. MCP** ([Lab 6](labs/06-mcp/)) | 5 min | 12 min | Another client lists and calls your tools |
-| 4:20 | **Make it yours** ([Lab 7](labs/07-ship-it/)) | | 25 min | Your workflow canvas is filled in, with an owner |
-| 4:45 | Demos, exit ticket, close | | | Three pairs demo. Everyone hands in an [exit ticket](handouts/exit-ticket.md) |
-
-About a fifth of the working day is explanation and demo, three fifths is building, and a fifth
-is checking and debriefing. No explanation runs longer than 15 minutes.
-
-**The help you get shrinks as the day goes on.** Blocks 1 and 2 are a code-along: every line is on
-the page. From Block 3 the parts that carry the lesson (the graders, the retriever, the
-guardrails) are described, not given, and the tests tell you when they work. The last block has no
-steps at all, only an outcome.
-
-**Nobody gets left behind, and nobody waits.** Every lab has a floor that every pair reaches, a
-target most pairs reach, and a ceiling for pairs who finish early. If you fall behind,
-`uv run python scripts/catch_up.py 4` gives you working code for Labs 1 to 3, so you start Lab 4
-with the room.
-
-## Before you arrive
-
-About 35 minutes, one week before. The instructor sends [this email](handouts/pre-work-email.md).
-
-1. **Set up your laptop** with [Lab 0](docs/00-setup.md). You are ready when
-   `uv run python -m gym_agent.doctor` prints three PASS lines. This takes about 20 minutes, and
-   it is the one thing that cannot wait until the day.
-2. **Bring one workflow** from your own job: something repetitive or decision-heavy. One sentence
-   each for what triggers it, what it needs to know, and what it produces.
-3. **Answer three questions** about what you have built before, so the instructor can pair you well.
-4. **Watch Episode 1** of the [recordings](#recordings) (about 10 minutes). It is the map for the day.
-
-Nothing private goes into the workshop. All the data in `data/` is invented, and the
-[data rule](docs/FACILITATOR.md#the-data-rule) says what may and may not be used when you adapt
-the labs to your own work.
-
-## Two ways to run it
-
-**In a room.** The [facilitator guide](docs/FACILITATOR.md) is the run of show: what to say and
-demo in each block, the failure to show on purpose, the checkpoint, the debrief questions, what to
-do when a third of the laptops fail, and how to measure whether the day worked. The
-[handouts](handouts/) are ready to send and print: the pre-work email, the workflow canvas, the
-exit ticket and the follow-up emails.
-
-**On your own.** Start at [Lab 0](docs/00-setup.md) and work through the labs in order. Each lab
-README gives the idea, the steps, the checkpoint and the debrief questions to answer for yourself.
-Budget about five and a half hours.
-
-<a id="recordings"></a>
-**Recordings.** The explanation and demo for each block are also recorded, as a six-episode
-series called *Agents Unpacked* (about 40 minutes in total). In a room they are the instructor's
-backup if a live demo fails. On your own they are the instructor.
-<!-- Playlist link: replace this comment with [Watch the playlist](https://...) -->
-
-## Why it is built this way
-
-The design is written out in [docs/DESIGN.md](docs/DESIGN.md). In short:
-
-1. **It starts from the outcomes.** The five outcomes above were fixed first. Every block exists
-   to produce one of them, and topics that don't (fine-tuning, multi-agent orchestration,
-   deployment) are left out.
-2. **It teaches only enough to act.** One idea per block, and the concept before the library: you
-   write the agent loop yourself before any framework would hide it.
-3. **Everyone is building within 25 minutes**, and keeps building: floor, target and ceiling in
-   every lab, pairs, and a catch-up command.
-4. **Failure is planned.** The bare model fails in Block 1. The prompt that feels better scores
-   worse in Block 3. The red-team round exists to break what you built.
-5. **It measures what you built.** Tests are the checkpoint for every lab, the scoreboard is the
-   evidence for the day, and the workshop itself is measured before, during, at the end and thirty
-   days later.
-6. **It ends with an owner.** Nobody leaves with only a demo. They leave with a canvas that names
-   who does what next.
-
----
-
-## Quick start
-
-You'll need **Python 3.11+**, **git**, and a terminal. Full instructions, including how to get
-each API key, are in [Lab 0](docs/00-setup.md).
-
-```bash
-# 1. Get the code and the exact dependencies (uv installs Python for you if needed)
-git clone https://github.com/jasonsheinkopf/LLM-Agents-Workshop.git
-cd LLM-Agents-Workshop
-uv sync
-
-# 2. Add your keys
-cp .env.example .env        # then edit .env (see docs/00-setup.md)
-
-# 3. Check everything is connected
-cd workshop
-uv run python -m gym_agent.doctor
-```
-
-Want to see the finished agent before you build it? Run the solution:
-
-```bash
-cd solution
-uv run python -m gym_agent.memory ingest      # load the handbook into Pinecone (once)
-uv run python -m gym_agent.chat               # call the gym as Dana
-```
-
-## How the labs work
-
-```
-workshop/   ← YOU work here. The app runs from the start; each lab fills in a few TODO(lab N) functions.
-solution/   ← The finished agent. Same files and the same commands. Compare when you're stuck.
-tests/      ← Offline tests (no keys, no cost). They tell you when a lab is done.
-```
-
-Each lab README has the same parts, in the same order: the goal, the checkpoint (floor, target and
-ceiling), the idea in two minutes, the steps, a real run against OpenAI, Langfuse and Pinecone,
-what to notice, the debrief questions, and one row of your workflow canvas to fill in.
-
-```bash
-uv run pytest tests/test_lab1_agent.py     # check your Lab 1 code (run from the repo root)
-uv run pytest                              # check all labs (later labs fail until you get there; that's expected)
-uv run pytest --impl solution              # check the reference solution (all green)
-grep -rn "TODO(lab3)" workshop/            # list everything Lab 3 asks you to write
-diff workshop/gym_agent/memory.py solution/gym_agent/memory.py   # compare with the answer
-uv run python scripts/catch_up.py 4        # behind? start Lab 4 from working code (your files are backed up)
-```
-
-> **Run commands from the right folder.** App commands (`python -m gym_agent...`) run inside
-> `workshop/` (or `solution/`). Tests and the catch-up script run from the repo root. Every lab
-> README shows a prompt such as `workshop $` so you always know where you are.
-
-## How the agent fits together
+**What is real and what is simulated.** The model calls, the traces, the experiments, the vector
+index and the MCP server are real: participants use their own OpenAI, Langfuse and Pinecone
+accounts. The phone call is a chat in a terminal. A "text message" is recorded and never sent. A
+"booking" is a line in a local file. The gym, its handbook and its callers are invented, and phone
+numbers use the reserved `555-01xx` range.
 
 ```mermaid
 flowchart LR
     caller([Caller]) --> turn
 
-    subgraph agent["Your agent  (workshop/gym_agent/agent.py)"]
+    subgraph agent["The agent  (workshop/gym_agent/agent.py)"]
         turn["Call.send()<br/>one turn"] --> ctx["Build context<br/>prompt + caller + memories + handbook"]
         ctx --> model{{"Model<br/>OpenAI"}}
         model -- "tool call" --> guard["Guardrails<br/>allow-list · validate · confirm"]
-        guard --> tools["Tools<br/>check_schedule · book_class<br/>lookup_member · send_text<br/>search_handbook · transfer"]
+        guard --> tools["Tools<br/>check_schedule · book_class<br/>lookup_member · send_text<br/>search_handbook · transfer_to_staff"]
         tools -- "result (data)" --> model
         model -- "answer" --> reply([reply])
     end
@@ -255,67 +146,196 @@ flowchart LR
     tools <-. "same tools" .-> mcp["MCP server"]
 ```
 
-There is more detail in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+The guardrails are code, and the offline tests exercise them: an allow-list of tools, argument
+validation, age and seat rules, a step limit, and a booking that only completes on a caller turn
+later than the one where the summary was read out. More detail, and the repository layout, in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## Repo layout
+## The day
 
+Six teaching blocks, each with a lab. Lab 0 is setup and happens before the day. Blocks 1 to 6 are
+Labs 1 to 6. The red-team round is the second half of Lab 5, and the closing block is Lab 7.
+
+| Time | Block | Explain and demo | Build | Every pair is here before moving on |
+|---|---|---:|---:|---|
+| 9:00 | Arrive and check | | | The doctor command prints three PASS lines on every laptop |
+| 9:15 | **1. First agent** ([Lab 1](labs/01-first-agent/)) | 10 min | 25 min | Tests pass, and they have watched the bare model fail to book |
+| 10:00 | **2. Traces** ([Lab 2](labs/02-traces/)) | 10 min | 25 min | One of their own traces is open, and they can point at the missing fact |
+| 10:45 | Break | | | |
+| 11:00 | **3. Evals** ([Lab 3](labs/03-evals/)) | 15 min | 50 min | Two experiments are on screen, and the room votes which prompt ships |
+| 12:15 | Lunch | | | |
+| 1:15 | **4. Memory** ([Lab 4](labs/04-memory/)) | 15 min | 50 min | The knowledge score moved in their own re-run |
+| 2:30 | Break | | | |
+| 2:45 | **5. Tools** ([Lab 5](labs/05-tools/)) | 15 min | 40 min | A booking stops for confirmation and completes on the next message |
+| 3:40 | **Red-team round** ([Lab 5, part 2](labs/05-tools/#break-it-the-red-team-round)) | | 15 min | Five hostile inputs tried, and what stopped each one written down |
+| 4:00 | **6. MCP** ([Lab 6](labs/06-mcp/)) | 5 min | 12 min | An outside client lists the tools and hits the same confirmation step |
+| 4:20 | **Make it yours** ([Lab 7](labs/07-ship-it/)) | | 25 min | A finished workflow canvas, with an owner |
+| 4:45 | Demos, exit ticket, close | | | Three pairs demo. Everyone hands in an [exit ticket](handouts/exit-ticket.md) |
+
+Three mechanisms keep a mixed room together:
+
+- **Floor, target, ceiling.** Every lab names the minimum every pair must reach, what most pairs
+  finish, and a harder task for pairs who are done early. The instructor protects the floor.
+- **A way back in.** `uv run python scripts/catch_up.py 4` puts a pair's code in the state it
+  should be in at the start of Lab 4, after backing up what they wrote. Falling behind in one block
+  does not cost them the next.
+- **Pairs chosen on purpose.** A stronger coder with someone who knows the business process, using
+  the answers from the pre-work.
+
+The timings are a design, not a record: this agenda has not yet been run with a room. If it runs
+long, the [facilitator guide](docs/FACILITATOR.md) says what to shorten first, and it includes a
+3.5-hour variant.
+
+## How learning is assessed
+
+Finishing a guided lab shows that someone can follow steps. The day checks for more than that, in
+four ways.
+
+| What is checked | How | When |
+|---|---|---|
+| **Guided completion** | Offline tests for each lab. They need no keys and cost nothing, so "are you done?" has a yes-or-no answer | Every block |
+| **Independent change** | The red-team round has no steps. Every pair tries five hostile inputs and says what stopped each one. Pairs who get further write a failing input into the test set, fix the layer responsible and re-run the experiment | 3:40, and each lab's ceiling |
+| **Diagnosis** | Each person explains a failure from its trace and names the layer. In the closing demos, each pair names the failing case they would fix next and where it lives | Every debrief, and the close |
+| **Transfer** | The workflow canvas and the [exit ticket](handouts/exit-ticket.md) on the day. One [email at day 30](handouts/follow-up-emails.md) asking what happened to the plan | The close, and afterward |
+
+The workshop itself is meant to be measured the same way: before (the pre-work answers), during
+(the checkpoint in every block), at the end (the artifacts and the exit ticket) and thirty days
+later. Those instruments are written and ready. They have not been used yet, so there are no
+participant results to report.
+
+## Evidence from evaluating the example agent
+
+This is the one place the repository reports measurements. They come from running the reference
+agent while building the labs, not from participants.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/readme/scoreboard-dark.svg">
+  <img src="docs/img/readme/scoreboard-light.svg" width="100%" alt="Judge pass rate over the same 19 test calls: prompt v1 0.26, prompt v2 0.21, prompt v3 0.26, v3 plus memory 0.84, v3 plus memory and tools 0.90.">
+</picture>
+
+| Run | Judge pass | Knowledge | Honesty | Safety | Booking |
+|---|---:|---:|---:|---:|---:|
+| Prompt v1 (careful, wordy) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
+| Prompt v2 ("be brief") | 0.21 | 1/8 | 0/2 | 0/1 | 2/6 |
+| Prompt v3 (brief, keeps the rules) | 0.26 | 0/8 | 2/2 | 1/1 | 1/6 |
+| v3 + memory | 0.84 | 8/8 | 2/2 | 1/1 | 3/6 |
+| v3 + memory + tools | 0.90 | 8/8 | 2/2 | 1/1 | 5/6 |
+
+**What it measures.** The same 19 scripted calls go through each version of the agent. Judge pass
+is the share of replies an LLM judge accepted: the reply states the required facts and does none
+of the forbidden things. A case in the other columns passes when the judge accepts it and a code
+check finds the agent booked only when it should have. The judge agreed with a person's grades on
+12 of 12 calibration answers. Retrieval, measured separately, returned the right handbook section
+in the top three for 15 of 15 questions, and in the top one for 13 of 15.
+
+**What it shows.**
+
+- **The better-sounding prompt broke two rules.** Version 2 was written to fix a real complaint,
+  long answers. It was shorter, and with the length it dropped the rules about honesty and safety.
+  In a chat window it felt like an improvement. On the test set it failed the safety case in
+  every run.
+- **No prompt fixed knowledge.** Versions 1 and 3 scored 0 of 8 on knowledge questions in every
+  run, because the agent had never seen the handbook. With retrieval it passed 8 of 8.
+- **No amount of knowledge fixed booking.** With the handbook the agent knew the rules and still
+  could not see live seats or book. Tools moved booking to 5 of 6, from 3 of 6 at best without them.
+
+**What it does not show.** Nineteen cases on one model is enough to catch a broken rule and to
+compare versions. It is not evidence that the agent is ready for real callers, and twelve
+calibration answers do not establish the judge's accuracy in general.
+[Lab 7](labs/07-ship-it/#the-production-checklist) lists what would come before production.
+
+**How stable it is.** The table is one recorded run. Re-running all five versions later, with the
+same cases and graders, gave 0.26, 0.37, 0.26, 0.79 and 0.84. Versions 1 and 3 came out identical.
+Version 2 is the unstable one: over three runs its overall rate was 0.21, 0.21 and 0.37, because a
+prompt with no rules guesses, and some guesses are right. Where it failed did not vary: the safety
+case in every run, and at least one of the two honesty cases. That is why the scoreboard is read by
+category and not as one average.
+
+The lesson the scoreboard is there to teach is the one participants reach for themselves in Block
+3: a change to an agent is a guess until it has been measured.
+
+## Running it
+
+The materials are written so that the day does not depend on one instructor's memory.
+
+| If you want to | Go to |
+|---|---|
+| Teach it | [docs/FACILITATOR.md](docs/FACILITATOR.md): what to say and demo in each block, the failure to show on purpose, the checkpoint, the debrief questions, and what to do when a third of the laptops fail |
+| Understand the design | [docs/DESIGN.md](docs/DESIGN.md) |
+| Send and print | [handouts/](handouts/): pre-work email, workflow canvas, exit ticket, follow-up emails |
+| Do it on your own | Start at [Lab 0](docs/00-setup.md) and take the labs in order. Budget about five and a half hours. Each lab page carries the idea, the steps, the checkpoint and the debrief questions |
+| Fix a problem | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) and [docs/FAQ.md](docs/FAQ.md) |
+| Look up a term | [docs/GLOSSARY.md](docs/GLOSSARY.md) |
+
+Budget about $2 of OpenAI usage per person for the whole day on the default `gpt-5-mini`. Langfuse
+and Pinecone are used on their free plans.
+
+## Quick start
+
+You need Python 3.11 or later, git and a terminal. [Lab 0](docs/00-setup.md) has the full
+instructions, including how to get each API key.
+
+```bash
+# 1. Get the code and the pinned dependencies (uv installs Python if needed)
+git clone https://github.com/jasonsheinkopf/LLM-Agents-Workshop.git
+cd LLM-Agents-Workshop
+uv sync
+
+# 2. Check the reference solution without any keys: 45 offline tests
+uv run pytest --impl solution
+
+# 3. Add your keys, then check they work
+cp .env.example .env                  # edit .env (see docs/00-setup.md)
+cd workshop
+uv run python -m gym_agent.doctor     # three PASS lines means you are ready
 ```
-LLM-Agents-Workshop/
-├── README.md                ← you are here
-├── docs/
-│   ├── DESIGN.md            ← how the workshop was designed, and why
-│   ├── FACILITATOR.md       ← the run of show for the instructor, block by block
-│   ├── 00-setup.md          ← Lab 0 (pre-work): uv, the three API keys, the doctor check
-│   ├── ARCHITECTURE.md      ← how the pieces fit, and what a trace looks like
-│   ├── TROUBLESHOOTING.md   ← the errors people actually hit, and their fixes
-│   ├── FAQ.md               ← "what if…": Windows, pip, other models, own data, costs, concepts
-│   └── GLOSSARY.md          ← every term used in the workshop, in one sentence each
-├── handouts/                ← pre-work email, workflow canvas, exit ticket, follow-up emails, questions for leaders
-├── leaders/                 ← the leaders' track: two hours, no laptops, ends in a one-page pilot plan
-│   ├── README.md            ← who it is for, the outcomes, the agenda
-│   ├── FACILITATOR.md       ← the run of show, block by block
-│   └── handouts/            ← answer cards, trace and scoreboard exhibits, scorecard, gate map, pilot plan, emails
-├── labs/                    ← one README per block: goal, checkpoint, steps, debrief
-│   ├── 01-first-agent/  02-traces/  03-evals/  04-memory/  05-tools/  06-mcp/  07-ship-it/
-├── data/                    ← the fictional gym: handbook.md, schedule.json, callers.json
-│   └── evals/               ← agent_cases.jsonl (19 test calls), judge_calibration.jsonl, retrieval_cases.jsonl
-├── prompts/                 ← system_v1.md, v2, v3: the prompt versions you push to Langfuse
-├── workshop/gym_agent/      ← the starter code you complete
-├── solution/gym_agent/      ← the complete reference implementation
-│   ├── agent.py             ← the turn: context → model → tools loop → reply (traced)
-│   ├── llm.py               ← the OpenAI client (Langfuse-wrapped from Lab 2)
-│   ├── prompts.py           ← fetch prompts from Langfuse by label; push and promote versions
-│   ├── memory.py            ← chunk → embed → Pinecone; handbook search; per-caller memories
-│   ├── tools.py             ← tool schemas and implementations (schedule, booking, member lookup, text, transfer)
-│   ├── guardrails.py        ← allow-list, Pydantic validation, the confirmation rule
-│   ├── mcp_server.py        ← the same tools over MCP, plus mcp_client.py to try them
-│   ├── evals/               ← upload_dataset, evaluators (code + LLM judge), run_experiment, calibrate_judge, retrieval
-│   ├── chat.py              ← talk to your agent in the terminal
-│   └── doctor.py            ← checks your keys against the real services
-├── scripts/catch_up.py      ← start any lab from working code
-├── tests/                   ← offline tests per lab (a fake model, an in-memory vector store)
-├── CONTRIBUTING.md          ← for maintainers: keeping workshop/ and solution/ in sync
-├── .env.example             ← copy to .env, add your keys
-└── pyproject.toml / uv.lock ← pinned dependencies (uv)
+
+To see the finished agent before building it, run the solution from the repo root:
+
+```bash
+cd solution
+uv run python -m gym_agent.memory ingest      # load the handbook into Pinecone, once
+uv run python -m gym_agent.chat               # call the gym as Dana
 ```
 
-## The scenario is fictional
+The work happens in `workshop/`, where each lab fills in a few `TODO(labN)` functions. `solution/`
+has the same files finished. `tests/` tells you when a lab is done:
 
-Ridgeline Climbing Gym, its handbook, prices, classes and callers are all invented for this
-workshop. Phone numbers use the reserved `555-01xx` range. A climbing gym makes a good running
-example because it has everything a real business agent faces: policies with exceptions (ages,
-waivers), live data (seats left), actions with consequences (bookings), safety-critical handoffs
-(injuries), and repeat customers worth remembering.
+```bash
+uv run pytest tests/test_lab1_agent.py     # from the repo root: is Lab 1 done?
+uv run python scripts/catch_up.py 4        # behind? start Lab 4 from working code
+```
 
-## When you're done: clean up
+## The same material for a different audience
 
-- **Pinecone:** delete the `ridgeline-agent` index in the console, or keep it, since it fits in the free plan.
-- **OpenAI:** revoke the key you made for the workshop, if you won't use it again.
-- **Langfuse:** keep the project. It's your record of everything you built.
+Leaders who decide where agents are used do not need this day with easier examples. They make
+different decisions, so the session was designed again from its outcomes.
 
-## Credits and license
+| | Engineers | Leaders |
+|---|---|---|
+| **Their question** | How do I make this reliable? | Where does this belong, who owns it, and what must it never do alone? |
+| **Format** | One day, laptops, pairs | Two hours, no laptops, tables of three to five |
+| **They do** | Build, trace, test and attack an agent | Vote on three answers, read one trace, score their own workflows, mark where a person must approve |
+| **They leave with** | Working code, tests and a scoreboard | One pilot, a named owner and a one-page plan |
+| **Evidence it worked** | Tests pass, experiments run, a guardrail held | The plan is signed, and the owner brings evidence to a review thirty days later |
 
-Designed and built by [Jason Sheinkopf](https://github.com/jasonsheinkopf). Code is MIT-licensed,
-see [LICENSE](LICENSE). Found a bug, or a step that confused you?
-[Open an issue](https://github.com/jasonsheinkopf/LLM-Agents-Workshop/issues): the next room
-benefits.
+The two sessions share one agent. The leaders' session uses this agent's trace, its scoreboard and
+its guardrails as exhibits, so leaders learn to ask for evidence by being shown some. The complete
+session, with its run of show and printable handouts, is in [leaders/](leaders/README.md).
+
+## Project status
+
+**Available now.** The starter code and reference solution, seven labs, 45 offline tests that run
+in CI, the evaluation set and graders, the facilitator guide, the design notes, the participant
+handouts, and the leaders' session with its handouts.
+
+**In development.** A six-part companion video series, one episode per block. Drafts exist and
+none are published, so nothing in the workshop depends on them.
+
+**Not claimed.** This workshop has not yet been taught to a cohort. The agenda timings are a
+design. There are no participant outcomes, follow-up data or adoption numbers, and the example
+agent has not been deployed anywhere.
+
+Built by [Jason Sheinkopf](https://github.com/jasonsheinkopf) with AI coding assistance. The code
+is MIT licensed, see [LICENSE](LICENSE). To report a bug or a step that confused you,
+[open an issue](https://github.com/jasonsheinkopf/LLM-Agents-Workshop/issues).

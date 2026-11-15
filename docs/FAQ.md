@@ -36,8 +36,8 @@ See the "Prefer pip?" note in [Lab 0](00-setup.md). Then drop `uv run` from ever
 recommended only because it pins the exact library versions the workshop was tested with.
 
 **What if I want the ideas, not the labs?**
-Watch the [recordings](../README.md#recordings): the first half of each episode teaches the idea
-without code. If you lead a team rather than build, the
+Read the "idea in two minutes" section at the top of each lab page, and
+[docs/ARCHITECTURE.md](ARCHITECTURE.md). Neither needs any code. If you lead a team rather than build, the
 [leaders' track](../leaders/README.md) and the
 [five questions to ask any agent team](../handouts/questions-for-leaders.md) are written for you.
 
@@ -128,3 +128,10 @@ another team's bot. One server, any client, same guardrails.
 **Is Ridgeline a real gym?**
 No. The gym, its policies, its prices and its callers are invented for this workshop, and the phone
 numbers use the reserved 555-01xx range.
+
+## When you're done
+
+**How do I clean up?**
+- **Pinecone:** delete the `ridgeline-agent` index in the console, or keep it, since it fits in the free plan.
+- **OpenAI:** revoke the key you made for the workshop, if you won't use it again.
+- **Langfuse:** keep the project. It's your record of everything you built.

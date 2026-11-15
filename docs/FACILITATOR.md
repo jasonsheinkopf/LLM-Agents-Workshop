@@ -58,7 +58,7 @@ accounts and nothing else.
 | Have ready | Why |
 |---|---|
 | The solution running on your laptop with real keys, and a Langfuse project from a full run | Your demos, and something to show if a participant's run is slow |
-| The [recordings](../README.md#recordings) downloaded | The backup for every live explanation and demo |
+| Screenshots of each demo's end state, from that full run | The backup when a live demo will not recover |
 | A spare OpenAI key with credit | Someone's key will fail or hit a limit |
 | `uv run pytest --impl solution` green on the room's network | Proves the install works behind their firewall |
 | The catch-up command tried once: `uv run python scripts/catch_up.py 3` | You will use it before 11:00 |
@@ -93,7 +93,8 @@ yourself past 15 minutes, stop and start the build.
 **Demo (inside the same time).** Do the first step of the lab live on the projector, thinking out
 loud, in the same repo the room has. Then show the planned failure for the block (listed below).
 If a live demo breaks in a way you did not plan, narrate the diagnosis: read the error, open the
-trace, form a guess, try a fix. If it is not fixed in two minutes, play the recording and move on.
+trace, form a guess, try a fix. If it is not fixed in two minutes, show the saved trace or screenshot from your own full run and
+move on.
 
 **Build.** Pairs work. You circulate. Three rules:
 
@@ -147,6 +148,9 @@ canvas that goes with the block.
 - **Demo:** push v1 and v2. Chat with both. Ask the room which feels better. Most will say v2.
 - **The failure on purpose:** the v2 experiment. Honesty and safety drop. Nobody saw it in chat.
 - **Watch for:** rate limits on brand-new OpenAI accounts. Have them run with `--limit 5` first.
+- **Watch for:** a pair whose v2 run scores higher overall than v1. It happens: with no rules the
+  model guesses, and some guesses pass. Send them to the category rows. Safety and honesty are
+  where v2 fails, and that is the point of reading a scoreboard by category.
 - **Give judge calibration time.** A judge that disagrees with the human grades is the lesson,
   not a problem. This is where the room usually goes quiet and then loud.
 - **Shortcut to the floor:** at minute 25 of the build, any pair still writing graders copies
@@ -215,10 +219,10 @@ canvas that goes with the block.
 | What happens | What to do |
 |---|---|
 | **A third of the laptops fail at 9:15** | Stop. Fix the most common error once on the projector for everyone. Seat failed laptops with working pairs. Protect the floor for Block 1, and let the assistant handle individual cases while the room builds. |
-| **Your live demo crashes** | Narrate it. Read the error aloud, open the trace, say your guess. This is the failure lesson arriving early. If it is not fixed in two minutes, switch to the recording and keep the schedule. |
+| **Your live demo crashes** | Narrate it. Read the error aloud, open the trace, say your guess. This is the failure lesson arriving early. If it is not fixed in two minutes, switch to the saved trace from your own full run and keep the schedule. |
 | **A fast pair is done in ten minutes** | Point them at the ceiling on the lab page. If they finish that, make them helpers for the pair next to them. |
 | **Someone says "this is all hype"** | Thank them, and turn the doubt into a test: "What would it have to get right for you to trust it? Let's add that as a case." Skeptics often become the most engaged people in the room once their doubt is part of the exercise. |
-| **The API or the network goes down** | The lab tests are offline and still run, so pairs keep writing code. Teach from the recording and your saved Langfuse project. Hand out the spare key if it is one account. |
+| **The API or the network goes down** | The lab tests are offline and still run, so pairs keep writing code. Teach from your saved Langfuse project and the screenshots in `docs/img/`. Hand out the spare key if it is one account. |
 | **More than a third of the room is red at a checkpoint** | That is one unclear instruction, not a third of the room failing. Stop the build, show that step on the projector, and write down which step it was. |
 | **You are running 15 minutes late after lunch** | Shorten Block 6 to a demo, and keep the red-team round and Make it yours whole. They carry outcomes 4 and 5. |
 | **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. If they want people to build, slides cannot produce that: offer one block inside their agenda as proof. If they want people to decide, the room is leaders, not builders: run the [leaders' session](../leaders/README.md), two hours with no laptops. |
@@ -255,8 +259,8 @@ lab to do alone afterward; tools are the hardest to debug alone, so tools stay i
 
 ## Variant: on your own
 
-The same labs, self-paced, in about five and a half hours. The recordings stand in for the
-explanation and demo. The debrief questions on each lab page are for the learner to answer in
+The same labs, self-paced, in about five and a half hours. The "idea in two minutes" section of
+each lab page stands in for the explanation, and `solution/` stands in for the demo. The debrief questions on each lab page are for the learner to answer in
 writing, and the canvas is still the last step. Nothing else changes.
 
 ## Leaders get a different session

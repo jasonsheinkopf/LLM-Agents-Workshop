@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="The workshop was designed backward: learner, outcomes, evidence, exercises, then the agenda">
+  <title>The workshop was designed backward: learner, outcomes, evidence, exercises, then the agenda</title>
+  <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#59636e" text-anchor="start" letter-spacing="1.6">DESIGNED IN THIS ORDER</text>
+  <rect x="0" y="58" width="216" height="150" rx="14" fill="#f6f8fa" stroke="#2a78d6" stroke-width="2"/>
+  <circle cx="30" cy="92" r="15" fill="#2a78d6"/>
+  <text x="30" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="56" y="99" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Learner</text>
+  <text x="18" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">Engineers who have</text>
+  <text x="18" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">called an LLM API</text>
+  <line x1="221" y1="133" x2="239" y2="133" stroke="#818b98" stroke-width="2" stroke-linecap="round"/>
+  <path d="M232,127 L241,133 L232,139" fill="none" stroke="#818b98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="246" y="58" width="216" height="150" rx="14" fill="#f6f8fa" stroke="#2a78d6" stroke-width="2"/>
+  <circle cx="276" cy="92" r="15" fill="#2a78d6"/>
+  <text x="276" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="302" y="99" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Outcomes</text>
+  <text x="264" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">Build, diagnose,</text>
+  <text x="264" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">measure, guard, transfer</text>
+  <line x1="467" y1="133" x2="485" y2="133" stroke="#818b98" stroke-width="2" stroke-linecap="round"/>
+  <path d="M478,127 L487,133 L478,139" fill="none" stroke="#818b98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="492" y="58" width="216" height="150" rx="14" fill="#f6f8fa" stroke="#2a78d6" stroke-width="2"/>
+  <circle cx="522" cy="92" r="15" fill="#2a78d6"/>
+  <text x="522" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="548" y="99" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Evidence</text>
+  <text x="510" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">Green tests, scoreboard,</text>
+  <text x="510" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">red-team record, canvas</text>
+  <line x1="713" y1="133" x2="731" y2="133" stroke="#818b98" stroke-width="2" stroke-linecap="round"/>
+  <path d="M724,127 L733,133 L724,139" fill="none" stroke="#818b98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="738" y="58" width="216" height="150" rx="14" fill="#f6f8fa" stroke="#2a78d6" stroke-width="2"/>
+  <circle cx="768" cy="92" r="15" fill="#2a78d6"/>
+  <text x="768" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="794" y="99" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Exercises</text>
+  <text x="756" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">Seven labs, each ending</text>
+  <text x="756" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">in a checkpoint</text>
+  <line x1="959" y1="133" x2="977" y2="133" stroke="#818b98" stroke-width="2" stroke-linecap="round"/>
+  <path d="M970,127 L979,133 L970,139" fill="none" stroke="#818b98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="984" y="58" width="216" height="150" rx="14" fill="#f6f8fa" stroke="#d1d9e0" stroke-width="1.5"/>
+  <circle cx="1014" cy="92" r="15" fill="#818b98"/>
+  <text x="1014" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="1040" y="99" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start">Agenda</text>
+  <text x="1002" y="144" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">Six blocks,</text>
+  <text x="1002" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="400" fill="#59636e" text-anchor="start">9:00 to 5:00</text>
+  <text x="0" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="19" font-weight="600" fill="#1f2328" text-anchor="start">The agenda was the fifth decision, not the first.</text>
+  <text x="0" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" font-weight="400" fill="#59636e" text-anchor="start">A block that produced none of the five outcomes was cut, however interesting.</text>
+</svg>
