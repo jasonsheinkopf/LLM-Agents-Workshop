@@ -1,7 +1,7 @@
 # The leaders' track
 
 **A two-hour working session for senior leaders. No laptops, no code. You arrive with two
-workflows from your own organisation. You leave with one pilot, a named owner, and a one-page plan
+workflows from your own organization. You leave with one pilot, a named owner, and a one-page plan
 that says what the pilot must prove before anyone trusts it.**
 
 | | |
@@ -117,7 +117,7 @@ crash and no account to set up.
 
 About 15 minutes, one week before. The sponsor sends [this email](handouts/pre-session-email.md).
 
-1. **Send two workflows** from your part of the organisation: work that happens every week, where
+1. **Send two workflows** from your part of the organization: work that happens every week, where
    someone has to look something up or decide something. Three sentences each: what starts it,
    what someone needs to know to do it, and what it produces. Add roughly how often it happens and
    how long it takes.

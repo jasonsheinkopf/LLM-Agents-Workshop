@@ -11,13 +11,13 @@ has not replied.
 Hi [name],
 
 On [day, date] this group spends two hours deciding where an AI agent would earn its place in
-[organisation], and where it would not. It is a working session, not a presentation. There are no
+[organization], and where it would not. It is a working session, not a presentation. There are no
 laptops and no code. By the end, the group will have picked one pilot, named its owner, and
 written down what the pilot has to prove before anyone trusts it.
 
 To make that possible, two things before the session. Together they take about 15 minutes.
 
-**1. Send two workflows from your part of the organisation.** Pick work that happens every week,
+**1. Send two workflows from your part of the organization.** Pick work that happens every week,
 where someone has to look something up or decide something. For each one, reply with:
 
 - What starts it? (a request arrives, a customer calls, a report is due)

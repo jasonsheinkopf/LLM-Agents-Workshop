@@ -306,7 +306,7 @@ the agent in this repo.
 | **Someone asks which model or supplier to buy** | Park it on the wall. The plan does not depend on the answer. The five questions work on a supplier as well as on a team. |
 | **Someone asks a technical question you cannot answer** | Say that you are not sure, write it on the wall, and answer by email. That is Card B, and the room has just voted on what it thinks of Card B. |
 | **You are ten minutes late at the break** | Cut the table reports in Block 4 to 30 seconds each. In Block 6, the owner's table writes the whole plan while the other tables turn doubts into test cases. Do not cut the reading aloud or the signatures. |
-| **The room is from several organisations** | Each table chooses its own pilot and writes its own plan. The wall holds one plan per table. Everything else stays the same. |
+| **The room is from several organizations** | Each table chooses its own pilot and writes its own plan. The wall holds one plan per table. Everything else stays the same. |
 
 ## Measuring the session
 

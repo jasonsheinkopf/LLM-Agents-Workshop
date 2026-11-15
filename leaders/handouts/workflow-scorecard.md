@@ -21,7 +21,7 @@ Score alone and in silence first. Then compare with your table.
 
 | | 1 | 3 | 5 |
 |---|---|---|---|
-| **Business value** | Saves a few minutes a month. Nobody would notice | Saves a team several hours every week | Moves a number the organisation already reports: cost, waiting time, errors, revenue |
+| **Business value** | Saves a few minutes a month. Nobody would notice | Saves a team several hours every week | Moves a number the organization already reports: cost, waiting time, errors, revenue |
 | **The data is ready** | The knowledge is in people's heads, or it is red under the data rule | It is written down, but scattered, out of date or without an owner | Written down, current, one named owner, and green or approved yellow under the data rule |
 | **A mistake is cheap** | One wrong output could harm a person, break a law or move money that cannot be recovered | A wrong output reaches a customer or a colleague, and costs an apology and rework | A person sees every output before it matters. A wrong one costs minutes |
 | **Easy to undo** | It replaces a system or a team. Going back would take months | Going back takes weeks, and people outside the team would notice | It runs beside today's process. Switch it off in a day and nobody outside notices |
