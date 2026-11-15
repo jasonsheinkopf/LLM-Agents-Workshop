@@ -221,7 +221,7 @@ canvas that goes with the block.
 | **The API or the network goes down** | The lab tests are offline and still run, so pairs keep writing code. Teach from the recording and your saved Langfuse project. Hand out the spare key if it is one account. |
 | **More than a third of the room is red at a checkpoint** | That is one unclear instruction, not a third of the room failing. Stop the build, show that step on the projector, and write down which step it was. |
 | **You are running 15 minutes late after lunch** | Shorten Block 6 to a demo, and keep the red-team round and Make it yours whole. They carry outcomes 4 and 5. |
-| **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. Then offer the 90-minute briefing below, with its ten minutes of live agent. |
+| **The sponsor asks for slides instead of a hands-on day** | Ask what they want people to do differently afterward. If they want people to build, slides cannot produce that: offer one block inside their agenda as proof. If they want people to decide, the room is leaders, not builders: run the [leaders' session](../leaders/README.md), two hours with no laptops. |
 
 ## Measuring the day
 
@@ -259,25 +259,10 @@ The same labs, self-paced, in about five and a half hours. The recordings stand 
 explanation and demo. The debrief questions on each lab page are for the learner to answer in
 writing, and the canvas is still the last step. Nothing else changes.
 
-## Variant: executive briefing (90 minutes, no laptops)
+## Leaders get a different session
 
-**For:** leaders deciding whether and how to use agents.
-**Outcome:** by the end, each leader can tell a working agent from a demo, names one workflow and
-what they would not automate in it, and can ask a team for evidence. Shown by the workflow they
-name and by the questions they ask in the last ten minutes.
-**You need:** a projector; the solution running on your laptop with real keys; a Langfuse project
-from a full run (traces, an experiment comparison, a trace with a guardrail hit); the recordings,
-in case the network fails.
-
-| Time | Block | What happens | Checkpoint |
-|---|---|---|---|
-| 0:00 | **The call** | Play the phone call. Ask the room: what would an AI need to get this right? Collect the answers on a board. | The board has knowledge, action and quality on it, in their words |
-| 0:10 | **What makes an agent** | Map their answers onto model, memory, tools and evals. One slide. Then: start with the simplest thing that works. | Someone re-explains the diagram |
-| 0:25 | **Live: fail, then work** | Run the bare model on the call (`chat --no-tools --no-memory`), then the full agent. Same question, two answers. | Someone says the first one could not actually help |
-| 0:40 | **Live: the trace** | Open the useless answer's trace. The system message has no class facts. | Ask: whose fault was it? (Not the model's.) |
-| 0:55 | **Evals in one picture** | The experiment comparison: v1, v2 (regressed), v3 (promoted). | Ask: would you have shipped v2 from the demo? |
-| 1:10 | **Guardrails** | The trace where the model proposed a bad tool call and the code rejected it. The model proposes; your code decides. | Ask: what should never be left to the model? |
-| 1:20 | **Your workflow, and five questions** | Each leader names one workflow and what they would not automate in it. Hand out the [five questions](../handouts/questions-for-leaders.md). | Each can repeat at least three |
-| 1:30 | End | | |
-
-Leaders still do hands-on work here. It is a vote, a board and a decision, not code.
+Leaders who decide where agents are used do not get a shorter version of this day. They make a
+different decision, so they get a different session with a different outcome: two hours, no
+laptops, ending in one pilot with a named owner and a one-page plan. It uses this agent's trace,
+scoreboard and guardrails as its exhibits. It is in [leaders/](../leaders/README.md), with its
+own [run of show](../leaders/FACILITATOR.md) and [handouts](../leaders/handouts/README.md).

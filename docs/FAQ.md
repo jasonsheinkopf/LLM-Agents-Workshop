@@ -38,7 +38,7 @@ recommended only because it pins the exact library versions the workshop was tes
 **What if I want the ideas, not the labs?**
 Watch the [recordings](../README.md#recordings): the first half of each episode teaches the idea
 without code. If you lead a team rather than build, the
-[90-minute briefing](FACILITATOR.md#variant-executive-briefing-90-minutes-no-laptops) and the
+[leaders' track](../leaders/README.md) and the
 [five questions to ask any agent team](../handouts/questions-for-leaders.md) are written for you.
 
 ## While you work
@@ -97,8 +97,9 @@ treat the old keys as public forever). The repo's `.gitignore` excludes `.env` t
 to do by accident.
 
 **What if I want to run this for my team?**
-[FACILITATOR.md](FACILITATOR.md) has a 90-minute executive briefing and a one-day engineer
-workshop, with timings, checkpoints and the things that go wrong.
+There are two run-of-show guides, each with timings, checkpoints and the things that go wrong:
+[FACILITATOR.md](FACILITATOR.md) for the one-day engineers' workshop, and
+[leaders/FACILITATOR.md](../leaders/FACILITATOR.md) for the two-hour leaders' session.
 
 ## Concepts
 

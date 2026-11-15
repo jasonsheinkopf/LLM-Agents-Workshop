@@ -8,6 +8,11 @@ an agent you built, traced, tested and tried to break, and a plan for one of you
 ![uv](https://img.shields.io/badge/env-uv-purple)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
+> **Two tracks, one agent.** Engineers build it: one day, hands-on, on this page. Leaders decide
+> what to do with one: [two hours, no laptops, no code](leaders/README.md), ending in one pilot
+> with a named owner. The leaders' session uses this agent's real trace, scoreboard and guardrails
+> as its exhibits.
+
 | | |
 |---|---|
 | **Format** | One day, 9:00 to 5:00, instructor-led, working in pairs |
@@ -34,9 +39,9 @@ who have not yet built an agent with tracing, evals and guardrails. You don't ne
 Langfuse, Pinecone or MCP.
 
 It is not a Python course, and it is not for people who won't write code. Leaders who decide
-whether and how to use agents get a different session: the
-[90-minute briefing](docs/FACILITATOR.md#variant-executive-briefing-90-minutes-no-laptops), which
-uses the same agent and no laptops.
+where agents are used get a different session with a different outcome: the
+[leaders' track](leaders/README.md), two hours with no laptops, which ends in a pilot plan, not a
+repository.
 
 ## What you will be able to do
 
@@ -266,6 +271,10 @@ LLM-Agents-Workshop/
 │   ├── FAQ.md               ← "what if…": Windows, pip, other models, own data, costs, concepts
 │   └── GLOSSARY.md          ← every term used in the workshop, in one sentence each
 ├── handouts/                ← pre-work email, workflow canvas, exit ticket, follow-up emails, questions for leaders
+├── leaders/                 ← the leaders' track: two hours, no laptops, ends in a one-page pilot plan
+│   ├── README.md            ← who it is for, the outcomes, the agenda
+│   ├── FACILITATOR.md       ← the run of show, block by block
+│   └── handouts/            ← answer cards, trace and scoreboard exhibits, scorecard, gate map, pilot plan, emails
 ├── labs/                    ← one README per block: goal, checkpoint, steps, debrief
 │   ├── 01-first-agent/  02-traces/  03-evals/  04-memory/  05-tools/  06-mcp/  07-ship-it/
 ├── data/                    ← the fictional gym: handbook.md, schedule.json, callers.json

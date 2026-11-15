@@ -1,7 +1,8 @@
 # Five questions to ask any team building an agent
 
-The handout for the [90-minute leaders' briefing](../docs/FACILITATOR.md#variant-executive-briefing-90-minutes-no-laptops).
-A good answer to each one is evidence. A demo is not.
+The closing handout of the [leaders' session](../leaders/README.md). Each question appears
+there first as an exhibit: a trace, a test set, a judge that was checked, a booking that stopped,
+a scoreboard. A good answer to each one is evidence. A demo is not.
 
 1. **Show me a trace of a wrong answer.** What went wrong, and how do you know?
 2. **What is in your test set**, and where did it come from?
@@ -25,3 +26,5 @@ A good answer to each one is evidence. A demo is not.
 - Name what you will **not** automate in it.
 - Name the owner.
 - Ask for the answers to the five questions in 30 days.
+
+The [one-page pilot plan](../leaders/handouts/pilot-plan.md) has a row for each of these.
