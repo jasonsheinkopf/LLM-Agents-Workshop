@@ -26,7 +26,7 @@ offline tests, an instructor's run of show and the participant handouts.
 
 **Want to learn this rather than just browse the project? [Start the guided course →](START_HERE.md).** Clone the repository, read a concept lesson, complete its coding lab, run the checkpoint, and follow the next link. All **seven written lessons** are available now; the videos are optional companions still in development.
 
-[Start learning](START_HERE.md) · [Track progress with local checkboxes](PROGRESS_TEMPLATE.md) · [Teaching guide](docs/FACILITATOR.md)
+[Start learning](START_HERE.md) · [Track your progress](PROGRESS.md) · [Teaching guide](docs/FACILITATOR.md)
 
 **On this page:**
 [Why it is designed this way](#why-it-is-designed-this-way) ·
@@ -269,7 +269,7 @@ The materials are written so that the day does not depend on one instructor's me
 | Teach it | [docs/FACILITATOR.md](docs/FACILITATOR.md): what to say and demo in each block, the failure to show on purpose, the checkpoint, the debrief questions, and what to do when a third of the laptops fail |
 | Understand the design | [docs/DESIGN.md](docs/DESIGN.md) |
 | Send and print | [handouts/](handouts/): pre-work email, workflow canvas, exit ticket, follow-up emails |
-| Do it on your own | **[Start here](START_HERE.md)**: clone the repo, follow the written lesson → lab sequence, tick an [optional personal progress checklist](PROGRESS_TEMPLATE.md). Budget about five to seven hours plus setup |
+| Do it on your own | **[Start here](START_HERE.md)**: clone the repo, follow the written lesson → lab sequence, update the [included progress checklist](PROGRESS.md). Budget about five to seven hours plus setup |
 | Fix a problem | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) and [docs/FAQ.md](docs/FAQ.md) |
 | Look up a term | [docs/GLOSSARY.md](docs/GLOSSARY.md) |
 

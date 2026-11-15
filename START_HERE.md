@@ -26,15 +26,11 @@ Where things live:
 
 This is a fictional gym with a simulated telephone conversation in terminal chat. A booking writes a local file; text messages are simulated. The hands-on exercises use real OpenAI, Langfuse and Pinecone APIs when configured.
 
-## Step 2 — Track progress locally (optional)
+## Step 2 — Check off your progress
 
-If you want checkboxes, create a personal checklist in the clone:
+Your clone already includes [PROGRESS.md](PROGRESS.md). Open **that file directly** in any text editor. As you finish each lesson and lab, change `- [ ]` to `- [x]` and save. **That's all.** No copying, account, app, or progress service is required.
 
-```bash
-cp PROGRESS_TEMPLATE.md MY_PROGRESS.md
-```
-
-Open `MY_PROGRESS.md` in your editor and change `- [ ]` to `- [x]` as you finish each step. This file is Git-ignored, so it's yours, stays local, and doesn't conflict with the course updates. **No account or automatic tracking is involved.** [View the checklist template](PROGRESS_TEMPLATE.md).
+Because `PROGRESS.md` is tracked like any other file, Git will show your edits as a local modification. They stay on your computer unless **you decide** to commit and push them; no progress is transmitted automatically.
 
 ## Step 3 — Set up once
 
