@@ -24,6 +24,7 @@ from rich.panel import Panel
 from .agent import GymAgent
 from .config import langfuse_enabled
 from .gym import load_callers
+from .tools import tool_specs
 
 console = Console()
 
@@ -42,9 +43,11 @@ def main() -> None:
                               tools=[] if args.no_tools else None, memory=not args.no_memory)
     call = agent.start_call(args.caller)
     lf = get_client()
+    # Only the tools the model is actually offered (none until Lab 5 writes tool_specs).
+    offered = [spec["function"]["name"] for spec in tool_specs(agent.tools)]
     console.print(Panel.fit(
         f"[bold]Ridgeline Climbing Gym[/] phone line  |  caller: [cyan]{args.caller}[/]  |  "
-        f"prompt: {agent.prompt.version}  |  tools: {', '.join(agent.tools) or 'none'}  |  "
+        f"prompt: {agent.prompt.version}  |  tools: {', '.join(offered) or 'none'}  |  "
         f"memory: {'on' if agent.handbook else 'off'}  |  tracing: {'on' if langfuse_enabled() else 'off'}",
         title="gym_agent.chat"))
 
